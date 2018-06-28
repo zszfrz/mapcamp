@@ -53,6 +53,30 @@ b, strong {
     font-weight: bold
 }
 
+
+.col10 {
+    position: relative;
+    float: left;
+    margin-right: -100%;
+    width: 83%;
+}
+
+.push1 {
+    margin-left: 8.5%;
+}
+
+.icon-arrow-right:before {
+    content: "\e606";
+}
+
+.row {
+    *zoom: 1;
+    position: relative;
+    margin: 0 0% 2% 0;
+    padding: 0;
+    list-style: none;
+}
+
 dfn {
     font-style: italic
 }
