@@ -25,7 +25,7 @@ public class User {
 	@Column(nullable = false)
 	private String name;
 
-	private String image;
+	private String profileImage;
 	
 	@Column(nullable = false)
 	private Integer sex;
@@ -66,12 +66,12 @@ public class User {
 		this.name = name;
 	}
 
-	public String getImage() {
-		return image;
+	public String getProfileImage() {
+	    return profileImage;
 	}
 
-	public void Image(String image) {
-		this.image = image;
+	public void setProfileImage(String profileImage) {
+	    this.profileImage = profileImage;
 	}
 	
 	public Integer getSex() {
