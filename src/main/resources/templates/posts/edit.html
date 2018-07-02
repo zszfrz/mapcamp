@@ -19,7 +19,8 @@
     </header>
     <div class="contents row">
         <div class="container">
-            <form th:action="@{/posts/new}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
+            <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
+             <h3>編集する</h3>
             <div style="margin: 8px 0">
                     <label style="margin-right: 8px">Shopname</label>
                     <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
@@ -61,11 +62,14 @@
                 </div>
                 <div class="row">
                     <div class="col10 push1">
-                        <button type="submit" class="btn btn--block">投稿する<i class="icon-arrow-right"></i></button>
+                        <button type="submit" class="btn btn--block">編集する<i class="icon-arrow-right"></i></button>
                     </div>
+                    
                 </div>
             </form>
-            
+            <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post">
+                        <input type="submit" value="削除" />
+                    </form>
             
             
         </div>

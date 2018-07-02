@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 	
@@ -14,6 +16,11 @@ import javax.persistence.Table;
 	public class Post{
 		
 		
+		@ManyToOne
+		@JoinColumn(updatable = false)
+		private User user;
+		
+		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
@@ -21,8 +28,8 @@ import javax.persistence.Table;
 		@Column(nullable = false)
 		private String shopname;
 		
-		@Column(nullable = false)
-		private String nickname;
+//		@Column(nullable = false)
+//		private String nickname;
 		
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
@@ -68,13 +75,13 @@ import javax.persistence.Table;
 	        this.shopname = shopname;
 	    }
 	    
-	    public String getNickname() {
-	        return nickname;
-	    }
-
-	    public void setNickname(String nickname) {
-	        this.nickname = nickname;
-	    }
+//	    public String getNickname() {
+//	        return nickname;
+//	    }
+//
+//	    public void setNickname(String nickname) {
+//	        this.nickname = nickname;
+//	    }
 	    
 	    
 	    
@@ -112,6 +119,15 @@ import javax.persistence.Table;
 	    }
 	    public void setSpeed(Integer speed) {
 	        this.speed = speed;
+	    }
+	    
+	    
+	    public User getUser() {
+	        return user;
+	    }
+
+	    public void setUser(User user) {
+	        this.user = user;
 	    }
 	    
 

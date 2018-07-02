@@ -5,15 +5,18 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 public class PostForm {
 	
 	@NotBlank
 	private String shopname;
 	
-	@NotBlank
-	private String nickname;
+//	@NotBlank
+//	private String nickname;
 
+	private MultipartFile file;
+	
 	@NotNull
 	@Min(1)
 	@Max(10)
@@ -48,13 +51,20 @@ public class PostForm {
 		  this.shopname = shopname;
 	}
 	
+	public MultipartFile getFile() {
+	    return file;
+	}
+
+	public void setFile(MultipartFile file) {
+	    this.file = file;
+	}
 	
-  public String getNickname() {
-  return nickname;
-  }
-  public void setNickname(String nickname) {
-  this.nickname = nickname;
-  }
+//  public String getNickname() {
+//  return nickname;
+//  }
+//  public void setNickname(String nickname) {
+//  this.nickname = nickname;
+//  }
 
   public Integer getYummy() {
 	  return yummy;

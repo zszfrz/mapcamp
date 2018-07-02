@@ -1,12 +1,17 @@
 package com.mapcamp.web.controller;
 
+import java.io.IOException;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.repository.PostRepository;
 import com.mapcamp.domain.service.PostService;
+import com.mapcamp.security.LoginUserDetails;
 import com.mapcamp.web.form.PostForm;
 
 
@@ -28,19 +34,16 @@ public class PostController {
 	@Autowired
     private PostService postService;
 	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index(ModelAndView mav) {
-        String hello = "Hello, Spring Boot!";
-        mav.addObject("hello", hello);
-        mav.setViewName("posts/index");
+		List<Post> posts = postRepository.findAll();
+        mav.addObject("posts", posts);
+        mav.setViewName("posts/index"); 
         return mav;
     }
 	
-//	@RequestMapping(value = "/posts/new", method = RequestMethod.GET)
-//	public ModelAndView newPost(ModelAndView mav) {
-//	    mav.setViewName("posts/new");
-//	    return mav;
-//	}
+	
 	
 	@GetMapping("/posts/new")
     public String newPost(PostForm form,
@@ -53,22 +56,52 @@ public class PostController {
 	@PostMapping("/posts/new")
 	public String createPost(@Validated PostForm form,
 	                           BindingResult result,
-	                           Model model,Post newPost) {
-//	    if (result.hasErrors()) {
-//	        return newPost( form, model);
-//	    }
+	                           Model model,Post newPost,@AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException{
+	    if (result.hasErrors()) {
+	        return newPost( form, model);
+	    }
 	    Post post = new Post();
         BeanUtils.copyProperties(form, post);
-        postService.save(post);
+        postService.save(post,loginUserDetails.getUserId(),form.getFile());
         return "posts/create";
 	}
 	
-//	@RequestMapping(value = "/posts/new", method = RequestMethod.POST)
-//    public ModelAndView createPost(Post newPost, ModelAndView mav) {
-//        postRepository.saveAndFlush(newPost);
-//        mav.setViewName("posts/create");
-//        return mav;
-   
+	@GetMapping("/posts/{postId}/edit")
+    public String editPost(@PathVariable Long postId,
+                            PostForm form,
+                            Model model) {
+        Post post = postService.findOne(postId);
+        model.addAttribute("post", post);
+        return "posts/edit";
+    }
+	
+	@PostMapping(value = "/posts/{postId}/edit")
+	public String updatePost(@Validated PostForm form,
+			@PathVariable Long postId,
+            BindingResult result,
+            Model model,Post editPost,@AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException {        
+	    Post post = postRepository.findOne(postId);
+	    if (!post.getUser().getId().equals(loginUserDetails.getUserId())) {
+	        return "redirect:/posts/" + postId + "/edit";
+	    }
+	    BeanUtils.copyProperties(form, post);
+	    postRepository.save(post);
+	    return "posts/update";
+	}
+	
+	@PostMapping(value = "/posts/{postId}/delete")
+	public String deletePost(
+			@PathVariable Long postId,
+            @AuthenticationPrincipal LoginUserDetails loginUserDetails){        
+	    Post post = postRepository.findOne(postId);
+	    if (!post.getUser().getId().equals(loginUserDetails.getUserId())) {
+	        return "redirect:/";
+	    }
+	    postRepository.delete(post);
+	    return "posts/delete";
+	}
+	
+
 
 }
 
