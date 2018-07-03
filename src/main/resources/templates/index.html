@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!-- xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="content"> -->
+
+<head>
+<meta charset="UTF-8" th:remove="all" />
+</head>
+
+<body>
+
+	<div layout:fragment="main">
+		<article class="section">
+			<div class="container">
+				<header class="header header--section">
+					<h2 class="text-middle">
+						<i class="icon-movie color-gray-light"></i>新着作品
+					</h2>
+				</header>
+				<ul
+					class="thumbnails thumbnail--movies row grid4 js-lazy-load-images js-my-check-stats"
+					id="list-module">
+
+					<li class="col" th:each="product : ${products}"><a
+						href="/products/1" th:href="@{'/products/' + ${product.id}}">
+							<div class="thumbnail__figure"
+								style="background-image: url(http://image.eiga.k-img.com/images/movie/82939/poster2/200.jpg?1456105504)"
+								th:style="'background-image:url(' + ${product.imageUrl} + ')'"></div>
+					</a>
+						<div class="thumbnail__caption">
+							<h3 class="text-xsmall text-overflow" title="オオカミ少女と黒王子"
+								th:text="${product.shopUrl}">オオカミ少女と黒王子</h3>
+							
+						</div></li>
+
+				</ul>
+			</div>
+		</article>
+	</div>
+
+</body>
+
+</html>
