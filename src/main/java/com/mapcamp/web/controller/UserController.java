@@ -50,6 +50,14 @@ public class UserController {
 	// model.addAttribute("user", user);
 	// return "users/show";
 	// }
+	
+    @GetMapping("/login")
+    public String loginForm(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+        if (loginUserDetails != null) {
+            return "redirect:/";
+        }
+        return "user/login";
+    }
 
 	// 登録画面表示
 	@GetMapping("/user/registration")
@@ -61,23 +69,27 @@ public class UserController {
 	}
 
 	//登録画面でDBにデータ保存
-	@PostMapping("user/registration")
+	@PostMapping("/user/registration")
 	public String register(@Validated UserForm form, BindingResult result, Model model,
 			@AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException {
+		//email,PW無い場合リダイレクト
 		if (loginUserDetails != null) {
 			return "redirect:/";
 		}
+		//パスワードが一致しない場合エラー表示
 		if (!form.getPassword().equals(form.getConfirmPassword())) {
 			result.rejectValue("password", "error.passwordConfirmation", "do notmatch.");
 		}
+		//
 		if (result.hasErrors()) {
 			return "/user/registration";
 		}
+		
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
 
-		userService.save(user, form.getFile());
-		// userService.save(user);
+		//userService.save(user, form.getFile());
+		 userService.save(user);
 		return "redirect:/";
 
 	}

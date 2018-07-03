@@ -15,13 +15,13 @@
 				<div class="yjContainer">
 					<div class="form_box">
 						<h2>
-							mapcamp
+							mapcamp<br />
 							<span>新規登録</span>
 						</h2>
 
-						<form th:action="@{/users/registration}" th:object="${userForm}"
+						<form th:action="@{/user/registration}" th:object="${userForm}"
 							class="new_user" id="new_user" enctype="multipart/form-data"
-							action="/users" accept-charset="UTF-8" method="post">
+							action="/user" accept-charset="UTF-8" method="post">
 
 							<div class="label">
 								<label for="user_email">Email</label><br /> <input
@@ -55,17 +55,20 @@
 									id="user_avatar" />
 							</div>
 
-							<div class="label">
+<!-- 							<div class="label">
 								<label for="birthday">Birthday</label><br /> <input
 									th:field="*{birthday}" placeholder="生年月日" type="date"
 									name="birthday" id="birthday" />
 							</div>
 
 							<div class="label">
-								<label for="sex">sex</label><br /> <input
-									th:field="*{sex}" placeholder="性別" type="text"
-									name="sex" id="sex" />
-							</div>
+								<label for="sex">sex</label><br /> 
+								<input th:field="*{sex}" placeholder="性別" type="radio"
+									name="sex" id="sex" value="female" />　女性
+								<input th:field="*{sex}" placeholder="性別" type="radio"
+									name="sex" id="sex" value="male" />　男性　
+							</div> -->
+							
 
 							<div class="submit">
 								<div class="actions">
@@ -74,7 +77,7 @@
 							</div>
 
 							<div class="more_link_box">
-								<strong>すでにアカウントを持っていますか？</strong> <a href="/loginForm">Log
+								<strong>すでにアカウントを持っていますか？</strong> <a href="/login">Log
 									in</a><br />
 							</div>
 						</form>

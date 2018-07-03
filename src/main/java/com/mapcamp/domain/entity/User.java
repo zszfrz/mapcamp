@@ -27,10 +27,10 @@ public class User {
 
 	private String profileImage;
 	
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private Integer sex;
 	
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private Date birthday;
 
 	// ゲッターセッター
