@@ -8,7 +8,6 @@
 <title>Map Camp</title>
 
 <script src="/js/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="/js/index.js"></script>
 </head>
 <body>
 	<div layout:fragment="main">
@@ -18,16 +17,18 @@
 				<div class="wannago">行きたいところリスト</div>
 
 				<div class="wannago_posts">
-				<div class="transe" th:if="${wannago_list} == null">
-				<p>店名</p>
-				</div>
-				<th:block th:each="wannago_post : ${wannago_list}">
-					<div class="wannago_box" th:style="background-image: url(' + @{${wannago_post.image}} + ');'">
-					<p th:text="${wannago_post.storeName}">店名</p>
+					<div class="transe" th:if="${wannago_list} == null">
+						<p>店名</p>
 					</div>
+					<th:block th:each="wannago_post : ${wannago_list}">
+						<div class="wannago_box" th:href=""
+							th:style="background-image: url(' + @{${wannago_post.image}} + ');'">
+							<p th:text="${wannago_post.storeName}">店名</p>
+							<!-- <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"></a> -->
+						</div>
+
 					</th:block>
-					
-				
+
 				</div>
 
 

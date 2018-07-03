@@ -79,3 +79,10 @@ vertical-align: bottom;
 	padding-bottom: 1em;
 	padding-right: 1em;
 }
+
+.wannago_box a {
+	display: block;
+    width: 100%;
+    height: 100%;
+
+	}
