@@ -101,7 +101,13 @@ public class PostController {
 	    return "posts/delete";
 	}
 	
-
+	@RequestMapping(value = "/posts/{postId}", method = RequestMethod.GET)
+    ModelAndView show(@PathVariable Long postId, ModelAndView mav) {
+        Post post = postRepository.findOne(postId);
+        mav.addObject("post", post);
+        mav.setViewName("posts/show");
+        return mav;
+    }
 
 }
 
