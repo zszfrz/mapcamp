@@ -21,6 +21,7 @@ public interface PostService {
     //List<Post> findAllByTitleLike(String keyword);
 	
 	Post save(Post post,Long userId,MultipartFile file) throws IOException;
+	byte[] downloadImage(Long postId) throws IOException;
 	
 
 }
