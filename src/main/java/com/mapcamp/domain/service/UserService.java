@@ -11,7 +11,7 @@ public interface UserService {
 	void save(User user);
 
 	// アソシエーション保存
-	//User findOne(Long id);
+	User findOne(Long id);
 
 	// 画像アップロード
 	//User save(User user, MultipartFile file) throws IOException;

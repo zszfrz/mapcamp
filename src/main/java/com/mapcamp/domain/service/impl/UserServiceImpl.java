@@ -37,10 +37,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	// アソシエーション保存
-//	@Override
-//	public User findOne(Long id) {
-//		return userRepository.findOne(id);
-//	}
+	@Override
+	public User findOne(Long id) {
+		return userRepository.findOne(id);
+	}
 //
 //	private String uploadProfileImage(MultipartFile file, Long userId) throws IOException {
 //		Format formatter = new SimpleDateFormat("yyyyMMddHHmmss");
