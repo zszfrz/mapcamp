@@ -13,5 +13,6 @@ heroku config:set DB_PASSWORD=${PASSWORD} -a $1
 heroku config:set DB_HOST=${HOST} -a $1
 heroku config:set DB_PORT=5432 -a $1
 heroku config:set DB_DATABASE=${DATABASE} -a $1
-
+heroku config:set PLATFORM=org.hibernate.dialect.PostgreSQLDialect -a $1
+heroku config:set DRIVER=org.postgresql.Driver -a $1
 heroku config -a $1 | grep DB

@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" href="/css/header.css" />
 <link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/header.css" />
 <title>Map Camp</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
 			</h1>
 			<div class="user_nav">
 				<th:block th:if="${login_user != null}">
-					<div class="psot icon"
+					<div class="icon"
 						th:style="background-image: url(' + @{${loginUser.image}} + ');'"></div>
 					<a class="post" href="/" th:text="${login_user.name}">Guest</a>
 					<a class="post" href="/post/new">投稿する</a>
@@ -22,7 +22,7 @@
 					</form>
 				</th:block>
 				<th:block th:if="${login_user == null}">
-				<div class="psot icon"></div>
+				<div class="icon"></div>
 					<a class="post" href="/" th:text="'Guest'">Guest</a>
 					<a class="post" href="/user/login">ログイン</a>
 					<a class="post" href="/user/registration">登録</a>
@@ -32,7 +32,7 @@
 	
 	<div class="content" layout:fragment="content"></div>
 	
-	<div class="adv" th:style="${product.imageUrl}" layout:fragment="adv">PR</div>
+	<div class="adv" layout:fragment="adv">PR</div>
 	
 	<div class="footer">
         Copyright mapcamp 2018.
