@@ -36,13 +36,13 @@ public class PostController {
     private PostService postService;
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView index(ModelAndView mav) {
-		List<Post> posts = postRepository.findAll();
-        mav.addObject("posts", posts);
-        mav.setViewName("posts/main"); 
-        return mav;
-    }
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//    public ModelAndView index(ModelAndView mav) {
+//		List<Post> posts = postRepository.findAll();
+//        mav.addObject("posts", posts);
+//        mav.setViewName("posts/main"); 
+//        return mav;
+//    }
 	
 	
 	

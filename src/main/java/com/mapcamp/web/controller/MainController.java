@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mapcamp.domain.entity.Post;
+import com.mapcamp.domain.repository.PostRepository;
+
 
 @Controller
 @SessionAttributes(names="list")
@@ -24,6 +27,8 @@ public class MainController {
 	
 	private List<Long> list;
 	
+	@Autowired
+	private PostRepository postRepository;
 //	@Autowired
   //  private UserRepository userRepository;
 	
@@ -38,6 +43,9 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> list) {
 	//	List<Post> post_list = new ArrayList<Post>();
+		List<Post> posts = postRepository.findAll();
+        mav.addObject("posts", posts);
+        mav.setViewName("posts/main"); 
 		for(Long l: list) {
 	//		post_list.add(postRepository.findOne(l));
 		}
