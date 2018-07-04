@@ -31,6 +31,9 @@ public class PostServiceImpl implements PostService{
     private PostRepository postRepository;
 	
 	@Autowired
+    private PostService postService;
+	
+	@Autowired
     private UserService userService;
 
 //    @Override
@@ -74,6 +77,14 @@ public class PostServiceImpl implements PostService{
         Files.copy(file.getInputStream(), path);
         return fileName;
     }
+    
+    @Override
+    public byte[] downloadImage(Long postId) throws IOException {
+        Post post = postRepository.findOne(postId);  // ①
+        Path path = Paths.get("upload", "posts", post.getId().toString(), post.getImage());  // ②
+        return Files.readAllBytes(path);  // ③
+    }
+    
     
 //    @Override
 //    public List<Post> findAllByTitleLike(String keyword) {

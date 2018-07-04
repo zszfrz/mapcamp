@@ -1,11 +1,13 @@
 package com.mapcamp.domain.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +18,9 @@ public class User {
 	@GeneratedValue
 	private Long id;
 
+	@OneToMany(mappedBy = "user")
+    private List<Post> posts;
+	
 	@Column(nullable = false, unique = true)
 	private String email;
 
@@ -42,6 +47,15 @@ public class User {
 		this.id = id;
 	}
 
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+	
+	
 	public String getEmail() {
 		return email;
 	}

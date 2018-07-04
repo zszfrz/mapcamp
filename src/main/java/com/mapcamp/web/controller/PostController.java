@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mapcamp.domain.entity.Post;
@@ -39,7 +40,7 @@ public class PostController {
     public ModelAndView index(ModelAndView mav) {
 		List<Post> posts = postRepository.findAll();
         mav.addObject("posts", posts);
-        mav.setViewName("posts/index"); 
+        mav.setViewName("posts/main"); 
         return mav;
     }
 	
@@ -108,6 +109,12 @@ public class PostController {
         mav.setViewName("posts/show");
         return mav;
     }
+	
+	@GetMapping("/posts/{id}/post-image.jpg")
+	@ResponseBody
+	public byte[] downloadImage(@PathVariable Long id) throws IOException {
+	    return postService.downloadImage(id);
+	}
 
 }
 
