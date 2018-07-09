@@ -36,10 +36,12 @@ public class PostController {
     private PostService postService;
 	
 	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView index(ModelAndView mav) {
+    public ModelAndView index(ModelAndView mav ,@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
 		List<Post> posts = postRepository.findAll();
         mav.addObject("posts", posts);
+       // mav.addObject("login_user", loginUserDetails.getUserId());
         mav.setViewName("posts/main"); 
         return mav;
     }

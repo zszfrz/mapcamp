@@ -21,6 +21,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
     private List<Post> posts;
 	
+	@OneToMany(mappedBy = "user")
+    private List<Comment> comments;
+	
 	@Column(nullable = false, unique = true)
 	private String email;
 
@@ -103,6 +106,14 @@ public class User {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	
+	public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 	
 //	@OneToMany(mappedBy = "user")
 //	private List<Review> reviews;
