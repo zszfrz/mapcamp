@@ -6,7 +6,7 @@ USERNAME=`echo ${DATABASE} | cut -d"/" -f3 | cut -d":" -f1`
 PASSWORD=`echo ${DATABASE} | cut -d"/" -f3 | cut -d":" -f2 | cut -d"@" -f1`
 HOST=`echo ${DATABASE} | cut -d"/" -f3 | cut -d":" -f2 | cut -d"@" -f2`
 DATABASE=`echo ${DATABASE} | cut -d"/" -f4`
-
+heroku config:set DB=postgresql -a $1
 heroku config:set DB_CONNECTION=pgsql -a $1
 heroku config:set DB_USERNAME=${USERNAME} -a $1
 heroku config:set DB_PASSWORD=${PASSWORD} -a $1
