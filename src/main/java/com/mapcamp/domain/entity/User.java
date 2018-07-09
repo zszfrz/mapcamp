@@ -2,11 +2,11 @@ package com.mapcamp.domain.entity;
 
 import java.sql.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -103,16 +103,4 @@ public class User {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-	
-//	@OneToMany(mappedBy = "user")
-//	private List<Review> reviews;
-//
-//	public List<Review> getReviews() {
-//		return reviews;
-//	}
-//
-//	public void setReviews(List<Review> reviews) {
-//		this.reviews = reviews;
-//	}
-
 }
