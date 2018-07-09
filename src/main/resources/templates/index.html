@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="content">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/css/index.css" />
+<title>Map Camp</title>
+
+<script src="/js/jquery-3.3.1.js"></script>
+</head>
+<body>
+	<div layout:fragment="main">
+		<div class="mainbox">
+			<div class="left">
+
+				<div class="wannago">行きたいところリスト</div>
+
+				<div class="wannago_posts">
+					<div class="transe" th:if="${wannago_list} == null">
+						<p>店名</p>
+					</div>
+					<th:block th:each="wannago_post : ${wannago_list}">
+						<div class="wannago_box" th:href=""
+							th:style="background-image: url(' + @{${wannago_post.image}} + ');'">
+							<p th:text="${wannago_post.storeName}">店名</p>
+							<!-- <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"></a> -->
+						</div>
+
+					</th:block>
+
+				</div>
+
+
+			</div>
+
+
+			<div class="right" layout:fragment="right"></div>
+		</div>
+
+	</div>
+
+</body>
+</html>
