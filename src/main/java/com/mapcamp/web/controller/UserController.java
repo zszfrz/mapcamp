@@ -50,7 +50,7 @@ public class UserController {
 	// model.addAttribute("user", user);
 	// return "users/show";
 	// }
-	
+
     @GetMapping("/login")
     public String loginForm(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         if (loginUserDetails != null) {
@@ -93,13 +93,4 @@ public class UserController {
 		return "redirect:/";
 
 	}
-
-	// //ユーザーidの画像をダウンロード
-	// @GetMapping("/users/{id}/profile-image.jpg")
-	// @ResponseBody //httpのレスポンスとしてオブジェクトを返す
-	// public byte[] downloadProfileImage(@PathVariable Long id) throws IOException
-	// {
-	// return userService.downloadProfileImage(id);
-	// }
-
 }
