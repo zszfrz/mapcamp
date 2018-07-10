@@ -38,9 +38,9 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> list) {
 	//	List<Post> post_list = new ArrayList<Post>();
-		for(Long l: list) {
+		//for(Long l: list) {
 	//		post_list.add(postRepository.findOne(l));
-		}
+		//}
 	//	mav.addObject("wannago_list", list);
 	//	mav.addObject(loginUser);
 		mav.setViewName("/index");

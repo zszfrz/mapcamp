@@ -6,13 +6,4 @@ import com.mapcamp.domain.entity.Comment;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

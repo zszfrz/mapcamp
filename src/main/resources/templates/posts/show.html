@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
+<link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/posts/post_style.css" />
 <title>Show Page</title>
 </head>
@@ -46,13 +47,19 @@
                     <!-- </th:block> -->
                 </ul>
             </div>
-            
-            
-          </div>     
+          </div>    
+         <span>Yummy</span>
+        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.yummy * 10}" class="star-actived"></i></span></span>
+           <span>Clean</span>
+        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.clean * 10}" class="star-actived"></i></span></span>
+        <span>Staff</span>
+        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.staff * 10}" class="star-actived"></i></span></span>
+        <span>Speed</span>
+        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span></span>
        
        <span class="name">
                 <a th:href="@{`/user/` + ${user.id}}" th:inline="text">
-                    <span>投稿者</span><span th:text="${post.user.name}">tech太郎</span>
+                    <br><span>投稿者</span><span th:text="${post.user.name}">tech太郎</span></br>
                 </a>
             </span>   
             <p th:text="*{shopname}"></p>

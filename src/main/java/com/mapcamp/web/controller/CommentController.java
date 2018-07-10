@@ -12,8 +12,9 @@ import com.mapcamp.domain.entity.Comment;
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.entity.User;
 import com.mapcamp.domain.repository.CommentRepository;
-import com.mapcamp.domain.repository.PostRepository;
-import com.mapcamp.domain.repository.UserRepository;
+import com.mapcamp.domain.service.PostService;
+import com.mapcamp.domain.service.UserService;
+import com.mapcamp.security.LoginUserDetails;
 
 public class CommentController {
 
@@ -21,16 +22,16 @@ public class CommentController {
     CommentRepository commentRepository;
 
     @Autowired
-    PostRepository postRepository;
+    PostService postService;
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @RequestMapping(value = "/posts/{postId}/comment", method = RequestMethod.POST)
     ModelAndView createComment(@ModelAttribute Comment comment, @PathVariable Long postId,
-            @AuthenticationPrincipal UserCustom userCustom, ModelAndView mav) {
-        Post post = postRepository.findOne(postId);
-        User user = userRepository.findOne(userCustom.getId());
+            @AuthenticationPrincipal LoginUserDetails loginUserDetails, ModelAndView mav) {
+        Post post = postService.findOne(postId);
+        User user = userService.findOne(loginUserDetails.getUserId());
         comment.setPost(post);
         comment.setUser(user);
         commentRepository.saveAndFlush(comment);
