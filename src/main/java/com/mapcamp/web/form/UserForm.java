@@ -95,6 +95,4 @@ public class UserForm {
 		this.birthday = birthday;
 	}
 
-
-
 }

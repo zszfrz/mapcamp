@@ -39,8 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/","/css/**", "/font/**","/user/registration").permitAll()
 //                .antMatchers("/products/{\\d}", "/products/search").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/sign_up", "/register").permitAll()
-                //.anyRequest().permitAll();
+
+                .antMatchers("/user/registration", "/register").permitAll()
                 .anyRequest().authenticated()
             .and()
             .formLogin()
@@ -58,5 +58,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
-
 }

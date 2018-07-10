@@ -11,7 +11,6 @@ import com.mapcamp.domain.entity.User;
 import com.mapcamp.domain.repository.UserRepository;
 import com.mapcamp.security.LoginUserDetails;
 
-
 @Service
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService{
@@ -27,5 +26,5 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         }
         return new LoginUserDetails(user);
     }
-
 }
+
