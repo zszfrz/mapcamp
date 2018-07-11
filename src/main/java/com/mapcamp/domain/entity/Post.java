@@ -54,6 +54,9 @@ import javax.persistence.Table;
 	    
 	    @Column(nullable = false)
 	    private Integer speed;
+	    
+	    @Column(nullable = false)
+	    private Integer category;
 
 //	    private String makeDate;
 	    
@@ -145,6 +148,13 @@ import javax.persistence.Table;
 	        this.comments = comments;
 	    }
 
+	    public Integer getCategory() {
+			return category;
+		}
+
+		public void setCategory(int category) {
+			this.category = category;
+		}
 	    
 
 }

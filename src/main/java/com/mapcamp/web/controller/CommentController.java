@@ -26,12 +26,18 @@ public class CommentController {
 
     @Autowired
     UserService userService;
+    @ModelAttribute(name = "loginUser")
+    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+        return loginUserDetails;
+    }
+   
 
     @RequestMapping(value = "/posts/{postId}/comment", method = RequestMethod.POST)
     ModelAndView createComment(@ModelAttribute Comment comment, @PathVariable Long postId,
             @AuthenticationPrincipal LoginUserDetails loginUserDetails, ModelAndView mav) {
         Post post = postService.findOne(postId);
         User user = userService.findOne(loginUserDetails.getUserId());
+        //User user = userService.findOne(loginUserDetails.);
         comment.setPost(post);
         comment.setUser(user);
         commentRepository.saveAndFlush(comment);

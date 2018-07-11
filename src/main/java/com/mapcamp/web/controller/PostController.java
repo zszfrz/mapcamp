@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,15 +37,6 @@ public class PostController {
     private PostService postService;
 	
 	
-	
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//    public ModelAndView index(ModelAndView mav ,@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
-//		List<Post> posts = postRepository.findAll();
-//        mav.addObject("posts", posts);
-//       // mav.addObject("login_user", loginUserDetails.getUserId());
-//        mav.setViewName("posts/main"); 
-//        return mav;
-//    }
 	
 	
 	

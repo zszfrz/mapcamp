@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
-<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/registration.css" />
 <link rel="stylesheet" href="/css/posts/post_style.css" />
 <title>Show Page</title>
 </head>
@@ -33,8 +33,7 @@
 		<div class="more">
                 <span>■</span>
                 <ul class="more_list">
-                   <!--  <th:block
-                        th:if="${login_user != null} ? ${tweet.user.id.equals(login_user.id)}"> -->
+                    <!-- <th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.id)}"> -->
                         <li><a
                             th:href="@{'/posts/' + ${post.id} + '/edit'}">編集</a></li>
                         <li>
@@ -44,7 +43,7 @@
                                 <input type="submit" value="削除" />
                             </form>
                         </li>
-                    <!-- </th:block> -->
+                     <!-- </th:block> -->
                 </ul>
             </div>
           </div>    
@@ -59,7 +58,7 @@
        
        <span class="name">
                 <a th:href="@{`/user/` + ${user.id}}" th:inline="text">
-                    <br><span>投稿者</span><span th:text="${post.user.name}">tech太郎</span></br>
+                   <br><span>投稿者</span><span th:text="${post.user.name}">tech太郎</span></br>
                 </a>
             </span>   
             <p th:text="*{shopname}"></p>
@@ -68,14 +67,15 @@
         <p th:text="*{comment}"></p>
        
        
-         <!-- th:if="${login_user != null}"//下のdivの後に入る -->
+         
          <div class="container">
+         <th:block th:if="${loginUser != null}">
             コメント機能
             <form method="post" th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${commentForm}">
                 <textarea cols="30" name="comment" placeholder="コメントする" rows="2"></textarea>
                 <input type="submit" value="SEND" />
             </form>
-            
+            </th:block>
              <div class="comments">
                 <h4>＜コメント一覧＞</h4>
                 <p th:if="post.comments != null" th:each="comment : ${post.comments}"  th:inline="text">

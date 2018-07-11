@@ -42,6 +42,8 @@ public class PostForm {
 
 	@NotBlank
 	private String comment;
+	
+	private Integer category;
 
 	
 	public String getShopname() {
@@ -101,7 +103,13 @@ public class PostForm {
 	  this.comment = comment;
   }
 
+  public Integer getCategory() {
+		return category;
+	}
 
+	public void setCategory(Integer category) {
+		this.category = category;
+	}
 
 	
 }
