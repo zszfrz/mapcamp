@@ -17,4 +17,5 @@ public class LoginUserDetails extends org.springframework.security.core.userdeta
         return userId;
     }
 
+
 }

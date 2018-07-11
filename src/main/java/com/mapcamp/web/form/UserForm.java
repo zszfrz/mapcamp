@@ -26,7 +26,7 @@ public class UserForm {
 	//private String profileImage;
 	private MultipartFile file;
 	
-	private String sex;
+	private Integer sex;
 
 	private Date birthday;
 
@@ -79,11 +79,11 @@ public class UserForm {
 	    this.file = file;
 	}
 
-	public String getSex() {
+	public Integer getSex() {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
 

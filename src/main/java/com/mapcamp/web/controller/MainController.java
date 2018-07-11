@@ -4,6 +4,7 @@ package com.mapcamp.web.controller;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 //import org.springframework.security.core.annotation.AuthenticationPrincipal;
 //import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.repository.PostRepository;
+import com.mapcamp.security.LoginUserDetails;
 
 
 @Controller
@@ -39,6 +41,12 @@ public class MainController {
 /*	public UserDetails setLoginUser(@AuthenticationPrincipal LoginUserDetails userCustom) {
 	    return userCustom;
 	}*/
+	
+//	@ModelAttribute(name = "loginUser")
+//    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+//        return loginUserDetails;
+//    }
+//	
 		
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> list) {

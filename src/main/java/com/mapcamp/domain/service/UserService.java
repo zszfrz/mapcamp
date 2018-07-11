@@ -14,8 +14,8 @@ public interface UserService {
 	User findOne(Long id);
 
 	// 画像アップロード
-	//User save(User user, MultipartFile file) throws IOException;
+	User save(User user, MultipartFile file) throws IOException;
 
 	// 画像ダウンロード
-	//byte[] downloadProfileImage(Long userId) throws IOException;
+	byte[] downloadProfileImage(Long userId) throws IOException;
 }

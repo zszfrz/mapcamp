@@ -41,36 +41,36 @@ public class UserServiceImpl implements UserService {
 	public User findOne(Long id) {
 		return userRepository.findOne(id);
 	}
-//
-//	private String uploadProfileImage(MultipartFile file, Long userId) throws IOException {
-//		Format formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-//		String fileName = formatter.format(Calendar.getInstance().getTime()) + "_profile-image.jpg";
-//		Path path = Paths.get("upload", "users", userId.toString(), fileName);
-//		Files.createDirectories(path.getParent());
-//		Files.copy(file.getInputStream(), path);
-//		return fileName;
-//
-//	}
+
+	private String uploadProfileImage(MultipartFile file, Long userId) throws IOException {
+		Format formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileName = formatter.format(Calendar.getInstance().getTime()) + "_profile-image.jpg";
+		Path path = Paths.get("upload", "users", userId.toString(), fileName);
+		Files.createDirectories(path.getParent());
+		Files.copy(file.getInputStream(), path);
+		return fileName;
+
+	}
 
 	// アップロード
 	// uploadProfileImageメソッドを呼び出しファイルをアップロード
 	// 返り値でファイル名を受け取りそのままUserエンティティのprofileImageにセット
-//	@Override
-//	public User save(User user, MultipartFile file) throws IOException {
-//		user.setPassword(passwordEncoder.encode(user.getPassword()));
-//		user = userRepository.save(user);
-//		if (!file.isEmpty()) {
-//			user.setProfileImage(uploadProfileImage(file, user.getId()));
-//		}
-//		return user;
-//	}
+	@Override
+	public User save(User user, MultipartFile file) throws IOException {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user = userRepository.save(user);
+		if (!file.isEmpty()) {
+			user.setProfileImage(uploadProfileImage(file, user.getId()));
+		}
+		return user;
+	}
 
-//	// 画像ダウンロード
-//	@Override
-//	public byte[] downloadProfileImage(Long userId) throws IOException {
-//		User user = userRepository.findOne(userId);
-//		Path path = Paths.get("upload", "users", user.getId().toString(), user.getProfileImage());
-//		return Files.readAllBytes(path);
-//	}
+	// 画像ダウンロード
+	@Override
+	public byte[] downloadProfileImage(Long userId) throws IOException {
+		User user = userRepository.findOne(userId);
+		Path path = Paths.get("upload", "users", user.getId().toString(), user.getProfileImage());
+		return Files.readAllBytes(path);
+	}
 
 }
