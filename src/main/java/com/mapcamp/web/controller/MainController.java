@@ -4,6 +4,8 @@ package com.mapcamp.web.controller;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.annotation.AuthenticationPrincipal;
 //import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -18,48 +20,41 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mapcamp.domain.entity.Post;
-import com.mapcamp.domain.repository.PostRepository;
+import com.mapcamp.domain.repository.UserRepository;
+import com.mapcamp.domain.service.PostService;
+import com.mapcamp.security.LoginUserDetails;
 
 
 @Controller
 @SessionAttributes(names="list")
 public class MainController {
 	
-	private List<Long> list;
+	private List<Long> session_list;
 	
 	@Autowired
-	private PostRepository postRepository;
-//	@Autowired
-  //  private UserRepository userRepository;
+	private PostService postService;
 	
-//	@Autowired
-	  //  private PostRepository postRepository;
-	
-//	@ModelAttribute(name = "login_user")
-/*	public UserDetails setLoginUser(@AuthenticationPrincipal LoginUserDetails userCustom) {
+	@ModelAttribute(name = "loginUser")
+	public UserDetails setLoginUser(@AuthenticationPrincipal LoginUserDetails userCustom) {
 	    return userCustom;
-	}*/
+	}
 		
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> list) {
-	//	List<Post> post_list = new ArrayList<Post>();
-		List<Post> posts = postRepository.findAll();
-        mav.addObject("posts", posts);
-        mav.setViewName("posts/main"); 
-		for(Long l: list) {
-	//		post_list.add(postRepository.findOne(l));
+	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
+		List<Post> post_list = new ArrayList<Post>();
+		for(Long l: session_list) {
+			post_list.add(postService.findOne(l));
 		}
-	//	mav.addObject("wannago_list", list);
-	//	mav.addObject(loginUser);
-		mav.setViewName("/index");
+		mav.addObject("wannago_list", post_list);
+		mav.setViewName("/map"); //仮でmapに遷移
 		return mav;
 	}
 	
 	@ModelAttribute("list")
     public List<Long> setList(Long post_id){
-		if(list == null)list = new ArrayList<Long>();
-		list.add(post_id);
-        return list;
+		if(session_list == null)session_list = new ArrayList<Long>();
+		session_list.add(post_id);
+        return session_list;
     }
 	
 	
@@ -67,14 +62,14 @@ public class MainController {
 	@RestController
 	public class MainRestController{
 		
-//		@Autowired
-		  //  private PostRepository postRepository;
+		@Autowired
+		    private PostService postService;
 		
-/*		@RequestMapping(value = "/{post_id}/add", method = RequestMethod.GET)
+		@RequestMapping(value = "/{post_id}/add", method = RequestMethod.GET)
 		@ResponseBody
-		public Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav, @ModelAttribute("list")List<Long> list) {
+		public Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
 			setList(post_id);
-			return postRepository.findOne(post_id);
-		}*/
+			return postService.findOne(post_id);
+		}
 	}
 }

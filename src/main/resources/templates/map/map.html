@@ -14,21 +14,20 @@
 <body>
 	<div layout:fragment="right">
 		<div id="mapbox"></div>
-</div>
 		
-<script>
-alert('sdcvbnmkjhgfds');
-</script>
+		<script type="text/javascript" src="/js/map.js"></script>
 <script>
 var map;
 function initMap() {
     map = new google.maps.Map(document.getElementById('mapbox'), {
         center: {lat: 35.658581, lng: 139.745433},
         zoom: 14
-    });
-    
-}</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRxFk0ypUQnOxqQ8IyXW-QJWn7eLul-08&amp;callback=initMap"></script>		
-
+    });  
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvC2RwbA3Et1jHMcZy_2CHgM-4W_S07bQ&amp;callback=initMap"></script>		
+		
+</div>
+	
 </body>
 </html>
