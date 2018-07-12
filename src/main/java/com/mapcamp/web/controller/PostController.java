@@ -1,7 +1,9 @@
 package com.mapcamp.web.controller;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,13 +39,21 @@ public class PostController {
     private PostService postService;
 	
 	
-	
+	private Map<String,String> getCheckBoxItems(){
+		Map<String, String> selectMap = new LinkedHashMap<String, String>();
+		selectMap.put("key_A", "チェックボックスの選択肢Ａは、これですよ");
+		selectMap.put("key_B", "チェックボックスの選択肢Ｂは、これですよ");
+		selectMap.put("key_C", "チェックボックスの選択肢Ｃは、これですよ");
+		selectMap.put("key_D", "チェックボックスの選択肢Ｄは、これですよ");
+		selectMap.put("key_E", "チェックボックスの選択肢Ｅは、これですよ");
+		return selectMap;
+	}    
 	
 	
 	@GetMapping("/posts/new")
     public String newPost(PostForm form,
                             Model model) {
-        
+		model.addAttribute("checkboxItems",getCheckBoxItems());
         return "posts/new";
     }
     

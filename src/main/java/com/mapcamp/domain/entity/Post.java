@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 	
 	
 	@Entity
@@ -56,7 +57,7 @@ import javax.persistence.Table;
 	    private Integer speed;
 	    
 	    @Column(nullable = false)
-	    private Integer category;
+	    private String[] categories;
 
 //	    private String makeDate;
 	    
@@ -148,13 +149,24 @@ import javax.persistence.Table;
 	        this.comments = comments;
 	    }
 
-	    public Integer getCategory() {
-			return category;
+	    
+
+	    
+//	   	public String getCategory() {
+//			return category;
+//		}
+//
+//		public void setCategory(String category) {
+//			this.category = category;
+//		}
+	    
+		public String[] getCategories() {
+			return categories;
+		}
+			
+		public void setCategories(String[] categories) {
+			this.categories = categories;
 		}
 
-		public void setCategory(int category) {
-			this.category = category;
-		}
-	    
 
 }
