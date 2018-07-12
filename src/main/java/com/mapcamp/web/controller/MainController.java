@@ -1,9 +1,11 @@
 package com.mapcamp.web.controller;
 
 
+import java.io.IOException;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 //import org.springframework.security.core.annotation.AuthenticationPrincipal;
 //import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.repository.PostRepository;
+import com.mapcamp.security.LoginUserDetails;
 
 
 @Controller
@@ -35,21 +38,29 @@ public class MainController {
 //	@Autowired
 	  //  private PostRepository postRepository;
 	
+	
+	
 //	@ModelAttribute(name = "login_user")
 /*	public UserDetails setLoginUser(@AuthenticationPrincipal LoginUserDetails userCustom) {
 	    return userCustom;
 	}*/
+	
+	  @ModelAttribute(name = "loginUser")
+	    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+	        return loginUserDetails;
+	    }
+		
+
 		
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> list) {
-	//	List<Post> post_list = new ArrayList<Post>();
+	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> list){
 		List<Post> posts = postRepository.findAll();
         mav.addObject("posts", posts);
-        mav.setViewName("posts/main"); 
-		for(Long l: list) {
+	//	for(Long l: list) {
 	//		post_list.add(postRepository.findOne(l));
-		}
+		//}
 	//	mav.addObject("wannago_list", list);
+        //mav.addObject("login_user", loginUserDetails.getUserId());
 	//	mav.addObject(loginUser);
 		mav.setViewName("/index");
 		return mav;

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
+<link rel="stylesheet" href="/css/registration.css" />
 <link rel="stylesheet" href="/css/posts/post_style.css" />
 <title>Show Page</title>
 </head>
@@ -27,12 +28,12 @@
         </div>
     </header>
     <div class="contents row" th:object="${post}">
-        <div class="content__post" th:style="'background-image: url(' + @{*{image}} + ');'">
-            <div class="more">
+      <div class="content__post">
+        <img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+		<div class="more">
                 <span>■</span>
                 <ul class="more_list">
-                    <th:block
-                        th:if="${login_user != null} ? ${post.user.id.equals(login_user.id)}">
+                    <!-- <th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.id)}"> -->
                         <li><a
                             th:href="@{'/posts/' + ${post.id} + '/edit'}">編集</a></li>
                         <li>
@@ -42,25 +43,39 @@
                                 <input type="submit" value="削除" />
                             </form>
                         </li>
-                    </th:block>
+                     <!-- </th:block> -->
                 </ul>
             </div>
-            <p th:text="*{shopname}"></p>
-            <span class="name">
+          </div>    
+        <span>Yummy</span>
+        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.yummy * 10}" class="star-actived"></i></span></span>
+        <span>Clean</span>
+        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.clean * 10}" class="star-actived"></i></span></span>
+        <span>Staff</span>
+        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.staff * 10}" class="star-actived"></i></span></span>
+        <span>Speed</span>
+        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span></span>
+       
+       <span class="name">
                 <a th:href="@{`/user/` + ${user.id}}" th:inline="text">
-                    <span>投稿者</span><span th:text="${post.user.name}">tech太郎</span>
+                   <br><span>投稿者</span><span th:text="${post.user.name}">tech太郎</span></br>
                 </a>
-            </span>     
-        </div>
-        投稿者コメント
+            </span>   
+            <p th:text="*{shopname}"></p>
+            
+              ■投稿者コメント
         <p th:text="*{comment}"></p>
-        <!-- <div th:if="${login_user != null}" class="container">
+       
+       
+         
+         <div class="container">
+         <th:block th:if="${loginUser != null}">
             コメント機能
             <form method="post" th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${commentForm}">
                 <textarea cols="30" name="comment" placeholder="コメントする" rows="2"></textarea>
                 <input type="submit" value="SEND" />
             </form>
-            
+            </th:block>
              <div class="comments">
                 <h4>＜コメント一覧＞</h4>
                 <p th:if="post.comments != null" th:each="comment : ${post.comments}"  th:inline="text">
@@ -68,10 +83,10 @@
                     <span th:text="${comment.text}">コメント</span>
                 </p>
             </div>
-            
-        </div> -->
+            </div>  
+        </div>
         
-    </div>
+ 
     <footer>
         <p>Copyright mapcamp 2018.</p>
     </footer>
