@@ -21,6 +21,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
     private List<Post> posts;
 	
+	@OneToMany(mappedBy = "user")
+    private List<Comment> comments;
+	
 	@Column(nullable = false, unique = true)
 	private String email;
 
@@ -32,10 +35,10 @@ public class User {
 
 	private String profileImage;
 	
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	private Integer sex;
 	
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	private Date birthday;
 
 	// ゲッターセッター
@@ -92,7 +95,7 @@ public class User {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
 	
@@ -103,4 +106,24 @@ public class User {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	
+	public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+	
+//	@OneToMany(mappedBy = "user")
+//	private List<Review> reviews;
+//
+//	public List<Review> getReviews() {
+//		return reviews;
+//	}
+//
+//	public void setReviews(List<Review> reviews) {
+//		this.reviews = reviews;
+//	}
+
 }

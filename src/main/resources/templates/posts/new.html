@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
+<link rel="stylesheet" href="/css/registration.css" />
 <link rel="stylesheet" href="/css/posts/post_style.css" />
 <title>New Post Page</title>
 </head>
@@ -25,6 +26,20 @@
                     <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
                     <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
                 </div> 
+                
+               <div th:each="item : ${checkboxItems}">
+        <input type="checkbox" name="categories" th:value="${item.key}" th:text="${item.value}" th:field="*{inputMultiCheck}" />
+    </div>
+					
+				<!-- <div>
+					<label for="category">Category</label>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="3" /><p class="text-small">レストラン</p>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="2" /><p class="text-small">ファミレス</p>
+								</div> -->
+                
+                
                 <!-- <div style="margin: 8px 0">
                     <label style="margin-right: 8px">ニックネーム</label>
                     <input th:field="*{nickname}" name="nickname" placeholder="ニックネーム" type="text" value="" />

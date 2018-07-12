@@ -1,5 +1,7 @@
 package com.mapcamp.domain.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 	
 	
@@ -19,6 +23,9 @@ import javax.persistence.Table;
 		@ManyToOne
 		@JoinColumn(updatable = false)
 		private User user;
+		
+		@OneToMany(mappedBy = "post")
+	    private List<Comment> comments;
 		
 		
 		@Id
@@ -48,6 +55,9 @@ import javax.persistence.Table;
 	    
 	    @Column(nullable = false)
 	    private Integer speed;
+	    
+	    @Column(nullable = false)
+	    private String[] categories;
 
 //	    private String makeDate;
 	    
@@ -130,5 +140,33 @@ import javax.persistence.Table;
 	        this.user = user;
 	    }
 	    
+	    
+	    public List<Comment> getComments() {
+	        return comments;
+	    }
+
+	    public void setComments(List<Comment> comments) {
+	        this.comments = comments;
+	    }
+
+	    
+
+	    
+//	   	public String getCategory() {
+//			return category;
+//		}
+//
+//		public void setCategory(String category) {
+//			this.category = category;
+//		}
+	    
+		public String[] getCategories() {
+			return categories;
+		}
+			
+		public void setCategories(String[] categories) {
+			this.categories = categories;
+		}
+
 
 }
