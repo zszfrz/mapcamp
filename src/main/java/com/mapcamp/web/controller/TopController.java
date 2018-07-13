@@ -16,7 +16,7 @@ public class TopController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/")
+    @GetMapping("/layout")
     public String index(Pageable pageable, Model model){
         Page<Product> products = productService.findAll(pageable);
         model.addAttribute("products", products);
