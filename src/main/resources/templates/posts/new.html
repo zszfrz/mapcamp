@@ -27,16 +27,40 @@
                     <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
                 </div> 
                 
-               <div th:each="item : ${checkboxItems}">
-        <input type="checkbox" name="categories" th:value="${item.key}" th:text="${item.value}" th:field="*{inputMultiCheck}" />
-    </div>
+               
 					
-				<!-- <div>
+				<div>
 					<label for="category">Category</label>
 								<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="3" /><p class="text-small">レストラン</p>
+									name="category" id="category" value="レストラン" /><p class="text-small">レストラン</p>
 								<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="2" /><p class="text-small">ファミレス</p>
+									name="category" id="category" value="ファミレス" /><p class="text-small">ファミレス</p>
+									<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="ファーストフード" /><p class="text-small">ファーストフード</p>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="カフェ・喫茶店" /><p class="text-small">カフェ・喫茶店</p>
+									<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="和食店(日本食)" /><p class="text-small">和食店(日本食)</p>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="居酒屋" /><p class="text-small">居酒屋</p>
+									<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="寿司屋" /><p class="text-small">寿司屋</p>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="ラーメン" /><p class="text-small">ラーメン</p>
+									<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="中華料理店" /><p class="text-small">中華料理店</p>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="韓国料理店" /><p class="text-small">韓国料理店</p>
+									<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="その他" /><p class="text-small">その他</p>
+								</div>
+								
+				<!-- <div>
+					<label for="category2">Category2</label>
+								<input th:field="*{category2}" placeholder="category2" type="checkbox"
+									name="category2" id="category2" value="レストラン" /><p class="text-small">レストラン</p>
+								<input th:field="*{category2}" placeholder="category2" type="checkbox"
+									name="category2" id="category2" value="ファミレス" /><p class="text-small">ファミレス</p>
 								</div> -->
                 
                 

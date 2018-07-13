@@ -57,7 +57,10 @@ import javax.persistence.Table;
 	    private Integer speed;
 	    
 	    @Column(nullable = false)
-	    private String[] categories;
+	    private String category;
+	    
+//	    @Column(nullable = false)
+//	    private String category2;
 
 //	    private String makeDate;
 	    
@@ -152,21 +155,22 @@ import javax.persistence.Table;
 	    
 
 	    
-//	   	public String getCategory() {
-//			return category;
-//		}
-//
-//		public void setCategory(String category) {
-//			this.category = category;
-//		}
-	    
-		public String[] getCategories() {
-			return categories;
-		}
-			
-		public void setCategories(String[] categories) {
-			this.categories = categories;
+	   	public String getCategory() {
+			return category;
 		}
 
+		public void setCategory(String category) {
+			this.category = category;
+		}
+		
+//		public String getCategory2() {
+//			return category2;
+//		}
+//
+//		public void setCategory2(String category2) {
+//			this.category2 = category2;
+//		}
+//	    
+		
 
 }
