@@ -13,7 +13,7 @@
 	margin-bottom: 10px;
 	display: inline-block;
     vertical-align: top;
-   
+   text-align: right;
     border: 1px solid #191919;
 }
 
@@ -59,6 +59,22 @@ display: table;
 
 .transe:hover{
     box-shadow:3px 3px 6px rgba(0,0,0,0.5);
+}
+
+#route:hover{
+       box-shadow:3px 3px 6px rgba(0,0,0,0.5);
+}
+
+
+#route{
+       padding: auto 0;
+       display:inline-block;
+       height: 2em;
+       width: 6em;
+       border: 1px solid #0e0e0e;
+       text-align: center;
+       vertical-align: center;
+       margin-right: 0.5em;
 }
 
 .transe p{
