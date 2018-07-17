@@ -27,17 +27,18 @@ import javax.persistence.Table;
 		@OneToMany(mappedBy = "post")
 	    private List<Comment> comments;
 		
+		// 多対１
+		@ManyToOne
+		private Store store;
+
+		
 		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
 		
 		@Column(nullable = false)
-		private String shopname;
-		
-//		@Column(nullable = false)
-//		private String nickname;
-		
+		private String shopname;	
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
 	    private String comment;
@@ -88,15 +89,6 @@ import javax.persistence.Table;
 	        this.shopname = shopname;
 	    }
 	    
-//	    public String getNickname() {
-//	        return nickname;
-//	    }
-//
-//	    public void setNickname(String nickname) {
-//	        this.nickname = nickname;
-//	    }
-	    
-	    
 	    
 	    public String getImage() {
 	        return image;
@@ -130,6 +122,7 @@ import javax.persistence.Table;
 	    public Integer getSpeed() {
 	        return speed;
 	    }
+	    
 	    public void setSpeed(Integer speed) {
 	        this.speed = speed;
 	    }
