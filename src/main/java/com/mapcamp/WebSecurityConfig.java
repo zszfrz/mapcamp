@@ -28,18 +28,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/font/**");
-    }
-
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/products/{\\d}", "/products/search").permitAll()
+                .antMatchers("/","/css/**", "/js/**", "/font/**","/user/registration").permitAll()
+//                .antMatchers("/products/{\\d}", "/products/search").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/user/registration", "/register").permitAll()
+
+                .antMatchers("/user/registration").permitAll()
+                .antMatchers("/user/mypage").permitAll()
+                //.antMatchers("/posts/**").authenticated()
                 .anyRequest().authenticated()
             .and()
             .formLogin()

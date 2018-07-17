@@ -1,5 +1,7 @@
 package com.mapcamp.domain.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 	
 	
@@ -20,6 +24,9 @@ import javax.persistence.Table;
 		@JoinColumn(updatable = false)
 		private User user;
 		
+		@OneToMany(mappedBy = "post")
+	    private List<Comment> comments;
+		
 		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,10 +34,6 @@ import javax.persistence.Table;
 		
 		@Column(nullable = false)
 		private String shopname;
-		
-//		@Column(nullable = false)
-//		private String nickname;
-		
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
 	    private String comment;
@@ -48,7 +51,16 @@ import javax.persistence.Table;
 	    
 	    @Column(nullable = false)
 	    private Integer speed;
+	    
+	    @Column(nullable = false)
+	    private String category;
+	    
+//	    @Column(nullable = false)
+//	    private String category2;
 
+	    @Column(nullable = false)
+	    private String category;
+	    
 //	    private String makeDate;
 	    
 	    
@@ -74,16 +86,6 @@ import javax.persistence.Table;
 	    public void setShopname(String shopname) {
 	        this.shopname = shopname;
 	    }
-	    
-//	    public String getNickname() {
-//	        return nickname;
-//	    }
-//
-//	    public void setNickname(String nickname) {
-//	        this.nickname = nickname;
-//	    }
-	    
-	    
 	    
 	    public String getImage() {
 	        return image;
@@ -121,7 +123,15 @@ import javax.persistence.Table;
 	        this.speed = speed;
 	    }
 	    
+	    public String getCategory() {
+	        return category;
+	    }
+
+	    public void setCategory(String category) {
+	        this.category = category;
+	    }
 	    
+	    //アソシエーション設定
 	    public User getUser() {
 	        return user;
 	    }
@@ -130,5 +140,34 @@ import javax.persistence.Table;
 	        this.user = user;
 	    }
 	    
+	    
+	    public List<Comment> getComments() {
+	        return comments;
+	    }
+
+	    public void setComments(List<Comment> comments) {
+	        this.comments = comments;
+	    }
+
+	    
+
+	    
+	   	public String getCategory() {
+			return category;
+		}
+
+		public void setCategory(String category) {
+			this.category = category;
+		}
+		
+//		public String getCategory2() {
+//			return category2;
+//		}
+//
+//		public void setCategory2(String category2) {
+//			this.category2 = category2;
+//		}
+//	    
+		
 
 }
