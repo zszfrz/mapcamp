@@ -117,13 +117,6 @@ public class PostForm {
 		this.category = category;
 	}
 	
-//	public String getCategory2() {
-//		return category2;
-//	}
-//
-//	public void setCategory2(String category2) {
-//		this.category2 = category2;
-//	}
   
 
 	
