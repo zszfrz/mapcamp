@@ -28,7 +28,7 @@
                 </div> 
                 
                <div th:each="item : ${checkboxItems}">
-        <input type="checkbox" name="categories" th:value="${item.key}" th:text="${item.value}" th:field="*{inputMultiCheck}" />
+        <input type="checkbox" name="categories" th:value="${item.key}" th:text="${item.value}" th:field="*{categories}" />
     </div>
 					
 				<!-- <div>

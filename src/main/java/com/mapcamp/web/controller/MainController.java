@@ -62,7 +62,7 @@ public class MainController {
 	//	mav.addObject("wannago_list", list);
         //mav.addObject("login_user", loginUserDetails.getUserId());
 	//	mav.addObject(loginUser);
-		mav.setViewName("/index");
+		mav.setViewName("posts/main");
 		return mav;
 	}
 	
