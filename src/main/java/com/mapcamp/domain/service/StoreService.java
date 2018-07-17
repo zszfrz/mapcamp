@@ -1,14 +1,20 @@
 package com.mapcamp.domain.service;
 
+
 import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 
 import com.mapcamp.domain.entity.Store;
 
 public interface StoreService {
 
-	//Page<Store> findTop5();
-	List<Store>findALLByTitleLike(String Keyword);
+    Store save(Store store);
+	
+	Store findOneOrNew(String name);
 
-
+    Page<Store> findAll(Pageable pageable);
 
 }

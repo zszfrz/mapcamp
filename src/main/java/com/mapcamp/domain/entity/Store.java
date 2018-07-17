@@ -6,11 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "stores")
 public class Store {
+
 
 	@Id
 	@GeneratedValue
@@ -27,10 +32,6 @@ public class Store {
 	private String time;
 
 	private String url;
-	
-	//add
-	@OneToMany(mappedBy="store")
-	private List<Post> posts; 
 
 	public Long getStoreId() {
 		return store_id;
@@ -110,5 +111,3 @@ public class Store {
 	
 	 return (int) Math.round(average);
 	 }
-
-}

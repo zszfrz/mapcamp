@@ -21,16 +21,23 @@
 						<p>店名</p>
 					</div>
 					<th:block th:each="wannago_post : ${wannago_list}">
-						<div class="wannago_box" th:href=""
+						<div class="wannago_box" th:href="@{'/posts/' + ${post.id}}"
 							th:style="background-image: url(' + @{${wannago_post.image}} + ');'">
 							<p th:text="${wannago_post.storeName}">店名</p>
-							<!-- <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"></a> -->
+							<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"></a>
 						</div>
 
 					</th:block>
 
 				</div>
-
+				<div id="route">ルート探索</div>
+				<script>
+					var route = document.getElementById('route');
+					route.addEventListener('click', function() {
+						window.location.href = '/route';
+						getLatLon();
+					});
+				</script>
 
 			</div>
 

@@ -3,16 +3,14 @@ package com.mapcamp.domain.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.mapcamp.domain.entity.Store;
 
-//import com.mapcamp.domain.service.store;
-//import com.mapcamp.domain.service.string;
+@Repository
+public interface StoreRepository extends JpaRepository<Store, Long> {
+	Store findByName(String name);
+	List<Store> findAllByNameLike(String keyword);
 
-public interface StoreRepository {
-
-	//@Query("SELECT p.store FROM POST p GROUP BY p.store ORDER BY COUNT(p.store) DESC")
-	//page<store> findTop(Pageable pageable);
-
-	List<Store>findALLByTitleLike(String Keyword);
 }
