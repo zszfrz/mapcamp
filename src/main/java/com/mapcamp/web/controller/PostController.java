@@ -1,8 +1,13 @@
 package com.mapcamp.web.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +51,33 @@ public class PostController {
 	public String newPost(PostForm form, Model model) {
 
 		return "posts/new";
+    
+	
+	@ModelAttribute(name = "loginUser")
+    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+        return loginUserDetails;
+    }
+
+	
+	
+	@GetMapping("/posts/new")
+    public String newPost(PostForm form,
+                            Model model) {
+        return "posts/new";
+    }
+    
+	
+	@PostMapping("/posts/new")
+	public String createPost(@Validated PostForm form,
+	                           BindingResult result,
+	                           Model model,Post newPost,@AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException{
+	    if (result.hasErrors()) {
+	        return newPost( form, model);
+	    }
+	    Post post = new Post();
+        BeanUtils.copyProperties(form, post);
+        postService.save(post,loginUserDetails.getUserId(),form.getFile());
+        return "posts/create";
 	}
 
 	// ユーザーとPostの処理

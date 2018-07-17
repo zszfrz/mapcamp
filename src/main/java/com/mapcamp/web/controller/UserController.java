@@ -27,22 +27,15 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	// @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
-	// public ModelAndView registrarion(@ModelAttribute("user") User user,
-	// ModelAndView mav) {
-	// userRepository.save(user);
-	// mav.setViewName("/user/registration");//"redirect:/user/login"
-	// return mav;
-	// }
+//	 @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
+//	 public ModelAndView registrarion(@ModelAttribute("user") User user,
+//	 ModelAndView mav) {
+//	 userRepository.save(user);
+//	 mav.setViewName("/user/registration");//"redirect:/user/login"
+//	 return mav;
+//	 }
 
-	// @GetMapping("/login")
-	// public String loginForm(@AuthenticationPrincipal LoginUserDetails
-	// loginUserDetails) {
-	// if (loginUserDetails != null) {
-	// return "redirect:/";
-	// }
-	// return "user/login";
-	// }
+
 
 	 // マイページの表示 表示させたいページのidを取得して表示(※①)
 	 @GetMapping("/user/{id}")

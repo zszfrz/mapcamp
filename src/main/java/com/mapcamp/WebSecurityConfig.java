@@ -27,18 +27,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/font/**");
-    }
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().antMatchers("/css/**", "/font/**");
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
+
                 .antMatchers("/").permitAll()
                 .antMatchers("/user/mypage").permitAll()
-                .antMatchers("/products/{\\d}", "/products/search").permitAll()
+                //.antMatchers("/products/{\\d}", "/products/search").permitAll()
+                .antMatchers("/","/css/**", "/font/**","/user/registration").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/user/registration", "/register").permitAll()
                 //.antMatchers("/posts**").authenticated()
@@ -52,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login");
+                .logoutSuccessUrl("/user/login");
     }
 
     @Override
