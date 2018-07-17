@@ -18,6 +18,7 @@ public class User {
 	@GeneratedValue
 	private Long id;
 
+	//1ユーザー：多post
 	@OneToMany(mappedBy = "user")
     private List<Post> posts;
 	
@@ -47,15 +48,6 @@ public class User {
 		this.id = id;
 	}
 
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
-	
-	
 	public String getEmail() {
 		return email;
 	}
@@ -102,5 +94,14 @@ public class User {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	
+	//
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 }

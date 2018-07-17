@@ -44,7 +44,7 @@ public class UserController {
 	// return "user/login";
 	// }
 
-	 // マイページの表示
+	 // マイページの表示 表示させたいページのidを取得して表示(※①)
 	 @GetMapping("/user/{id}")
 	 public String show(@PathVariable Long id, Model model) {
      User user = userService.findOne(id);

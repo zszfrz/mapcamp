@@ -54,7 +54,7 @@
         </div>
         投稿者コメント
         <p th:text="*{comment}"></p>
-        <!-- <div th:if="${login_user != null}" class="container">
+        <div th:if="${login_user != null}" class="container">
             コメント機能
             <form method="post" th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${commentForm}">
                 <textarea cols="30" name="comment" placeholder="コメントする" rows="2"></textarea>
@@ -69,7 +69,7 @@
                 </p>
             </div>
             
-        </div> -->
+        </div>
         
     </div>
     <footer>

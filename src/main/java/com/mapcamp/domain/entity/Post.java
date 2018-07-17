@@ -28,10 +28,6 @@ import javax.persistence.Table;
 		@Column(nullable = false)
 		private String shopname;
 		
-//		@Column(nullable = false)
-//		private String nickname;
-		
-		
 		@Column(nullable = false, columnDefinition = "TEXT")
 	    private String comment;
 
@@ -49,6 +45,9 @@ import javax.persistence.Table;
 	    @Column(nullable = false)
 	    private Integer speed;
 
+	    @Column(nullable = false)
+	    private String category;
+	    
 //	    private String makeDate;
 	    
 	    
@@ -74,16 +73,6 @@ import javax.persistence.Table;
 	    public void setShopname(String shopname) {
 	        this.shopname = shopname;
 	    }
-	    
-//	    public String getNickname() {
-//	        return nickname;
-//	    }
-//
-//	    public void setNickname(String nickname) {
-//	        this.nickname = nickname;
-//	    }
-	    
-	    
 	    
 	    public String getImage() {
 	        return image;
@@ -121,7 +110,15 @@ import javax.persistence.Table;
 	        this.speed = speed;
 	    }
 	    
+	    public String getCategory() {
+	        return category;
+	    }
+
+	    public void setCategory(String category) {
+	        this.category = category;
+	    }
 	    
+	    //アソシエーション設定
 	    public User getUser() {
 	        return user;
 	    }

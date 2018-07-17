@@ -54,7 +54,6 @@ public class PostForm {
 	public MultipartFile getFile() {
 	    return file;
 	}
-
 	public void setFile(MultipartFile file) {
 	    this.file = file;
 	}

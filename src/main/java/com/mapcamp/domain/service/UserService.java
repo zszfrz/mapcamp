@@ -9,8 +9,9 @@ import com.mapcamp.domain.entity.User;
 public interface UserService {
 
 	void save(User user);
+	//void save(User user,Long userId);
 
-	// アソシエーション保存
+	// アソシエーション保存(※①)
 	User findOne(Long id);
 
 	// 画像アップロード

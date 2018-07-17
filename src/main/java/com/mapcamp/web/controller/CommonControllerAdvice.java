@@ -12,11 +12,10 @@ public class CommonControllerAdvice {
 
 	//@AuthenticationPrincipalより,
     //ログインしているユーザの情報をLoginUserDetailsクラスとして引数で受け取る
-	//@ModelAttribute：毎回、Requestmapingの前に呼ばれる
+	//@ModelAttribute：毎回、Requestmapingの前に呼ばれる(※①)
     @ModelAttribute(name = "loginUser")
     private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         return loginUserDetails;
     }
-
 	
 }
