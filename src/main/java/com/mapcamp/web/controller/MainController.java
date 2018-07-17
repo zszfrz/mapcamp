@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mapcamp.domain.entity.Post;
+
 import com.mapcamp.domain.service.PostService;
+import com.mapcamp.domain.repository.PostRepository;
+import com.mapcamp.domain.repository.UserRepository;
 import com.mapcamp.security.LoginUserDetails;
 
 import org.json.JSONException;
@@ -32,6 +35,19 @@ public class MainController {
 	private List<Long> session_list;
 
 	@Autowired
+	private PostRepository postRepository;
+//	@Autowired
+  //  private UserRepository userRepository;
+	
+//	@Autowired
+	  //  private PostRepository postRepository;
+	
+	
+	@ModelAttribute(name = "loginUser")
+    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+        return loginUserDetails;
+    }	
+		
 	private PostService postService;
 
 	@ModelAttribute(name = "loginUser")
