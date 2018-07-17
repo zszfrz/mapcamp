@@ -35,9 +35,7 @@ import javax.persistence.Table;
 		@Column(nullable = false)
 		private String shopname;
 		
-//		@Column(nullable = false)
-//		private String nickname;
-		
+
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
 	    private String comment;

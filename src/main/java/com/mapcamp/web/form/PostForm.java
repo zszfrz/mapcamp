@@ -12,9 +12,6 @@ public class PostForm {
 	
 	@NotBlank
 	private String shopname;
-	
-//	@NotBlank
-//	private String nickname;
 
 	private MultipartFile file;
 	

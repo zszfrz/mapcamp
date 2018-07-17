@@ -14,14 +14,14 @@
                 <a href="/">mapcamp</a>
             </h1>
             <div class="grid-6 user_nav">
-                <th:block th:if="${login_user != null}">
+                <th:block th:if="${loginUser != null}">
                     <a class="post" href="/posts/new">投稿する</a>
-                    <form th:action="@{/user/logout}" method="post">
+                    <form th:action="@{/logout}" method="post">
                         <input type="submit" value="ログアウト" />
                     </form>
                 </th:block>
-                <th:block th:if="${login_user == null}">
-                    <a class="post" href="/user/login">ログイン</a>
+                <th:block th:if="${loginUser == null}">
+                    <a class="post" href="/login">ログイン</a>
                     <a class="post" href="/user/registration">登録</a>
                 </th:block>
             </div>
@@ -59,9 +59,9 @@
       <p class="msg" th:each="checked : *{categories}" th:text="${checked}"></p>
  
        <span class="name">
-                <a th:href="@{`/user/` + ${user.id}}" th:inline="text">
+                <!-- <a th:href="@{`/user/` + ${user.id}}" th:inline="text"> -->
                    <br><span>投稿者</span><span th:text="${post.user.name}">tech太郎</span></br>
-                </a>
+                <!-- </a> -->
             </span>   
             <p th:text="*{shopname}"></p>
             
@@ -71,13 +71,13 @@
        
          
          <div class="container">
-       <!--   <th:block th:if="${loginUser != null}"> -->
+       <th:block th:if="${loginUser != null}">
             コメント機能
             <form method="post" th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${commentForm}">
                 <textarea cols="30" name="comment" placeholder="コメントする" rows="2"></textarea>
                 <input type="submit" value="SEND" />
             </form>
-          <!--  </th:block> -->
+        </th:block>
              <div class="comments">
                 <h4>＜コメント一覧＞</h4>
                 <p th:if="post.comments != null" th:each="comment : ${post.comments}"  th:inline="text">

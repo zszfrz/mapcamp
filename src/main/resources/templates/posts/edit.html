@@ -26,11 +26,6 @@
                     <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
                     <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
                 </div> 
-                <!-- <div style="margin: 8px 0">
-                    <label style="margin-right: 8px">ニックネーム</label>
-                    <input th:field="*{nickname}" name="nickname" placeholder="ニックネーム" type="text" value="" />
-                    <span th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="help-block">error!</span>
-                </div>  -->
                 
                 <div class="field">
                         <input th:field="*{file}" type="file" name="file" id="post_avatar" />
@@ -67,9 +62,6 @@
                     
                 </div>
             </form>
-            <!-- <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post">
-                        <input type="submit" value="削除" />
-                    </form> -->
             
             
         </div>

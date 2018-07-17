@@ -26,15 +26,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-//	 @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
-//	 public ModelAndView registrarion(@ModelAttribute("user") User user,
-//	 ModelAndView mav) {
-//	 userRepository.save(user);
-//	 mav.setViewName("/user/registration");//"redirect:/user/login"
-//	 return mav;
-//	 }
-
-
 
 	// // マイページの表示
 	// @GetMapping("/users/{id}")
@@ -54,8 +45,8 @@ public class UserController {
 
 	// 登録画面表示
 	@GetMapping("/user/registration")
-	public String signupForm(UserForm form, @AuthenticationPrincipal LoginUserDetails loginUserDtails) {
-		if (loginUserDtails != null) {
+	public String signupForm(UserForm form, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+		if (loginUserDetails != null) {
 			return "redirect:/";
 		}
 		return "/user/registration";
