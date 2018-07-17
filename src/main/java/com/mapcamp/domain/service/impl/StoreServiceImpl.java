@@ -22,6 +22,10 @@ public class StoreServiceImpl implements StoreService{
         return storeRepository.save(store);
     }
     
+    public Store saveAndFlush(Store store) {
+    	return storeRepository.saveAndFlush(store);
+    }
+    
     @Override
     public Store findOneOrNew(String name){
     	Store store = storeRepository.findByName(name);

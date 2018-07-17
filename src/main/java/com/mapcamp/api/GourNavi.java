@@ -10,12 +10,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.mapcamp.domain.entity.Store;
+import com.mapcamp.domain.repository.StoreRepository;
 import com.mapcamp.domain.service.StoreService;
 
 public class GourNavi {
 	
 	@Autowired
     private static StoreService storeService;
+	
+	@Autowired
+	private static StoreRepository storeRepository;
 	
 	public static void main(String[] args) {
 		// アクセスキー
@@ -96,10 +100,10 @@ public class GourNavi {
 				store.setPrice(budget);
 				store.setTime(opentime);
 				store.setUrl(url);
-				//System.out.println(id + "¥t" + name + "¥t" + latitude + "¥t" + longitude + "¥t" + budget + "¥t" + opentime+ "¥t" + url);
-				//storeService.save(store);
-				System.out.println(store);
-				System.exit(0);
+				System.out.println(id + "¥t" + name + "¥t" + latitude + "¥t" + longitude + "¥t" + budget + "¥t" + opentime+ "¥t" + url);
+//				storeService.save(store);
+				storeRepository.saveAndFlush(store);
+				System.out.println("finish");
 				
 			}
 		}
