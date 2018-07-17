@@ -25,16 +25,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-//	 @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
-//	 public ModelAndView registrarion(@ModelAttribute("user") User user,
-//	 ModelAndView mav) {
-//	 userRepository.save(user);
-//	 mav.setViewName("/user/registration");//"redirect:/user/login"
-//	 return mav;
-//	 }
-
-
 
 	// // マイページの表示
 	// @GetMapping("/users/{id}")
