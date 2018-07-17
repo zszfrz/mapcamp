@@ -36,11 +36,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/","/css/**", "/font/**","/user/registration").permitAll()
-//                .antMatchers("/products/{\\d}", "/products/search").permitAll()
-                .antMatchers("/login").permitAll()
 
+                .antMatchers("/").permitAll()
+                .antMatchers("/user/mypage").permitAll()
+                //.antMatchers("/products/{\\d}", "/products/search").permitAll()
+                .antMatchers("/","/css/**", "/font/**","/user/registration").permitAll()
+                .antMatchers("/login").permitAll()
                 .antMatchers("/user/registration", "/register").permitAll()
+                //.antMatchers("/posts**").authenticated()
                 .anyRequest().authenticated()
             .and()
             .formLogin()

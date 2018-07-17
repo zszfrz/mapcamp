@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.mapcamp.domain.entity.User;
 import com.mapcamp.domain.repository.UserRepository;
@@ -36,13 +37,13 @@ public class UserController {
 
 
 
-	// // マイページの表示
-	// @GetMapping("/users/{id}")
-	// public String show(@PathVariable Long id, Model model) {
-	// User user = UserService.findOne(id);
-	// model.addAttribute("user", user);
-	// return "users/show";
-	// }
+	 // マイページの表示 表示させたいページのidを取得して表示(※①)
+	 @GetMapping("/user/{id}")
+	 public String show(@PathVariable Long id, Model model) {
+     User user = userService.findOne(id);
+	 model.addAttribute("user", user);
+	 return "user/mypage";
+	 }
 
     @GetMapping("/login")
     public String loginForm(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
