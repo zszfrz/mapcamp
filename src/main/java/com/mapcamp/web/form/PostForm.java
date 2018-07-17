@@ -1,5 +1,6 @@
 package com.mapcamp.web.form;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -42,6 +43,12 @@ public class PostForm {
 
 	@NotBlank
 	private String comment;
+	
+	@Column(nullable = false)
+    private String category;
+	
+//	@Column(nullable = false)
+//    private String category2;
 
 	
 	public String getShopname() {
@@ -101,7 +108,16 @@ public class PostForm {
 	  this.comment = comment;
   }
 
+  
+  public String getCategory() {
+		return category;
+	}
 
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+  
 
 	
 }
