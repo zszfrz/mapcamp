@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<title>JSONPでエリアMマスタAPIの結果を取得するサンプルコード</title>
+</head>
+<body>
+<input type="text" placeholder="enter your access key here" class="js--key"><input type="button" value="apply" class="js--apply" />
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+ 
+(function(){
+ 
+  var url = 'https://api.gnavi.co.jp/master/GAreaMiddleSearchAPI/20150630/?callback=?';
+  var params = {
+    keyid: '',
+    format: 'json'
+  };
+ 
+  var showResult = function(result){
+    var res = '';
+    for ( var i in result.garea_middle ){
+      res += result.garea_middle[i].garea_large.areacode_l + ' ' + result.garea_middle[i].areacode_m + ' ' + result.garea_middle[i].areaname_m + '\n';
+    }
+    alert(res);
+  }
+ 
+  $(document).on('click', '.js--apply', function(){
+    params.keyid = $('.js--key').val();
+    $.getJSON(url, params, function(result){
+      showResult(result);
+    });
+  });
+ 
+})(jQuery);
+ 
+</script>
+</body>
+</html>

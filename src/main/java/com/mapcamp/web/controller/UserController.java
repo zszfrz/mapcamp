@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.mapcamp.domain.entity.User;
 import com.mapcamp.domain.repository.UserRepository;
@@ -25,31 +26,14 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-	// @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
-	// public ModelAndView registrarion(@ModelAttribute("user") User user,
-	// ModelAndView mav) {
-	// userRepository.save(user);
-	// mav.setViewName("/user/registration");//"redirect:/user/login"
-	// return mav;
-	// }
 
-	// @GetMapping("/login")
-	// public String loginForm(@AuthenticationPrincipal LoginUserDetails
-	// loginUserDetails) {
-	// if (loginUserDetails != null) {
-	// return "redirect:/";
-	// }
-	// return "user/login";
-	// }
-
-	// // マイページの表示
-	// @GetMapping("/users/{id}")
-	// public String show(@PathVariable Long id, Model model) {
-	// User user = UserService.findOne(id);
-	// model.addAttribute("user", user);
-	// return "users/show";
-	// }
+	 // マイページの表示 表示させたいページのidを取得して表示(※①)
+	 @GetMapping("/user/{id}")
+	 public String show(@PathVariable Long id, Model model) {
+     User user = userService.findOne(id);
+	 model.addAttribute("user", user);
+	 return "user/mypage";
+	 }
 
     @GetMapping("/login")
     public String loginForm(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
