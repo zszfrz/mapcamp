@@ -94,11 +94,11 @@ public class PostServiceImpl implements PostService{
         return postRepository.findAllByTitleLike("%" + keyword + "%");
     }
     
-    //引数：storeIdでDBからStoreを取り出し、Postにセット
-    @Override
-    public void save(Post post,Long store_id) {
-    	post.setStoreId(StoreService.findOne(store_id));//エラー
-    	postRepository.save(post);
-    }
+//    //引数：storeIdでDBからStoreを取り出し、Postにセット
+//    @Override
+//    public void save(Post post,Long store_id) {
+//    	post.setStoreId(StoreService.findOne(store_id));//エラー
+//    	postRepository.save(post);
+//    }
 	
 }

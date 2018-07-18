@@ -24,6 +24,9 @@ import javax.persistence.Table;
 		@JoinColumn(updatable = false)
 		private User user;
 		
+		@ManyToOne
+	    private Store store;
+		
 		@OneToMany(mappedBy = "post")
 	    private List<Comment> comments;
 		
@@ -36,7 +39,7 @@ import javax.persistence.Table;
 		private String shopname;
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
-	    private String comment;
+	    private String text;;
 
 	    private String image;
 	    
@@ -55,11 +58,6 @@ import javax.persistence.Table;
 	    @Column(nullable = false)
 	    private String category;
 	    
-//	    @Column(nullable = false)
-//	    private String category2;
-
-	    @Column(nullable = false)
-	    private String category;
 	    
 //	    private String makeDate;
 	    
@@ -71,12 +69,12 @@ import javax.persistence.Table;
 	        this.id = id;
 	    }
 	    
-	    public String getComment() {
-	        return comment;
+	    public String getText() {
+	        return text;
 	    }
 
-	    public void setComment(String comment) {
-	        this.comment = comment;
+	    public void setText(String text) {
+	        this.text = text;
 	    }
 	    
 	    public String getShopname() {
@@ -149,25 +147,6 @@ import javax.persistence.Table;
 	        this.comments = comments;
 	    }
 
-	    
-
-	    
-	   	public String getCategory() {
-			return category;
-		}
-
-		public void setCategory(String category) {
-			this.category = category;
-		}
-		
-//		public String getCategory2() {
-//			return category2;
-//		}
-//
-//		public void setCategory2(String category2) {
-//			this.category2 = category2;
-//		}
-//	    
 		
 
 }
