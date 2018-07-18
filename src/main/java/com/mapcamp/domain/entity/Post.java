@@ -25,7 +25,7 @@ import javax.persistence.Table;
 		private User user;
 		
 		@ManyToOne
-	    private Store store;
+	    private Store stores;
 		
 		@OneToMany(mappedBy = "post")
 	    private List<Comment> comments;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="content">
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
@@ -7,16 +7,7 @@
 <title>New Post Page</title>
 </head>
 <body>
-    <header class="header">
-        <div class="header__bar row">
-            <h1 class="grid-6">
-                <a href="/">mapcamp</a>
-            </h1>
-            <div class="grid-6 user_nav">
-                <a class="post" href="/post/new">投稿する</a>
-            </div>
-        </div>
-    </header>
+    <div layout:fragment="main"> 
     <div class="contents row">
         <div class="container">
             <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
@@ -26,11 +17,6 @@
                     <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
                     <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
                 </div> 
-                <!-- <div style="margin: 8px 0">
-                    <label style="margin-right: 8px">ニックネーム</label>
-                    <input th:field="*{nickname}" name="nickname" placeholder="ニックネーム" type="text" value="" />
-                    <span th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="help-block">error!</span>
-                </div>  -->
                 
                 <div class="field">
                         <input th:field="*{file}" type="file" name="file" id="post_avatar" />
@@ -74,8 +60,6 @@
             
         </div>
     </div>
-    <footer>
-        <p>Copyright mapcamp 2018.</p>
-    </footer>
+    </div>
 </body>
 </html>

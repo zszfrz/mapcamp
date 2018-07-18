@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="content">
+
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
@@ -8,25 +9,7 @@
 <title>Show Page</title>
 </head>
 <body>
-    <header class="header">
-        <div class="header__bar row">
-            <h1 class="grid-6">
-                <a href="/">mapcamp</a>
-            </h1>
-            <div class="grid-6 user_nav">
-                <th:block th:if="${login_user != null}">
-                    <a class="post" href="/posts/new">投稿する</a>
-                    <form th:action="@{/user/logout}" method="post">
-                        <input type="submit" value="ログアウト" />
-                    </form>
-                </th:block>
-                <th:block th:if="${login_user == null}">
-                    <a class="post" href="/user/login">ログイン</a>
-                    <a class="post" href="/user/registration">登録</a>
-                </th:block>
-            </div>
-        </div>
-    </header>
+    <div layout:fragment="main"> 
     <div class="contents row" th:object="${post}">
       <div class="content__post">
         <img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
@@ -63,10 +46,11 @@
                    <br><span>投稿者</span><span th:text="${post.user.name}">tech太郎</span></br>
                 </a>
             </span>   
-            <p th:text="*{shopname}"></p>
+            <p th:text="*{post.stores.name}"></p>
             
               ■投稿者コメント
-        <p th:text="*{comment}"></p>       
+        <p th:text="*{comment}"></p>   
+        </div>    
          
          <div class="container">
        <!--   <th:block th:if="${loginUser != null}"> -->
@@ -88,9 +72,7 @@
 
         </div>
         
- 
-    <footer>
-        <p>Copyright mapcamp 2018.</p>
-    </footer>
+ </div>
+    
 </body>
 </html>

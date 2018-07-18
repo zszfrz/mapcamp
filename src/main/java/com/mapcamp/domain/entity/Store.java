@@ -6,9 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
 
 import javax.persistence.Table;
 
@@ -19,6 +17,7 @@ public class Store {
 	
 	@OneToMany(mappedBy = "stores")
     private List<Post> posts;
+	
 
 	@Id
 	@GeneratedValue

@@ -36,6 +36,9 @@ public class MainController {
 
 	@Autowired
 	private PostRepository postRepository;
+	
+	@Autowired
+	private PostService postService;
 //	@Autowired
   //  private UserRepository userRepository;
 	
@@ -48,7 +51,7 @@ public class MainController {
         return loginUserDetails;
     }	
 		
-	private PostService postService;
+	
 
 	@ModelAttribute(name = "loginUser")
 	public UserDetails setLoginUser(@AuthenticationPrincipal LoginUserDetails userCustom) {
