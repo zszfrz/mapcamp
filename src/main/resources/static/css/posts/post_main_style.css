@@ -409,7 +409,7 @@ table {
 
 img, object, embed {
     max-width: 100%;
-    height: auto
+    height: 55%;
 }
 
 object, embed {
@@ -682,7 +682,8 @@ h1, h2, h3, h4, h5, h6, body {
 
 a {
     text-decoration: none;
-    color: #666666
+    color: #666666;
+    font-size: 30px;
 }
 
 a:hover {
@@ -916,8 +917,8 @@ div.main_post div.main_post2:after {
 div.main_post div.main_post2 .more {
     position: absolute;
     cursor: pointer;
-    top: 20px;
-    right: 30px;
+    top: 7px;
+    right: 0px;
     z-index: 2;
     height: 100px;
     width: 80px;
@@ -951,7 +952,9 @@ div.main_post div.main_post2 .more ul.more_list li:last-child {
 
 div.main_post div.main_post2 .more ul.more_list li a {
     display: block;
-    padding: 5px
+    padding: 5px;
+    font-size: 10px;
+    text-align: center;
 }
 
 div.main_post div.main_post2 .more ul.more_list li a:hover {
@@ -968,28 +971,30 @@ div.main_post div.main_post2 p {
     font-size: 20px;
     z-index: 2;
     font-weight: bold;
-    text-shadow: 0 0 2px #000, 0 0 1px #000, 0 0 1px #000
+    text-shadow: 0 0 2px #000, 0 0 1px #000, 0 0 1px #000;
+    color: black;
 }
 
-div.div.main_post div.main_post2 span.name {
+div.main_post div.main_post2 span.name {
     position: absolute;
     right: 30px;
     bottom: 30px;
     z-index: 2;
-    font-size: 13px
+    font-size: 13px;
+    color: black;
 }
 
-div.div.main_post div.main_post2 span.name a {
+div.main_post div.main_post2 span.name a {
     display: block;
     color: #aaa
 }
 
-div.div.main_post div.main_post2 span.name a:hover {
+div.main_post div.main_post2 span.name a:hover {
     text-decoration: underline;
     color: #aaa
 }
 
-div.div.main_post div.main_post2 span.name span {
+div.main_post div.main_post2 span.name span {
     font-size: 9px;
     display: block
 }
