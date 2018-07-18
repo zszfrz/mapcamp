@@ -23,8 +23,8 @@ public class UserForm {
 	@NotBlank
 	private String name;
 
-	//private String profileImage;
-	private MultipartFile file;
+	//private String profileImage; MultipartFile
+	private String file;
 	
 	private Integer sex;
 
@@ -71,11 +71,11 @@ public class UserForm {
 //		this.profileImage = profileImage;
 //	}
 	
-	public MultipartFile getFile() {
+	public String getFile() {
 	    return file;
 	}
 
-	public void setFile(MultipartFile file) {
+	public void setFile(String file) {
 	    this.file = file;
 	}
 
