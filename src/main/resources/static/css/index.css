@@ -14,20 +14,23 @@
 	margin-bottom: 10px;
 	display: inline-block;
     vertical-align: top;
-   
+   text-align: right;
     border: 1px solid #191919;
 }
 
 .right{
+<<<<<<< HEAD
 	min-width: 990px;
 	height:auto;
 	max-width: 100%;
+=======
+	
+>>>>>>> 078ce281d3eaaa3f184ba519522d079a9caedefd
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
     vertical-align: top;
    
-    border: solid 1px #141414;
 }
 
 .wannago{
@@ -63,6 +66,22 @@ display: table;
 
 .transe:hover{
     box-shadow:3px 3px 6px rgba(0,0,0,0.5);
+}
+
+#route:hover{
+       box-shadow:3px 3px 6px rgba(0,0,0,0.5);
+}
+
+
+#route{
+       padding: auto 0;
+       display:inline-block;
+       height: 2em;
+       width: 6em;
+       border: 1px solid #0e0e0e;
+       text-align: center;
+       vertical-align: center;
+       margin-right: 0.5em;
 }
 
 .transe p{

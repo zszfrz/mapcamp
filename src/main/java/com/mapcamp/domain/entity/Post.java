@@ -24,6 +24,9 @@ import javax.persistence.Table;
 		@JoinColumn(updatable = false)
 		private User user;
 		
+		@ManyToOne
+	    private Store stores;
+		
 		@OneToMany(mappedBy = "post")
 	    private List<Comment> comments;
 		
@@ -35,12 +38,8 @@ import javax.persistence.Table;
 		@Column(nullable = false)
 		private String shopname;
 		
-//		@Column(nullable = false)
-//		private String nickname;
-		
-		
 		@Column(nullable = false, columnDefinition = "TEXT")
-	    private String comment;
+	    private String text;;
 
 	    private String image;
 	    
@@ -57,8 +56,9 @@ import javax.persistence.Table;
 	    private Integer speed;
 	    
 	    @Column(nullable = false)
-	    private String[] categories;
-
+	    private String category;
+	    
+	    
 //	    private String makeDate;
 	    
 	    
@@ -69,12 +69,12 @@ import javax.persistence.Table;
 	        this.id = id;
 	    }
 	    
-	    public String getComment() {
-	        return comment;
+	    public String getText() {
+	        return text;
 	    }
 
-	    public void setComment(String comment) {
-	        this.comment = comment;
+	    public void setText(String text) {
+	        this.text = text;
 	    }
 	    
 	    public String getShopname() {
@@ -84,16 +84,6 @@ import javax.persistence.Table;
 	    public void setShopname(String shopname) {
 	        this.shopname = shopname;
 	    }
-	    
-//	    public String getNickname() {
-//	        return nickname;
-//	    }
-//
-//	    public void setNickname(String nickname) {
-//	        this.nickname = nickname;
-//	    }
-	    
-	    
 	    
 	    public String getImage() {
 	        return image;
@@ -131,7 +121,15 @@ import javax.persistence.Table;
 	        this.speed = speed;
 	    }
 	    
+	    public String getCategory() {
+	        return category;
+	    }
+
+	    public void setCategory(String category) {
+	        this.category = category;
+	    }
 	    
+	    //アソシエーション設定
 	    public User getUser() {
 	        return user;
 	    }
@@ -149,24 +147,6 @@ import javax.persistence.Table;
 	        this.comments = comments;
 	    }
 
-	    
-
-	    
-//	   	public String getCategory() {
-//			return category;
-//		}
-//
-//		public void setCategory(String category) {
-//			this.category = category;
-//		}
-	    
-		public String[] getCategories() {
-			return categories;
-		}
-			
-		public void setCategories(String[] categories) {
-			this.categories = categories;
-		}
-
+		
 
 }

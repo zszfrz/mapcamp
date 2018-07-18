@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.repository.PostRepository;
 import com.mapcamp.domain.service.PostService;
+import com.mapcamp.domain.service.StoreService;
 import com.mapcamp.domain.service.UserService;
 
 
@@ -43,7 +44,7 @@ public class PostServiceImpl implements PostService{
 	
     @Override
     public Post findOneOrNew(String shopname){
-        Post post = postRepository.findByShopname(shopname);
+        Post post = postService.findByShopname(shopname);
         if(post == null) post = new Post();
         return post;
     }
@@ -57,10 +58,16 @@ public class PostServiceImpl implements PostService{
     public Post findOne(Long id){
         return postRepository.findOne(id);
     }
+    
+    @Override
+    public Post findByShopname(String shopname){
+        return postService.findByShopname(shopname);
+    }
 
+    //userIdでDBからUser情報を取り出し、postにセット ,Long postId
     @Override
     public Post save(Post post, Long userId, MultipartFile file) throws IOException {
-        //review.setProduct(productService.findOne(productId));
+        //post.setPost(postService.findOne(postId));
         post.setUser(userService.findOne(userId));
         post = postRepository.save(post);
         if (!file.isEmpty()) {
@@ -86,9 +93,17 @@ public class PostServiceImpl implements PostService{
     }
     
     
+//    //検索部分の処理
 //    @Override
 //    public List<Post> findAllByTitleLike(String keyword) {
 //        return postRepository.findAllByTitleLike("%" + keyword + "%");
+//    }
+    
+//    //引数：storeIdでDBからStoreを取り出し、Postにセット
+//    @Override
+//    public void save(Post post,Long store_id) {
+//    	post.setStoreId(StoreService.findOne(store_id));//エラー
+//    	postRepository.save(post);
 //    }
 	
 }
