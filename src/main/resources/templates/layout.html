@@ -14,7 +14,9 @@
 			<div class="user_nav">
 				<th:block th:if="${loginUser != null}">
 					<div class="icon"
+						th:if="${loginUser.profileImage != null}"
 						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div>
+					<div class="icon" th:if="${loginUser.profileImage == null}"></div>
 					<a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック
 					<a class="post" href="/posts/new">投稿する</a> //チェック
 					<form th:action="@{/user/logout}" method="post">
