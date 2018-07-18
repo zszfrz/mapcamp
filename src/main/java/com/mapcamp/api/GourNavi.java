@@ -97,14 +97,14 @@ public class GourNavi {
 //				}
 				
 				//Store store = storeService.findOneOrNew(name);
-				//Store store = new Store();
-				store.setStoreId(id);
-				store.setLat(latitude);
-				store.setLon(longitude);
-				store.setName(name);
-				store.setPrice(budget);
-				store.setTime(opentime);
-				store.setUrl(url);
+//				//Store store = new Store();
+//				store.setStoreId(id);
+//				store.setLat(latitude);
+//				store.setLon(longitude);
+//				store.setName(name);
+//				store.setPrice(budget);
+//				store.setTime(opentime);
+//				store.setUrl(url);
 				System.out.println(id + "¥t" + name + "¥t" + latitude + "¥t" + longitude + "¥t" + budget + "¥t" + opentime+ "¥t" + url);
 				storeService.save(store);
 				
