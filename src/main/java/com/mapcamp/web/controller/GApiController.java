@@ -38,7 +38,7 @@ public class GApiController {
 	String uri=gnaviRestUri+prmFormat+prmKeyid+prmLat+prmLon+prmRange+prmName;
 
 	public void gnavi() {
-		storeServiceImpl.getNodeList(uri);
+		//storeServiceImpl.getNodeList(uri);
 	}
 	
 		

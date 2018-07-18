@@ -16,7 +16,7 @@ public interface PostService {
 
     Page<Post> findAll(Pageable pageable);
 
-    Post findOne(Long store_id);
+    Post findOne(Long post_id);
 
     //キーワード検索
     List<Post> findAllByTitleLike(String keyword);
@@ -25,8 +25,8 @@ public interface PostService {
 	Post save(Post post,Long userId,MultipartFile file) throws IOException;
 	byte[] downloadImage(Long postId) throws IOException;
 	
-	//saveメソッドでstoreIdを受け取れるようにしている
-	void save(Post post, Long store_id);
+//	//saveメソッドでstoreIdを受け取れるようにしている
+//	void save(Post post, Long store_id);
 	
 
 }

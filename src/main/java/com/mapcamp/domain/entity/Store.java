@@ -16,6 +16,9 @@ import javax.persistence.Table;
 @Table(name = "stores")
 public class Store {
 
+	
+	@OneToMany(mappedBy = "stores")
+    private List<Post> posts;
 
 	@Id
 	@GeneratedValue
@@ -89,7 +92,7 @@ public class Store {
 		this.url = url;
 	}
 	
-	//add　Postとreview繋ぎたい
+	//add　PostとStore繋ぎたい
 	public List<Post> getPosts(){
 		return posts;
 	}
@@ -98,16 +101,4 @@ public class Store {
 		this.posts=posts;
 	}
 
-	//評価の平均
-	 public int average() {
-	
-	 double sum=0;
-	
-	 for (Post post : posts) {
-	 sum+= post.getYummy();
-	 }
-	 
-	 double average =posts.size()== 0 ? 0 :sum/posts.size();
-	
-	 return (int) Math.round(average);
-	 }
+}
