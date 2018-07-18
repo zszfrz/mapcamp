@@ -59,10 +59,10 @@ public class GourNavi {
 			HttpURLConnection http = (HttpURLConnection) restSearch.openConnection();
 			http.setRequestMethod("GET");
 			http.connect();
-			// Jackson
+//			// Jackson
 			ObjectMapper mapper = new ObjectMapper();
 			viewJsonNode(mapper.readTree(http.getInputStream()));
-
+			
 		} catch (Exception e) {
 			// TODO: 例外を考慮していません
 		}
@@ -76,7 +76,7 @@ public class GourNavi {
 			// restのみ取得
 			JsonNode restList = nodeList.path("rest");
 			Iterator<JsonNode> rest = restList.iterator();
-			// 店舗番号、店舗名、最寄の路線、最寄の駅、最寄駅から店までの時間、店舗の小業態を出力
+			// 店舗番号、店舗名、経緯度、予算、営業時間、URLを出力
 			while (rest.hasNext()) {
 				JsonNode r = rest.next();
 				String id = r.path("id").asText();
@@ -89,17 +89,15 @@ public class GourNavi {
 				
 				//Store store = storeService.findOneOrNew(name);
 				Store store = new Store();
-				store.setStoreId(id);
-				store.setLat(latitude);
-				store.setLon(longitude);
+				//store.setStoreId(Long.parseLong(id));
+				//store.setLat(Long.parseLong(latitude));
+				//store.setLon(Long.parseLong(longitude));
 				store.setName(name);
-				store.setPrice(budget);
+				//store.setPrice(Long.parseLong(budget));
 				store.setTime(opentime);
 				store.setUrl(url);
-				//System.out.println(id + "¥t" + name + "¥t" + latitude + "¥t" + longitude + "¥t" + budget + "¥t" + opentime+ "¥t" + url);
-				//storeService.save(store);
-				System.out.println(store);
-				System.exit(0);
+				System.out.println(id + "¥t" + name + "¥t" + latitude + "¥t" + longitude + "¥t" + budget + "¥t" + opentime+ "¥t" + url);
+				//storeService.saveandflush(store);
 				
 			}
 		}
