@@ -33,12 +33,13 @@ public class User {
 	@Column(nullable = false)
 	private String name;
 
+	@Column(nullable = true)
 	private String profileImage;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Integer sex;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Date birthday;
 
 	// ゲッターセッター
