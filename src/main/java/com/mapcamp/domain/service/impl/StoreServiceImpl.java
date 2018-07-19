@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.entity.Store;
 import com.mapcamp.domain.repository.StoreRepository;
 import com.mapcamp.domain.service.StoreService;
@@ -33,5 +34,13 @@ public class StoreServiceImpl implements StoreService{
     public Page<Store> findAll(Pageable pageable){
         return storeRepository.findAll(pageable);
     }
+    
+//    
+//    
+//    @Override
+//    public Store findOne(Long id){
+//        return storeRepository.findOne(id);
+//    }
 
 }
+

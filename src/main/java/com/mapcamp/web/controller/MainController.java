@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.service.PostService;
+import com.mapcamp.domain.repository.PostRepository;
+import com.mapcamp.domain.repository.UserRepository;
 import com.mapcamp.security.LoginUserDetails;
 
 import org.json.JSONException;
@@ -32,7 +33,23 @@ public class MainController {
 	private List<Long> session_list;
 
 	@Autowired
+	private PostRepository postRepository;
+	
+	@Autowired
 	private PostService postService;
+//	@Autowired
+  //  private UserRepository userRepository;
+	
+//	@Autowired
+	  //  private PostRepository postRepository;
+	
+	
+	@ModelAttribute(name = "loginUser")
+    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+        return loginUserDetails;
+    }	
+		
+	
 
 	@ModelAttribute(name = "loginUser")
 	public UserDetails setLoginUser(@AuthenticationPrincipal LoginUserDetails userCustom) {
@@ -43,12 +60,12 @@ public class MainController {
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
 		List<Post> post_list = new ArrayList<Post>();
 		if (session_list.get(0) != null) {
-			for(Long l: session_list) {
+			for(Long l: session_list) {//session_listにはpostIdが入っている
 				post_list.add(postService.findOne(l));
 			}
 		}
 		mav.addObject("wannago_list", post_list);
-		mav.setViewName("/index");
+		mav.setViewName("posts/main");
 		return mav;
 	}
 
