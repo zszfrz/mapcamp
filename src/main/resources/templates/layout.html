@@ -13,19 +13,12 @@
 			</h1>
 			<div class="user_nav">
 				<th:block th:if="${loginUser != null}">
-<<<<<<< HEAD
-					<div class="icon"
-						th:style="background-image: url(' + @{${loginUser.image}} + ');'"></div>
-					<a class="post" href="/" th:text="${loginUser.name}">Guest</a>
-					<a class="post" href="/posts/new">投稿する</a>
-					<form th:action="@{/logout}" method="post">
-=======
+
 					<!-- <div class="icon"
 						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
 					<!-- <a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック -->
 					<a class="post" href="/posts/new">投稿する</a> //チェック
 					<form th:action="@{/user/logout}" method="post">
->>>>>>> 18fea47253a65dc2e409996d310b241a46ec7709
 						<input type="submit" value="ログアウト" />
 					</form>
 				</th:block>

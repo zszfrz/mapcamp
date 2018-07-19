@@ -37,33 +37,22 @@ public class MainController {
 	
 	@Autowired
 	private PostService postService;
-//	@Autowired
-  //  private UserRepository userRepository;
-	
-//	@Autowired
-	  //  private PostRepository postRepository;
-	
 	
 	@ModelAttribute(name = "loginUser")
     private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         return loginUserDetails;
     }	
-		
-	
-
-	@ModelAttribute(name = "loginUser")
-	public UserDetails setLoginUser(@AuthenticationPrincipal LoginUserDetails userCustom) {
-		return userCustom;
-	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
+		List<Post> posts = postRepository.findAll();
 		List<Post> post_list = new ArrayList<Post>();
 		if (session_list.get(0) != null) {
 			for(Long l: session_list) {//session_listにはpostIdが入っている
 				post_list.add(postService.findOne(l));
 			}
 		}
+		mav.addObject("posts", posts);
 		mav.addObject("wannago_list", post_list);
 		mav.setViewName("posts/main");
 		return mav;

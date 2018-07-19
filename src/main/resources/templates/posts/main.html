@@ -1,22 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout:decorator=layout" layout:decorator="index">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout:decorator=" layout:decorator="index">
+
+
 <head>
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="/css/posts/post_setting.css" />
-<link rel="stylesheet" href="/css/posts/post_style.css" /> 
-<title>Index Page</title>
+    <meta charset="UTF-8" th:remove="all" />
 </head>
-<body>  
-    <div layout:frament="right">
-	    <div class="contents clearfix">
-	    	<div class="contents row " th:each="post : ${posts}"><!-- 拡張for文 -->
-	        	<div class="content__post" th:style="'background-image: url(' + @{${post.image}} + ');'">
-	            	<p th:text="${post.shopname}"></p>
-	            	<span class="name" th:text="${post.user.name}"></span>
-	            	
-	         	</div>
-	    	</div>
-	    </div>
-    </div>
+
+<body>
+	<div layout:fragment="right">
+	<div class="main_post" th:each="post : ${posts}">
+		<div class="main_post2 clearfix" ><!-- th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" -->
+		<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"> 
+		<img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+		</a> 
+			 <!-- <th:block th:if="${login_user != null} ? ${login_user.id.equals(post.user.id)}">  --> 
+				 <div class="more">
+         			 <span>■</span>
+           			 <ul class="more_list">
+           				 <li>
+            					<a th:href="@{'/post/' + ${post.id}}">To BOX</a>
+            			</li>
+                		<!-- <li>
+                			<a th:href="@{'/post/' + ${post.id} + '/edit'}">編集</a>
+                		</li>
+               			 <li>
+                    		<form th:action="@{'/post/' + ${post.id} + '/delete'}" method="post">
+                        	<input type="submit" value="削除" />
+                   			 </form>
+                		</li> -->
+           			</ul>
+           		</div> 
+         	<!--  </th:block> -->
+        <p th:text="${post.shopname}"></p>
+        <!-- <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}">  -->
+		<span class="name" th:text="${post.user.name}"></span>
+		<!-- </a> -->
+		</div>
+   </div>
+   </div>
 </body>
 </html>
