@@ -1,5 +1,6 @@
 package com.mapcamp.domain.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -59,7 +60,7 @@ import javax.persistence.Table;
 	    private String category;
 	    
 	    
-//	    private String makeDate;
+	    private Date nowdate;
 	    
 	    
 	    public Long getId() {
@@ -128,6 +129,16 @@ import javax.persistence.Table;
 	    public void setCategory(String category) {
 	        this.category = category;
 	    }
+	    
+	    
+	    public Date getNowDate() {
+	        return nowdate;
+	    }
+
+	    public void setNowDate() {
+	        this.nowdate = new Date();
+	    }
+	    
 	    
 	    //アソシエーション設定
 	    public User getUser() {

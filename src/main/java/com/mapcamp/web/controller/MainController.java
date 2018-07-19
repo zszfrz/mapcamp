@@ -62,12 +62,12 @@ public class MainController {
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
 		List<Post> post_list = new ArrayList<Post>();
 		if (session_list.get(0) != null) {
-			for(Long l: session_list) {
+			for(Long l: session_list) {//session_listにはpostIdが入っている
 				post_list.add(postService.findOne(l));
 			}
 		}
 		mav.addObject("wannago_list", post_list);
-		mav.setViewName("/index");
+		mav.setViewName("posts/main");
 		return mav;
 	}
 

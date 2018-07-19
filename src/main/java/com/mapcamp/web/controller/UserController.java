@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +27,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private UserDetailsService userDetailsService;
 
 	 // マイページの表示 表示させたいページのidを取得して表示(※①)
 	 @GetMapping("/user/{id}")
@@ -45,8 +49,8 @@ public class UserController {
 
 	// 登録画面表示
 	@GetMapping("/user/registration")
-	public String signupForm(UserForm form, @AuthenticationPrincipal LoginUserDetails loginUserDtails) {
-		if (loginUserDtails != null) {
+	public String signupForm(UserForm form, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+		if (loginUserDetails != null) {
 			return "redirect:/";
 		}
 		return "/user/registration";
@@ -64,7 +68,7 @@ public class UserController {
 		if (!form.getPassword().equals(form.getConfirmPassword())) {
 			result.rejectValue("password", "error.passwordConfirmation", "do notmatch.");
 		}
-		//
+		
 		if (result.hasErrors()) {
 			return "/user/registration";
 		}
