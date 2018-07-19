@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Store {
 
 	
-	@OneToMany(mappedBy = "stores")
+	@OneToMany(mappedBy = "store")
     private List<Post> posts;
 
 	@Id

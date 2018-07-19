@@ -27,13 +27,15 @@ import javax.persistence.Table;
 		@OneToMany(mappedBy = "post")
 	    private List<Comment> comments;
 		
+		@ManyToOne
+		private Store store;
 		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
 		
-		@Column(nullable = false)
-		private String shopname;
+//		@Column(nullable = false)
+//		private String shopname;
 		
 //		@Column(nullable = false)
 //		private String nickname;
@@ -80,13 +82,13 @@ import javax.persistence.Table;
 	        this.comment = comment;
 	    }
 	    
-	    public String getShopname() {
-	        return shopname;
-	    }
-
-	    public void setShopname(String shopname) {
-	        this.shopname = shopname;
-	    }
+//	    public String getShopname() {
+//	        return shopname;
+//	    }
+//
+//	    public void setShopname(String shopname) {
+//	        this.shopname = shopname;
+//	    }
 	    
 //	    public String getNickname() {
 //	        return nickname;
@@ -143,6 +145,13 @@ import javax.persistence.Table;
 	        this.user = user;
 	    }
 	    
+	    public Store getStore() {
+	        return store;
+	    }
+
+	    public void setStore(Store store) {
+	        this.store = store;
+	    }
 	    
 	    public List<Comment> getComments() {
 	        return comments;
