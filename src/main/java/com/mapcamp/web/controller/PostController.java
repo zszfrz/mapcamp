@@ -1,13 +1,6 @@
 package com.mapcamp.web.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -66,6 +59,7 @@ public class PostController {
 		}
 		Post post = new Post();
 		BeanUtils.copyProperties(form, post);
+		post.setNowDate();
 		postService.save(post, loginUserDetails.getUserId(), form.getFile());
 		return "posts/create";
 	}
@@ -114,7 +108,6 @@ public class PostController {
 	@RequestMapping(value = "/posts/{postId}", method = RequestMethod.GET)
 	ModelAndView show(@PathVariable Long postId, ModelAndView mav) {
 		Post post = postRepository.findOne(postId);
-		//List<Post> post = PostRepository.findAllByTitleLike(); //追加してみた　エラー原因不明
 		mav.addObject("post", post);
 		mav.setViewName("posts/show");
 		return mav;

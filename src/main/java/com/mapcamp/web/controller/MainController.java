@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.mapcamp.domain.entity.Post;
-
 import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.repository.PostRepository;
 import com.mapcamp.domain.repository.UserRepository;
@@ -39,23 +37,11 @@ public class MainController {
 	
 	@Autowired
 	private PostService postService;
-//	@Autowired
-  //  private UserRepository userRepository;
-	
-	
-	
-	
+
 	@ModelAttribute(name = "loginUser")
     private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         return loginUserDetails;
     }	
-		
-	
-
-	@ModelAttribute(name = "loginUser")
-	public UserDetails setLoginUser(@AuthenticationPrincipal LoginUserDetails userCustom) {
-		return userCustom;
-	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 
@@ -63,13 +49,15 @@ public class MainController {
 		List<Post> posts = postRepository.findAll();
 		List<Post> post_list = new ArrayList<Post>();
 		if (session_list.get(0) != null) {
-			for(Long l: session_list) {
+			for(Long l: session_list) {//session_listにはpostIdが入っている
 				post_list.add(postService.findOne(l));
 			}
 		}
-		mav.addObject("posts",posts);
+
+		mav.addObject("posts", posts);
 		mav.addObject("wannago_list", post_list);
-		mav.setViewName("/posts/main");
+		mav.setViewName("posts/main");
+
 		return mav;
 	}
 
@@ -96,11 +84,14 @@ public class MainController {
 
 		@RequestMapping(value = "/{post_id}/add", method = RequestMethod.GET)
 		@ResponseBody
-		public Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
+		public  ModelAndView sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
 			setList(post_id);
-			return postService.findOne(post_id);
+			mav.setViewName("index");
+			//return postService.findOne(post_id);
+			return mav;
 		}
-
+		
+		
 		@RequestMapping(value = "/latlon", method = RequestMethod.POST)
 		@ResponseBody
 		public JSONObject getLatLon(@ModelAttribute("list")List<Long> list) {

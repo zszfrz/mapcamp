@@ -18,15 +18,7 @@
                     <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
                     <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
                 </div> 
-<<<<<<< HEAD
-                
-               <div th:each="item : ${checkboxItems}">
-        <input type="checkbox" name="categories" th:value="${item.key}" th:text="${item.value}" th:field="*{categories}" />
-    </div>
-					
-				<!-- <div>
-					<label for="category">Category</label>
-=======
+
 			
 				<div class = "category">
 					<label for="category">■Category</label>
@@ -36,7 +28,6 @@
 									name="category" id="category" value="ファミレス" />ファミレス</label>
 								<label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"
 									name="category" id="category" value="ファーストフード" />ファーストフード</label>
->>>>>>> 078ce281d3eaaa3f184ba519522d079a9caedefd
 								<input th:field="*{category}" placeholder="category" type="checkbox"
 									name="category" id="category" value="カフェ・喫茶店" /><p class="text-small">カフェ・喫茶店</p>
 									<input th:field="*{category}" placeholder="category" type="checkbox"
