@@ -24,13 +24,22 @@
         <div class="container">
         <input type="checkbox" name="category" id="category" value="カフェ・喫茶店" />カフェ・喫茶店
             <form th:action="@{/posts/new}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
-            <div style="margin: 8px 0">
+            <!-- <div style="margin: 8px 0">
                     <label style="margin-right: 8px">Shopname</label>
                     <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
                     <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
-                </div> 
-                
-               <input type="checkbox" name="category" id="category" value="カフェ・喫茶店" />カフェ・喫茶店
+                </div> -->
+
+				<!-- <form role="search"> -->
+					<div style="margin: 8px 0" class="search-control">
+						<input type="search" id="site-search" name="q"
+							placeholder="Please input shopname..."
+							aria-label="Search through site content">
+						<button>Search</button>
+					</div>
+				<!-- </form> -->
+
+				<input type="checkbox" name="category" id="category" value="カフェ・喫茶店" />カフェ・喫茶店
 			
 				<div class = "category">
 				<input type="checkbox" name="category" id="category" value="カフェ・喫茶店" />カフェ・喫茶店
