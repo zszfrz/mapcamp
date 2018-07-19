@@ -42,8 +42,7 @@ public class MainController {
 //	@Autowired
   //  private UserRepository userRepository;
 	
-//	@Autowired
-	  //  private PostRepository postRepository;
+	
 	
 	
 	@ModelAttribute(name = "loginUser")
@@ -59,28 +58,18 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-<<<<<<< HEAD
-	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> list){
-		List<Post> posts = postRepository.findAll();
-        mav.addObject("posts", posts);
-	//	for(Long l: list) {
-	//		post_list.add(postRepository.findOne(l));
-		//}
-	//	mav.addObject("wannago_list", list);
-        //mav.addObject("login_user", loginUserDetails.getUserId());
-	//	mav.addObject(loginUser);
-		mav.setViewName("posts/main");
-=======
+
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
+		List<Post> posts = postRepository.findAll();
 		List<Post> post_list = new ArrayList<Post>();
 		if (session_list.get(0) != null) {
 			for(Long l: session_list) {
 				post_list.add(postService.findOne(l));
 			}
 		}
+		mav.addObject("posts",posts);
 		mav.addObject("wannago_list", post_list);
-		mav.setViewName("/index");
->>>>>>> 078ce281d3eaaa3f184ba519522d079a9caedefd
+		mav.setViewName("/posts/main");
 		return mav;
 	}
 

@@ -39,17 +39,17 @@
         <span>Speed</span>
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span></span>
        
-      <p class="msg" th:each="checked : *{categories}" th:text="${checked}"></p>
+      
  
        <span class="name">
                 <a th:href="@{`/user/` + ${user.id}}" th:inline="text">
                    <br><span>投稿者</span><span th:text="${post.user.name}">tech太郎</span></br>
                 </a>
             </span>   
-            <p th:text="*{post.stores.name}"></p>
+            
             
               ■投稿者コメント
-        <p th:text="*{comment}"></p>   
+        <p th:text="*{text}"></p>   
         </div>    
          
          <div class="container">

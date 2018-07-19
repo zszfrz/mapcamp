@@ -31,15 +31,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-<<<<<<< HEAD
-                .antMatchers("/","/css/**", "/font/**","/user/registration","/posts/**/post-image.jpg").permitAll()
-=======
-                .antMatchers("/","/css/**", "/js/**", "/font/**","/user/registration").permitAll()
->>>>>>> 078ce281d3eaaa3f184ba519522d079a9caedefd
+                .antMatchers("/","/css/**", "/js/**", "/font/**","/user/registration","/posts/**/post-image.jpg","/posts/{\\d}").permitAll()
+
 //                .antMatchers("/products/{\\d}", "/products/search").permitAll()
                 .antMatchers("/login").permitAll()
 
-                .antMatchers("/user/registration").permitAll()
+       
                 .antMatchers("/user/mypage").permitAll()
                 //.antMatchers("/posts/**").authenticated()
                 .anyRequest().authenticated()
