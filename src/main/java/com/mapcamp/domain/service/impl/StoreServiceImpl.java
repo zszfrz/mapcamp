@@ -78,7 +78,7 @@ public class StoreServiceImpl implements StoreService{
 				String url = r.path("url").asText();
 				
 				Store store = new Store();
-				store.setStoreId(Long.parseLong(id));
+				store.setId(Long.parseLong(id));
 				store.setLat(Long.parseLong(latitude));
 				store.setLon(Long.parseLong(longitude));
 				store.setName(name);

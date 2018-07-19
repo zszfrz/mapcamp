@@ -2,6 +2,7 @@ package com.mapcamp.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.mapcamp.domain.service.impl.StoreServiceImpl;
 
@@ -37,9 +38,14 @@ public class GApiController {
 	
 	String uri=gnaviRestUri+prmFormat+prmKeyid+prmLat+prmLon+prmRange+prmName;
 
-	public void gnavi() {
-		//storeServiceImpl.getNodeList(uri);
+	@GetMapping("/posts/new")
+	public void gnavinew() {
+		storeServiceImpl.getNodeList(uri);
 	}
 	
+	@GetMapping("/posts/{postId}/edit")
+	public void gnaviedit() {
+		storeServiceImpl.getNodeList(uri);
+	}
 		
 }
