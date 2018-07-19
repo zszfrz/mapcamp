@@ -44,6 +44,7 @@ public class MainController {
     }	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
 		List<Post> posts = postRepository.findAll();
 		List<Post> post_list = new ArrayList<Post>();
@@ -55,6 +56,7 @@ public class MainController {
 		mav.addObject("posts", posts);
 		mav.addObject("wannago_list", post_list);
 		mav.setViewName("posts/main");
+
 		return mav;
 	}
 
@@ -81,11 +83,14 @@ public class MainController {
 
 		@RequestMapping(value = "/{post_id}/add", method = RequestMethod.GET)
 		@ResponseBody
-		public Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
+		public  ModelAndView sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
 			setList(post_id);
-			return postService.findOne(post_id);
+			mav.setViewName("index");
+			//return postService.findOne(post_id);
+			return mav;
 		}
-
+		
+		
 		@RequestMapping(value = "/latlon", method = RequestMethod.POST)
 		@ResponseBody
 		public JSONObject getLatLon(@ModelAttribute("list")List<Long> list) {

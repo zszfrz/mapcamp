@@ -16,7 +16,7 @@
 		<div class="more">
                 <span>■</span>
                 <ul class="more_list">
-                     <th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.id)}">
+                     <th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.userId)}">
                         <li><a
                             th:href="@{'/posts/' + ${post.id} + '/edit'}">編集</a></li>
                         <li>

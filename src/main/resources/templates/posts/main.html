@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout:decorator=" layout:decorator="index">
 
@@ -18,16 +19,12 @@
          			 <span>■</span>
            			 <ul class="more_list">
            				 <li>
-            					<a th:href="@{'/post/' + ${post.id}}">To BOX</a>
-            			</li>
-                		<!-- <li>
-                			<a th:href="@{'/post/' + ${post.id} + '/edit'}">編集</a>
-                		</li>
-               			 <li>
-                    		<form th:action="@{'/post/' + ${post.id} + '/delete'}" method="post">
-                        	<input type="submit" value="削除" />
-                   			 </form>
-                		</li> -->
+            					<!-- <a th:href="@{'/post/' + ${post.id}}">To BOX</a> -->
+            			
+            			<form th:action="@{'/' + ${post.id} + '/add'}" method="get">
+                                <input type="submit" value="ToBox" />
+                            </form>
+                            </li>
            			</ul>
            		</div> 
          	<!--  </th:block> -->

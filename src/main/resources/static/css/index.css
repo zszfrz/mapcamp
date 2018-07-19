@@ -8,7 +8,8 @@
 
 
 .left{
-	width: 300px;
+	width: 404px;
+	height:auto;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
@@ -18,7 +19,13 @@
 }
 
 .right{
+<<<<<<< HEAD
+	min-width: 990px;
+	height:auto;
+	max-width: 100%;
+=======
 	
+>>>>>>> 078ce281d3eaaa3f184ba519522d079a9caedefd
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
