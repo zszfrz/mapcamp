@@ -48,7 +48,7 @@ public class MainController {
 			}
 		}
 		mav.addObject("wannago_list", post_list);
-		mav.setViewName("/index");
+		mav.setViewName("index");
 		return mav;
 	}
 
