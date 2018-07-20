@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/reset.css" />
 <link rel="stylesheet" href="/css/header.css" />
+<link rel="stylesheet" href="/css/index.css" />
+<link rel="stylesheet" href="/css/posts/post_setting.css" />
+<link rel="stylesheet" href="/css/posts/post_main_style.css" />
 <title>Map Camp</title>
 </head>
 <body>
@@ -13,9 +16,10 @@
 			</h1>
 			<div class="user_nav">
 				<th:block th:if="${loginUser != null}">
-					<div class="icon"
-						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div>
-					<a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック
+
+					<!-- <div class="icon"
+						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
+					<!-- <a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック -->
 					<a class="post" href="/posts/new">投稿する</a> //チェック
 					<form th:action="@{/user/logout}" method="post">
 						<input type="submit" value="ログアウト" />

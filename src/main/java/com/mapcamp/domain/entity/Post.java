@@ -1,5 +1,6 @@
 package com.mapcamp.domain.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,15 +21,16 @@ import javax.persistence.Table;
 	public class Post{
 		
 		
-		@ManyToOne
-		@JoinColumn(updatable = false)
-		private User user;
+	@ManyToOne
+	@JoinColumn(updatable = false)
+	private User user;
 		
-		@OneToMany(mappedBy = "post")
-	    private List<Comment> comments;
+
+	@OneToMany(mappedBy = "post")
+	private List<Comment> comments;
 		
-		@ManyToOne
-		private Store store;
+	@ManyToOne
+	private Store store;
 		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -60,11 +62,10 @@ import javax.persistence.Table;
 	    
 	    @Column(nullable = false)
 	    private String category;
+	  
 	    
-//	    @Column(nullable = false)
-//	    private String category2;
+	    private Date nowdate;
 
-//	    private String makeDate;
 	    
 	    
 	    public Long getId() {
@@ -134,6 +135,17 @@ import javax.persistence.Table;
 	    }
 	    public void setSpeed(Integer speed) {
 	        this.speed = speed;
+	    }
+	    
+	    
+
+	    
+	    public Date getNowDate() {
+	        return nowdate;
+	    }
+
+	    public void setNowDate() {
+	        this.nowdate = new Date();
 	    }
 	    
 	    

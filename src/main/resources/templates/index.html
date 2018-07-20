@@ -3,12 +3,10 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="content">
 <head>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="/css/index.css" />
-<title>Map Camp</title>
-
-<script src="/js/jquery-3.3.1.js"></script>
+    <meta charset="UTF-8" th:remove="all" />
+    <script src="/js/jquery-3.3.1.js"></script>
 </head>
+
 <body>
 	<div layout:fragment="main">
 		<div class="mainbox">
@@ -41,8 +39,9 @@
 
 			</div>
 
+			<div class="right" layout:fragment="right"></div> >
+			
 
-			<div class="right" layout:fragment="right"></div>
 		</div>
 
 	</div>
