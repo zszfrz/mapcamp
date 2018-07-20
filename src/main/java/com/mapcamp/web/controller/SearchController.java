@@ -19,6 +19,7 @@ public class SearchController {
 
 	@Autowired
 	private PostRepository postRepository;
+	private Object searchShows;
 
 	// @RequestMapping(value = "posts/main", method = RequestMethod.POST)
 	// public ModelAndView index(ModelAndView mav) {
@@ -65,9 +66,7 @@ public class SearchController {
 	@RequestMapping(value="search",method=RequestMethod.GET)
 	public ModelAndView login(ModelAndView mav){
 	    mav.setViewName("search");
-	    mav.addObject("title","Find Page");
-	    mav.addObject("msg","searchです");
-	    mav.addObject("value","searchページです");
+	    mav.addObject("searchShows",searchShows);
 	    System.out.println(mav);
 	    return mav;
 	}

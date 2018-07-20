@@ -27,14 +27,14 @@
 			</div>
 		</div>
 	</header>
-	<div class="contents row" th:object="${post}">
+<!-- 	<div class="contents row" th:object="${post}">
 		<div class="content__post">
 			<img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}"
 				src="/avatars/original/missing.png" alt="Missing" />
 			<div class="more">
 				<span>■</span>
 				<ul class="more_list">
-					<!-- <th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.id)}">  -->
+					<th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.id)}"> 
 					<li><a th:href="@{'/posts/' + ${post.id} + '/edit'}">編集</a></li>
 					<li>
 						<form th:action="@{'/posts/' + ${post.id} + '/delete'}"
@@ -42,7 +42,7 @@
 							<input type="submit" value="削除" />
 						</form>
 					</li>
-					<!--   </th:block>  -->
+					  </th:block> 
 				</ul>
 			</div>
 		</div>
@@ -50,9 +50,9 @@
 		<p th:text="*{shopname}"></p>
 
 		<div class="container">
-			<!--   <th:block th:if="${loginUser != null}"> -->
+			  <th:block th:if="${loginUser != null}">
 		</div>
-	</div>
+	</div> -->
 
 <!-- お店の情報を表示 -->
 	<div layout:frament="right">
@@ -69,7 +69,7 @@
 	</div>
 
 <!-- テスト -->
-	<table>
+<!-- 	<table>
 		<tr>
 			<th>名前</th>
 			<th>メモ</th>
@@ -80,19 +80,19 @@
 		</tr>
 	</table>
 
-	<!-- 検索結果表示 th:text="${post.text}" -->
+	検索結果表示 th:text="${post.text}"
 	<div th:object="${識別子名(オブジェクト)}">
 		<p th:text="*{プロパティ名}"></p>
 	</div>
 <body>
 	<div th:each="post : ${searchShow}">
-		<!--  <p th:text="${searchShow}"></p> -->
+		 <p th:text="${searchShow}"></p>
 		<p th:text="${post.shopname}"></p>
 		<p th:text="${post.comment}"></p>
 		<p th:text="${post.image}"></p>
 		<p th:text="${post.id}"></p>
 	</div>
-</body>
+</body> -->
 
 
 <footer>
