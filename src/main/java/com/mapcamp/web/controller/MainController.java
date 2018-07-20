@@ -46,7 +46,7 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
-		List<Post> posts = postRepository.findAll();
+		List<Post> posts = postRepository.findAllByOrderByIdDesc();
 		List<Post> post_list = new ArrayList<Post>();
 		if (session_list.get(0) != null) {
 			for(Long l: session_list) {//session_listにはpostIdが入っている
