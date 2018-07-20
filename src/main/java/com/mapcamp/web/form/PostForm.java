@@ -12,9 +12,6 @@ public class PostForm {
 	
 	@NotBlank
 	private String shopname;
-	
-//	@NotBlank
-//	private String nickname;
 
 	private MultipartFile file;
 	
@@ -42,13 +39,11 @@ public class PostForm {
 	
 
 	@NotBlank
-	private String comment;
+	private String text;
 	
 	@Column(nullable = false)
     private String category;
 	
-//	@Column(nullable = false)
-//    private String category2;
 
 	
 	public String getShopname() {
@@ -61,17 +56,10 @@ public class PostForm {
 	public MultipartFile getFile() {
 	    return file;
 	}
-
 	public void setFile(MultipartFile file) {
 	    this.file = file;
 	}
 	
-//  public String getNickname() {
-//  return nickname;
-//  }
-//  public void setNickname(String nickname) {
-//  this.nickname = nickname;
-//  }
 
   public Integer getYummy() {
 	  return yummy;
@@ -101,11 +89,11 @@ public class PostForm {
 	  this.speed = speed;
   }
 
-  public String getComment() {
-	  return comment;
+  public String getText() {
+	  return text;
   }
-  public void setComment(String comment) {
-	  this.comment = comment;
+  public void setText(String text) {
+	  this.text = text;
   }
 
   

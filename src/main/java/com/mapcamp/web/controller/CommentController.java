@@ -37,7 +37,6 @@ public class CommentController {
             @AuthenticationPrincipal LoginUserDetails loginUserDetails, ModelAndView mav) {
         Post post = postService.findOne(postId);
         User user = userService.findOne(loginUserDetails.getUserId());
-        //User user = userService.findOne(loginUserDetails.);
         comment.setPost(post);
         comment.setUser(user);
         commentRepository.saveAndFlush(comment);

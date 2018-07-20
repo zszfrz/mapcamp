@@ -11,9 +11,10 @@ import com.mapcamp.domain.entity.Post;
 public interface PostRepository extends JpaRepository<Post, Long> {
 
 	
-	Post findByShopname(String shopname);
 
-    //List<Post> findAllByTitleLike(String keyword);
-	
-	
+//
+//	//検索ワード
+//    List<Post> findAllByTitleLike(String keyword);
+//	
+//    List<Post> findAll();
 }
