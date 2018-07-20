@@ -38,12 +38,12 @@ public class GApiController {
 	
 	String uri=gnaviRestUri+prmFormat+prmKeyid+prmLat+prmLon+prmRange+prmName;
 
-	@GetMapping("/posts/new")
+	//@GetMapping("/posts/new")
 	public void gnavinew() {
 		storeServiceImpl.getNodeList(uri);
 	}
 	
-	@GetMapping("/posts/{postId}/edit")
+	//@GetMapping("/posts/{postId}/edit")
 	public void gnaviedit() {
 		storeServiceImpl.getNodeList(uri);
 	}
