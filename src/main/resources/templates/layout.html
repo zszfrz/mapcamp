@@ -21,7 +21,7 @@
 						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
 					<!-- <a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック -->
 					<a class="post" href="/posts/new">投稿する</a> //チェック
-					<form th:action="@{/user/logout}" method="post">
+					<form th:action="@{/logout}" method="post">
 						<input type="submit" value="ログアウト" />
 					</form>
 				</th:block>
