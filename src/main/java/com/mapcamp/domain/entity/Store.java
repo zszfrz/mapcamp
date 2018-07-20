@@ -6,9 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
 
 import javax.persistence.Table;
 
@@ -17,12 +15,13 @@ import javax.persistence.Table;
 public class Store {
 
 	
-	@OneToMany(mappedBy = "store")
+	@OneToMany(mappedBy = "stores")
     private List<Post> posts;
+	
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long store_id;
 
 	private Long lat;
 
@@ -36,12 +35,12 @@ public class Store {
 
 	private String url;
 
-	public Long getId() {
-		return id;
+	public Long getStoreId() {
+		return store_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setStoreId(Long store_id) {
+		this.store_id = store_id;
 	}
 
 	public Long getLat() {

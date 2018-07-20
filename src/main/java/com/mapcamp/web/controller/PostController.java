@@ -66,6 +66,7 @@ public class PostController {
 		}
 		Post post = new Post();
 		BeanUtils.copyProperties(form, post);
+		post.setNowDate();
 		postService.save(post, loginUserDetails.getUserId(), form.getFile());
 		return "posts/create";
 	}
@@ -114,7 +115,6 @@ public class PostController {
 	@RequestMapping(value = "/posts/{postId}", method = RequestMethod.GET)
 	ModelAndView show(@PathVariable Long postId, ModelAndView mav) {
 		Post post = postRepository.findOne(postId);
-		//List<Post> post = PostRepository.findAllByTitleLike(); //追加してみた　エラー原因不明
 		mav.addObject("post", post);
 		mav.setViewName("posts/show");
 		return mav;
