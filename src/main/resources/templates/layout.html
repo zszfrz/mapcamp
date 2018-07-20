@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/reset.css" />
 <link rel="stylesheet" href="/css/header.css" />
+<link rel="stylesheet" href="/css/index.css" />
+<link rel="stylesheet" href="/css/posts/post_setting.css" />
+<link rel="stylesheet" href="/css/posts/post_main_style.css" />
 <title>Map Camp</title>
 </head>
 <body>
@@ -12,19 +15,20 @@
 				<a href="/">Map Camp</a>
 			</h1>
 			<div class="user_nav">
-				<th:block th:if="${login_user != null}">
-					<div class="icon"
-						th:style="background-image: url(' + @{${loginUser.image}} + ');'"></div>
-					<a class="post" href="/" th:text="${login_user.name}">Guest</a>
-					<a class="post" href="/post/new">投稿する</a>
-					<form th:action="@{/user/logout}" method="post">
+				<th:block th:if="${loginUser != null}">
+
+					<!-- <div class="icon"
+						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
+					<!-- <a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック -->
+					<a class="post" href="/posts/new">投稿する</a> //チェック
+					<form th:action="@{/logout}" method="post">
 						<input type="submit" value="ログアウト" />
 					</form>
 				</th:block>
-				<th:block th:if="${login_user == null}">
+				<th:block th:if="${loginUser == null}">
 				<div class="icon"></div>
 					<a class="post" href="/" th:text="'Guest'">Guest</a>
-					<a class="post" href="/user/login">ログイン</a>
+					<a class="post" href="/login">ログイン</a>
 					<a class="post" href="/user/registration">登録</a>
 				</th:block>
 			</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="content">
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
@@ -7,37 +7,60 @@
 <title>New Post Page</title>
 </head>
 <body>
-    <header class="header">
-        <div class="header__bar row">
-            <h1 class="grid-6">
-                <a href="/">mapcamp</a>
-            </h1>
-            <div class="grid-6 user_nav">
-                <a class="post" href="/post/new">投稿する</a>
-            </div>
-        </div>
-    </header>
+    <div layout:fragment="main"> 
     <div class="contents row">
         <div class="container">
             <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
              <h3>編集する</h3>
-            <div style="margin: 8px 0">
+
+            <!-- <div style="margin: 8px 0">
                     <label style="margin-right: 8px">Shopname</label>
                     <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
                     <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
-                </div> 
-                <!-- <div style="margin: 8px 0">
-                    <label style="margin-right: 8px">ニックネーム</label>
-                    <input th:field="*{nickname}" name="nickname" placeholder="ニックネーム" type="text" value="" />
-                    <span th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}" class="help-block">error!</span>
                 </div>  -->
+				<div style="margin: 8px 0" class="search-control">
+					<input type="search" id="site-search" name="q"
+						placeholder="Please input shopname..."
+						aria-label="Search through site content">
+					<button>Search</button>
+				</div>
+
                 
-                <div class="field">
+                <div class = "category">
+					<label for="category">■Category</label>
+								<label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="レストラン" />レストラン</label>
+								 <label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="ファミレス" />ファミレス</label>
+								<label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="ファーストフード" />ファーストフード</label>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="カフェ・喫茶店" /><p class="text-small">カフェ・喫茶店</p>
+									<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="和食店(日本食)" /><p class="text-small">和食店(日本食)</p>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="居酒屋" /><p class="text-small">居酒屋</p>
+									<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="寿司屋" /><p class="text-small">寿司屋</p>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="ラーメン" /><p class="text-small">ラーメン</p>
+									<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="中華料理店" /><p class="text-small">中華料理店</p>
+								<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="韓国料理店" /><p class="text-small">韓国料理店</p>
+									<input th:field="*{category}" placeholder="category" type="checkbox"
+									name="category" id="category" value="その他" /><p class="text-small">その他</p>
+									
+								</div>
+                
+                        
+                        <div class="field">
+                <label style="margin-right: 8px">■Picture</label>
                         <input th:field="*{file}" type="file" name="file" id="post_avatar" />
                         </div>
                 
                 <div style="margin: 8px 0">
-                    <label style="margin-right: 8px">評価</label>(10段階評価)
+                    <label style="margin-right: 8px">■評価</label>(10段階評価)
                     <input th:field="*{yummy}" th:errorclass="error-field" class="search__query" name="yummy" placeholder="Yummy" style="text-align: right" type="number" max="10" min="1" value="1" /> 
                     <span th:if="${#fields.hasErrors('yummy')}" th:errors="*{yummy}" class="help-block">error!</span>
                 </div>
@@ -57,8 +80,8 @@
                     <span th:if="${#fields.hasErrors('speed')}" th:errors="*{speed}" class="help-block">error!</span>
                 </div>
                 <div style="margin: 8px 0">
-                    <textarea th:feild="*{comment}" th:errorclass="error-field" name="comment" placeholder="レビューを書いてね！" style="width: 100%; height: 300px" th:text="*{comment}"></textarea>
-                    <span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" class="help-block">error!</span>
+                    <textarea th:feild="*{text}" th:errorclass="error-field" name="text" placeholder="レビューを書いてね！" style="width: 100%; height: 300px" th:text="*{text}"></textarea>
+                    <span th:if="${#fields.hasErrors('text')}" th:errors="*{text}" class="help-block">error!</span>
                 </div>
                 <div class="row">
                     <div class="col10 push1">
@@ -67,15 +90,10 @@
                     
                 </div>
             </form>
-            <!-- <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post">
-                        <input type="submit" value="削除" />
-                    </form> -->
             
             
         </div>
     </div>
-    <footer>
-        <p>Copyright mapcamp 2018.</p>
-    </footer>
+    </div>
 </body>
 </html>
