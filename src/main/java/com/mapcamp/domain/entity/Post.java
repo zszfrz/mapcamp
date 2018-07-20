@@ -40,7 +40,7 @@ import javax.persistence.Table;
 		private String shopname;
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
-	    private String text;;
+	    private String text;
 
 	    private String image;
 	    
