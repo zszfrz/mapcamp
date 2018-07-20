@@ -36,15 +36,11 @@ import javax.persistence.Table;
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
 		
-//		@Column(nullable = false)
-//		private String shopname;
-		
-//		@Column(nullable = false)
-//		private String nickname;
-		
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
-	    private String comment;
+
+	    private String text;
+
 
 	    private String image;
 	    
@@ -75,30 +71,13 @@ import javax.persistence.Table;
 	        this.id = id;
 	    }
 	    
-	    public String getComment() {
-	        return comment;
+	    public String getText() {
+	        return text;
 	    }
 
-	    public void setComment(String comment) {
-	        this.comment = comment;
+	    public void setText(String text) {
+	        this.text = text;
 	    }
-	    
-//	    public String getShopname() {
-//	        return shopname;
-//	    }
-//
-//	    public void setShopname(String shopname) {
-//	        this.shopname = shopname;
-//	    }
-	    
-//	    public String getNickname() {
-//	        return nickname;
-//	    }
-//
-//	    public void setNickname(String nickname) {
-//	        this.nickname = nickname;
-//	    }
-	    
 	    
 	    
 	    public String getImage() {

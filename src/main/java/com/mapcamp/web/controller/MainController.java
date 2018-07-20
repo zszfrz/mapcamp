@@ -84,11 +84,10 @@ public class MainController {
 
 		@RequestMapping(value = "/{post_id}/add", method = RequestMethod.GET)
 		@ResponseBody
-		public  ModelAndView sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
+		public  Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
 			setList(post_id);
 			mav.setViewName("index");
-			//return postService.findOne(post_id);
-			return mav;
+			return postService.findOne(post_id);
 		}
 		
 		
