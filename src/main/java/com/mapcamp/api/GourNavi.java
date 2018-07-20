@@ -59,10 +59,10 @@ public class GourNavi {
 			HttpURLConnection http = (HttpURLConnection) restSearch.openConnection();
 			http.setRequestMethod("GET");
 			http.connect();
-			// Jackson
+//			// Jackson
 			ObjectMapper mapper = new ObjectMapper();
 			viewJsonNode(mapper.readTree(http.getInputStream()));
-
+			
 		} catch (Exception e) {
 			// TODO: 例外を考慮していません
 		}
@@ -76,8 +76,7 @@ public class GourNavi {
 			// restのみ取得
 			JsonNode restList = nodeList.path("rest");
 			Iterator<JsonNode> rest = restList.iterator();
-			// 店舗番号、店舗名、最寄の路線、最寄の駅、最寄駅から店までの時間、店舗の小業態を出力
-			Store store = new Store();
+			// 店舗番号、店舗名、経緯度、予算、営業時間、URLを出力
 			while (rest.hasNext()) {
 				JsonNode r = rest.next();
 				String id = r.path("id").asText();
@@ -87,27 +86,18 @@ public class GourNavi {
 				String budget = r.path("budget").asText();
 				String opentime = r.path("opentime").asText();
 				String url = r.path("url").asText();
-//				String line = r.path("access").path("line").asText();
-//				String station = r.path("access").path("station").asText();
-//				String walk = r.path("access").path("walk").asText() + "分";
-//				String categorys = "";
-
-//				for (JsonNode n : r.path("code").path("category_name_s")) {
-//					categorys += n.asText();
-//				}
 				
 				//Store store = storeService.findOneOrNew(name);
-//				//Store store = new Store();
-//				store.setStoreId(id);
-//				store.setLat(latitude);
-//				store.setLon(longitude);
-//				store.setName(name);
-//				store.setPrice(budget);
-//				store.setTime(opentime);
-//				store.setUrl(url);
+				Store store = new Store();
+				//store.setStoreId(Long.parseLong(id));
+				//store.setLat(Long.parseLong(latitude));
+				//store.setLon(Long.parseLong(longitude));
+				store.setName(name);
+				//store.setPrice(Long.parseLong(budget));
+				store.setTime(opentime);
+				store.setUrl(url);
 				System.out.println(id + "¥t" + name + "¥t" + latitude + "¥t" + longitude + "¥t" + budget + "¥t" + opentime+ "¥t" + url);
-				storeService.save(store);
-				
+				//storeService.saveandflush(store);
 				
 			}
 		}

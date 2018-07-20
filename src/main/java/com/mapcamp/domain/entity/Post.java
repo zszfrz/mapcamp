@@ -21,26 +21,26 @@ import javax.persistence.Table;
 	public class Post{
 		
 		
-		@ManyToOne
-		@JoinColumn(updatable = false)
-		private User user;
+	@ManyToOne
+	@JoinColumn(updatable = false)
+	private User user;
 		
-		@ManyToOne
-	    private Store stores;
+
+	@OneToMany(mappedBy = "post")
+	private List<Comment> comments;
 		
-		@OneToMany(mappedBy = "post")
-	    private List<Comment> comments;
-		
+	@ManyToOne
+	private Store store;
 		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
 		
-		@Column(nullable = false)
-		private String shopname;
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
+
 	    private String text;
+
 
 	    private String image;
 	    
@@ -58,9 +58,10 @@ import javax.persistence.Table;
 	    
 	    @Column(nullable = false)
 	    private String category;
-	    
+	  
 	    
 	    private Date nowdate;
+
 	    
 	    
 	    public Long getId() {
@@ -78,13 +79,6 @@ import javax.persistence.Table;
 	        this.text = text;
 	    }
 	    
-	    public String getShopname() {
-	        return shopname;
-	    }
-
-	    public void setShopname(String shopname) {
-	        this.shopname = shopname;
-	    }
 	    
 	    public String getImage() {
 	        return image;
@@ -122,14 +116,8 @@ import javax.persistence.Table;
 	        this.speed = speed;
 	    }
 	    
-	    public String getCategory() {
-	        return category;
-	    }
-
-	    public void setCategory(String category) {
-	        this.category = category;
-	    }
 	    
+
 	    
 	    public Date getNowDate() {
 	        return nowdate;
@@ -140,7 +128,6 @@ import javax.persistence.Table;
 	    }
 	    
 	    
-	    //アソシエーション設定
 	    public User getUser() {
 	        return user;
 	    }
@@ -149,6 +136,13 @@ import javax.persistence.Table;
 	        this.user = user;
 	    }
 	    
+	    public Store getStore() {
+	        return store;
+	    }
+
+	    public void setStore(Store store) {
+	        this.store = store;
+	    }
 	    
 	    public List<Comment> getComments() {
 	        return comments;
@@ -158,6 +152,25 @@ import javax.persistence.Table;
 	        this.comments = comments;
 	    }
 
+	    
+
+	    
+	   	public String getCategory() {
+			return category;
+		}
+
+		public void setCategory(String category) {
+			this.category = category;
+		}
+		
+//		public String getCategory2() {
+//			return category2;
+//		}
+//
+//		public void setCategory2(String category2) {
+//			this.category2 = category2;
+//		}
+//	    
 		
 
 }
