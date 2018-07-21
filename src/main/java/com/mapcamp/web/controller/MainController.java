@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,12 +48,25 @@ public class MainController {
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
 		List<Post> posts = postRepository.findAll();
 		List<Post> post_list = new ArrayList<Post>();
-		if (session_list.get(0) != null) {
+		if (session_list.size() > 0 && session_list.get(0) != null) {
 			for(Long l: session_list) {//session_listにはpostIdが入っている
 				post_list.add(postService.findOne(l));
 			}
 		}
-
+		
+		if(post_list.size() > 0) {
+		//List<Post> posts_first = new ArrayList<Post>();
+		for(Post a : post_list){
+		    for(Post b : posts){
+		        if(a.equals(b)){
+		            posts.remove(a);
+		            break;
+		        }
+		    }
+		}
+		//posts = posts_first;
+		}
+		//post_list.add(postService.findOne(2L));
 		mav.addObject("posts", posts);
 		mav.addObject("wannago_list", post_list);
 		
@@ -64,7 +78,9 @@ public class MainController {
 	@ModelAttribute("list")
 	public List<Long> setList(Long post_id){
 		if(session_list == null)session_list = new ArrayList<Long>();
+		if(post_id != null) {
 		session_list.add(post_id);
+		}
 		return session_list;
 	}
 
@@ -74,21 +90,35 @@ public class MainController {
 		return mav;
 	}
 
-
+	@RequestMapping(value = "/{post_id}/add", method = RequestMethod.POST)
+	@ResponseBody
+	public  ModelAndView sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
+		setList(post_id);
+		mav.setViewName("redirect:/");
+		//Post p = postService.findOne(post_id);
+		return mav;
+	}
 
 	@RestController
 	public class MainRestController{
 
 		@Autowired
 		private PostService postService;
-
-		@RequestMapping(value = "/{post_id}/add", method = RequestMethod.GET)
-		@ResponseBody
-		public  Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
-			setList(post_id);
-			mav.setViewName("index");
-			return postService.findOne(post_id);
-		}
+		
+//		@RequestMapping(value = "/{post_id}/add", method = RequestMethod.GET)
+//		@ResponseBody
+//		public  Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
+//			setList(post_id);
+//			Post p = postService.findOne(post_id);
+//			return p;
+//		}
+		
+//		@PostMapping(value = "/{post_id}/add")
+//		@ResponseBody
+//		public  Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
+//			setList(post_id);
+//			return postService.findOne(post_id);
+//		}
 		
 		
 		@RequestMapping(value = "/latlon", method = RequestMethod.POST)

@@ -19,10 +19,18 @@
 						<p>店名</p>
 					</div>
 					<th:block th:each="wannago_post : ${wannago_list}">
-						<div class="wannago_box" th:href="@{'/posts/' + ${post.id}}"
-							th:style="background-image: url(' + @{${wannago_post.image}} + ');'">
-							<p th:text="${wannago_post.storeName}">店名</p>
-							<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"></a>
+					<div class ="wannago_box"><a th:href="@{'/posts/' + ${wannago_post.id}}"> 
+					<img th:src="@{'/posts/' + ${wannago_post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+						</a>
+						
+						<a href="/posts/1" th:href="@{${wannago_post.store.url}}">  
+							<span th:text="${wannago_post.store.name}">店名</span>
+						 </a>
+						
+						
+							<a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}"></a>
+							
+							
 						</div>
 
 					</th:block>
