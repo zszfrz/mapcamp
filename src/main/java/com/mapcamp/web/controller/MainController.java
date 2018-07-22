@@ -55,7 +55,6 @@ public class MainController {
 		}
 		
 		if(post_list.size() > 0) {
-		//List<Post> posts_first = new ArrayList<Post>();
 		for(Post a : post_list){
 		    for(Post b : posts){
 		        if(a.equals(b)){
@@ -64,13 +63,9 @@ public class MainController {
 		        }
 		    }
 		}
-		//posts = posts_first;
 		}
-		//post_list.add(postService.findOne(2L));
 		mav.addObject("posts", posts);
 		mav.addObject("wannago_list", post_list);
-		
-//		mav.setViewName("index");
 		mav.setViewName("posts/main");
 		return mav;
 	}
@@ -83,6 +78,14 @@ public class MainController {
 		}
 		return session_list;
 	}
+	
+	public List<Long> deleteList(Long post_id){
+		if(post_id != null) {
+		session_list.remove(post_id);
+		}
+		return session_list;
+	}
+	
 
 	@RequestMapping(value = "/route", method = RequestMethod.GET)
 	public ModelAndView setRoute(ModelAndView mav) {
@@ -98,7 +101,50 @@ public class MainController {
 		//Post p = postService.findOne(post_id);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/{post_id}/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public  ModelAndView deleteList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
+		deleteList(post_id);
+		mav.setViewName("redirect:/");
+		//Post p = postService.findOne(post_id);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/{post_id}/up", method = RequestMethod.POST)
+	@ResponseBody
+	public  ModelAndView upList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
+			if(post_id != null) {
+				int index = session_list.indexOf(post_id);//指定されたPostのindex番号を特定
+				if(index != 0) {
+					Long id = session_list.get(index-1);//upしたいので1つ前のPostを一旦避難
+				session_list.set(index-1, post_id);//1つ前にコピー
+				session_list.set(index, id);//避難しておいたものをindexの場所に入れる
+				}
+			}
+		mav.setViewName("redirect:/");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/{post_id}/down", method = RequestMethod.POST)
+	@ResponseBody
+	public  ModelAndView downList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
+		if(post_id != null) {
+			int index = session_list.indexOf(post_id);//指定されたPostのindex番号を特定
+			if(!session_list.get(index).equals(session_list.get(session_list.size()-1))) {
+				Long id = session_list.get(index+1);//downしたいので1つ後のPostを一旦避難
+			session_list.set(index+1, post_id);//1つ前にコピー
+			session_list.set(index, id);//避難しておいたものをindexの場所に入れる
+			}
+		}
+		mav.setViewName("redirect:/");
+		return mav;
+	}
 
+	
+	
+	
+	
 	@RestController
 	public class MainRestController{
 
@@ -106,14 +152,6 @@ public class MainController {
 		private PostService postService;
 		
 //		@RequestMapping(value = "/{post_id}/add", method = RequestMethod.GET)
-//		@ResponseBody
-//		public  Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
-//			setList(post_id);
-//			Post p = postService.findOne(post_id);
-//			return p;
-//		}
-		
-//		@PostMapping(value = "/{post_id}/add")
 //		@ResponseBody
 //		public  Post sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
 //			setList(post_id);
