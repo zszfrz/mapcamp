@@ -51,9 +51,8 @@ public class UserServiceImpl implements UserService {
 		Files.createDirectories(path.getParent());
 		Files.copy(file.getInputStream(), path);
 		return fileName;
-
 	}
-
+	
 	// アップロード
 	// uploadProfileImageメソッドを呼び出しファイルをアップロード
 	// 返り値でファイル名を受け取りそのままUserエンティティのprofileImageにセット
@@ -66,6 +65,9 @@ public class UserServiceImpl implements UserService {
 		}
 		return user;
 	}
+	
+	
+	
 
 	// 画像ダウンロード
 	@Override

@@ -11,20 +11,9 @@
 
 <body>
 	<div layout:fragment="main">
-		<div class="contents row" th:object="${userForm}">
-
-			<div class="more">
-
-<!-- 				<th:block
-					th:if="${loginUser != null} ? ${user.id.equals(loginUser.id)}">
-					<li><a th:href="@{'/users/' + ${user.id} + '/edit'}">編集</a></li>
-					<li>
-						<form th:action="@{'/users/' + ${user.id} + '/delete'}"
-							method="user">
-							<input type="submit" value="削除" />
-						</form>
-					</li>
-				</th:block> -->
+	
+	<!-- <div class="icon"><img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" /></div> -->
+	<a class="post" href="/" th:text="${loginUser.name}">Guest</a>さんのMypage
 
 
 				<div class="label">

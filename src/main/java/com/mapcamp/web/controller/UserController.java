@@ -71,9 +71,7 @@ public class UserController {
 		
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
-
-		//userService.save(user, form.getFile());
-		 userService.save(user);
+		userService.save(user, form.getFile());
 		return "redirect:/";
 
 	}

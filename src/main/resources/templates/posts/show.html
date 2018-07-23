@@ -39,43 +39,20 @@
         <span>Speed</span>
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span></span>
        
-<<<<<<< HEAD
-<<<<<<< HEAD
 
  
        <span class="name">
-
-=======
-    
- 
-       <span class="name">
->>>>>>> 9592c9884e60f387dd1f19c6da809b8cb71efeb4
-=======
- 
-       <span class="name">
-
->>>>>>> 384d045feef416e67fa7f375cec3caae2829a926
        	<br><span>■投稿者</span><a th:href="@{`/user/` + ${user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
                 </a></br>
             </span>   
             
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 384d045feef416e67fa7f375cec3caae2829a926
 
+           ■StoreName
+           <span class="store" th:text="${post.store.name}"></span>
+           <!-- <p th:text="${post.store.name}"></p> -->
            ■Category
         <p th:text="*{category}"></p>   
 
-<<<<<<< HEAD
-=======
-           
-           <!-- <p th:text="${post.stores_store.name}"></p> -->
-           ■Category
-        <p th:text="*{category}"></p>   
->>>>>>> 9592c9884e60f387dd1f19c6da809b8cb71efeb4
-=======
->>>>>>> 384d045feef416e67fa7f375cec3caae2829a926
             
               ■投稿者コメント
         <p th:text="*{text}"></p>   

@@ -19,9 +19,12 @@
 			<div class="user_nav">
 				<th:block th:if="${loginUser != null}">
 
-					<!-- <div class="icon"
-						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
-					<!-- <a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック -->
+					 <!-- <div class="icon"
+						th:style="background-image: url(' + @{${loginUser.profileImage}} + ')"></div> -->
+					 <!-- <div class="icon">
+						<img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" /></div>
+		  -->
+					<a class="post" href="/" th:text="${loginUser.name}">Guest</a>
 					<a class="post" href="/posts/new">投稿する</a> //チェック
 					<form th:action="@{/logout}" method="post">
 						<input type="submit" value="ログアウト" />
@@ -39,7 +42,7 @@
 
 	<div class="content" layout:fragment="content"></div>
 
-		<div class="adv" layout:fragment="adv">
+	<!-- 	<div class="adv" layout:fragment="adv">
 		<p style="text-align: center">
 			<a href="https://r.gnavi.co.jp/6uj0v1uz0000/"> <img
 				src="http://uds.gnst.jp/rest/img/6uj0v1uz0000/s_0003.jpg?t=1427827068"
@@ -56,6 +59,6 @@
 
 
 	<div class="footer">Copyright mapcamp 2018.</div>
-
+ -->
 </body>
 </html>

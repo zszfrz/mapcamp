@@ -39,8 +39,8 @@ public class Store {
 		return id;
 	}
 
-	public void setStoreId(Long store_id) {
-		this.id = store_id;
+	public void setStoreId(Long id) {
+		this.id = id;
 	}
 
 	public Long getLat() {
