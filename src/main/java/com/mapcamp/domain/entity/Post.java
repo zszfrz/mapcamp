@@ -38,7 +38,6 @@ import javax.persistence.Table;
 		
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
-
 	    private String text;
 
 

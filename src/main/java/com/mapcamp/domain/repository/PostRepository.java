@@ -9,8 +9,8 @@ import com.mapcamp.domain.entity.Post;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-
 	
+	List<Post> findAllByOrderByNowdateDesc();
 
 //
 //	//検索ワード
