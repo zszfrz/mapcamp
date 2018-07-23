@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="index">
+	layout:decorator="content">
 
 <head>
 <meta charset="UTF-8" th:remove="all" />
@@ -11,52 +11,29 @@
 
 <body>
 	<div layout:fragment="main">
+	<div class="contents row" th:object="${user}">
+      <div class="content__post">
 	
 	<!-- <div class="icon"><img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" /></div> -->
-	<a class="post" href="/" th:text="${loginUser.name}">Guest</a>さんのMypage
+	<p class="post" th:text="${loginUser.name}">Guest</p>さんのMypage
 
 
-				<div class="label">
-					<label for="user_email">Email</label><br /> <input
-						th:field="${email}" autofocus="autofocus" type="email" value=""
-						name="email" id="user_email" />
-				</div>
+			<br>■Name</br>
+	        <p th:text="*{name}"></p>   
+			■Email
+	        <p th:text="*{email}"></p>   
+	        ■BirthDay
+	        <p th:text="*{birthday}"></p>   
+	        ■Sex
+	        <p th:text="*{sex}"></p>  
+	        
+	        		
 
-				<div class="label">
-					<label for="user_name">Name</label><br /> <input
-						th:field="${name}" type="text" name="name" id="user_name" />
-				</div>
-
-				<div class="field">
-					<input th:field="${file}" type="file" name="file" id="user_avatar" />
-				</div>
-
-				<div class="label">
-					<label for="user_password">Password</label> <br /> <input
-						th:field="${password}" autocomplete="off" type="password"
-						name="password" id="user_password" />
-				</div>
-
-				<div class="label">
-					<label for="birthday">Birthday</label><br /> <input
-						th:field="${birthday}" type="date" name="birthday" id="birthday" />
-				</div>
-
-				<div class="label">
-					<label for="sex">sex</label><br />
-					<div th:switch="${sex}">
-						<p th:case="1">女性</p>
-						<p th:case="2">男性</p>
-						<p th:case="*">未選択</p>
-					</div>
-				</div>
-
-				<div class="container"></div>
+</div>
+</div>
 
 
 			</div>
 
-		</div>
-	</div>
 </body>
 </html>
