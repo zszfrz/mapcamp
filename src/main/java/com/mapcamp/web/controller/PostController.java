@@ -82,6 +82,7 @@ public class PostController {
 	ModelAndView show(@PathVariable Long postId, ModelAndView mav) {
 		Post post = postService.findOne(postId);
 		mav.addObject("post", post);
+		mav.addObject("nowdate",post.getNowDate());
 		mav.setViewName("posts/show");
 		return mav;
 	}
