@@ -83,7 +83,7 @@ public class PostServiceImpl implements PostService{
     public Post save(Post post, Long userId, MultipartFile file) throws IOException {
         //post.setPost(postService.findOne(postId));
         post.setUser(userService.findOne(userId));
-        post = postRepository.save(post);
+        post = postService.save(post);
         if (!file.isEmpty()) {
             post.setImage(uploadPostImage(file, post.getId()));  // ②
         }

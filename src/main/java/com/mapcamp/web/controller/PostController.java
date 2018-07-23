@@ -31,12 +31,6 @@ public class PostController {
 	private PostService postService;
 	
 	
-	@ModelAttribute(name = "loginUser")
-    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
-        return loginUserDetails;
-    }
-	
-	
 	@GetMapping("/posts/new")
     public String newPost(PostForm form,
                             Model model) {

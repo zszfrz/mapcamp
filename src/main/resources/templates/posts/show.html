@@ -42,11 +42,14 @@
 
  
        <span class="name">
-       	<br><span>■投稿者</span><a th:href="@{`/user/` + ${user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
+       	<br><span>■投稿者</span><a th:href="@{`/user/` + ${post.user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
                 </a></br>
             </span>   
             
-           <!-- <p th:text="${post.stores_store.name}"></p> -->
+
+           ■StoreName
+           <span class="store" th:text="${post.stores.name}"></span>
+
            ■Category
         <p th:text="*{category}"></p>   
 
