@@ -28,9 +28,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private UserDetailsService userDetailsService;
-
 	 // マイページの表示 表示させたいページのidを取得して表示(※①)
 	 @GetMapping("/user/{id}")
 	 public String show(@PathVariable Long id, Model model) {

@@ -24,6 +24,7 @@ public interface PostService {
 	Post save(Post post,Long userId,MultipartFile file) throws IOException;
 	byte[] downloadImage(Long postId) throws IOException;
 	
+  
 	List<Post> findBycategoryLike(String param);
 	
 

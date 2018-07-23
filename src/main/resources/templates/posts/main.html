@@ -7,27 +7,6 @@
 
 <body>
 	<div layout:fragment="right">
-<!-- 検索フォーム -->
-	<form th:action="@{/posts/main}" method="post" name="search">
-		<!--  <tr>
-			<td>キーワード検索</td>
-			<td><input type="text" name="keyword_s" size="20"
-				th:value="*{value}" /></td>
-		</tr>-->
-		<tr>
-			<td>カテゴリー検索</td>
-			<td><input type="text" name="category_s" size="20"
-				value="" /></td>
-		</tr>
-		<!-- <tr>
-			<td>評価検索</td>
-			<td><input type="text" name="rate_s" size="20"
-				th:value="*{value}" /></td>
-		</tr>  -->
-		<tr>
-			<td><input type="submit" value="SEACH" /></td>
-		</tr>
-	</form>
 
 		<div class="main_post" th:each="post : ${posts}">
 			<div class="main_post2 clearfix" >

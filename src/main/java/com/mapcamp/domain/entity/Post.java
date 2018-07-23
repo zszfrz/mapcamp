@@ -21,26 +21,25 @@ import javax.persistence.Table;
 	public class Post{
 		
 		
-		@ManyToOne
-		@JoinColumn(updatable = false)
-		private User user;
+	@ManyToOne
+	@JoinColumn(updatable = false)
+	private User user;
 		
-		@ManyToOne
-	    private Store stores;
+	@OneToMany(mappedBy = "post")
+	private List<Comment> comments;
 		
-		@OneToMany(mappedBy = "post")
-	    private List<Comment> comments;
-		
+	@ManyToOne
+	private Store store;
 		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
 		
-		@Column(nullable = false)
-		private String shopname;
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
-	    private String text;;
+
+	    private String text;
+
 
 	    private String image;
 	    
@@ -58,8 +57,7 @@ import javax.persistence.Table;
 	    
 	    @Column(nullable = false)
 	    private String category;
-	    
-	    
+	  
 	    private Date nowdate;
 	    
 	    
@@ -76,14 +74,6 @@ import javax.persistence.Table;
 
 	    public void setText(String text) {
 	        this.text = text;
-	    }
-	    
-	    public String getShopname() {
-	        return shopname;
-	    }
-
-	    public void setShopname(String shopname) {
-	        this.shopname = shopname;
 	    }
 	    
 	    public String getImage() {
@@ -140,7 +130,6 @@ import javax.persistence.Table;
 	    }
 	    
 	    
-	    //アソシエーション設定
 	    public User getUser() {
 	        return user;
 	    }

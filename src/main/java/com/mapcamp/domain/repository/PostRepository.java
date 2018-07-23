@@ -12,6 +12,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
 	
 	List<Post> findBycategoryLike(String param);
+
 //
 //	//検索ワード
 //    List<Post> findAllByTitleLike(String keyword);

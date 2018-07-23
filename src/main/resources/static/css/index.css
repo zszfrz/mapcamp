@@ -8,7 +8,8 @@
 
 
 .left{
-	width: 300px;
+	width: 404px;
+	height:auto;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
@@ -18,7 +19,6 @@
 }
 
 .right{
-	
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
