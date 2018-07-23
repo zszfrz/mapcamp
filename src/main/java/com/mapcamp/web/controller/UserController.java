@@ -41,9 +41,6 @@ public class UserController {
 	 }
 	 
 	
-	 
-	 
-
     @GetMapping("/login")
     public String loginForm(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         if (loginUserDetails != null) {
@@ -85,7 +82,7 @@ public class UserController {
 
 	}
 	
-	@GetMapping("/users/{id}/profile-image.jpg")
+	@GetMapping("/user/{id}/profile-image.jpg")
 	@ResponseBody
 	public byte[] downloadProfileImage(@PathVariable Long id) throws IOException {
 	    return userService.downloadProfileImage(id);

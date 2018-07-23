@@ -176,7 +176,6 @@ table {
     border-collapse: collapse;
     border-spacing: 0
 }
-
 .thumbnail__caption p {
     line-height: 1.3;
 }
@@ -191,6 +190,7 @@ table {
 }
 
 
+
 * , * :before, * :after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -199,20 +199,13 @@ table {
 
 img, object, embed {
     max-width: 100%;
-    height: auto
+    height: 90%;
 }
 
 object, embed {
     height: 100%
 }
 
-.left {
-    float: left
-}
-
-.right {
-    float: right
-}
 
 .clearfix {
     * zoom: 1
@@ -472,7 +465,8 @@ h1, h2, h3, h4, h5, h6, body {
 
 a {
     text-decoration: none;
-    color: #666666
+    color: #666666;
+    font-size: 30px;
 }
 
 a:hover {
@@ -556,7 +550,42 @@ header.header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 5
+    z-index: 5;
+    height: 68px;
+	width: 100%;
+	display: table;
+}
+
+header h1{
+	
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 2em;
+    display: table-cell;
+}
+
+.user_nav{
+	display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+	margin-right: 2em;
+}
+
+.post{
+	text-align: right;
+	display: inline-block;
+	margin-right: 2em;
+}
+
+.icon{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	width: 50px;
+	background-color: #030303;
+	margin-right: 2em;
+	vertical-align: middle;
 }
 
 header.header div.header__bar.row {
@@ -655,35 +684,60 @@ header.header .user_nav ul li a {
     right: 0
 }
 
-div.contents.row h2 {
+.content{
+	position:relative;
+	width: 100%;
+	margin: 0 auto;
+	clear: both;
+}
+
+.wrapper{
+
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+div.main_post h2 {
     margin: 20px 0;
     padding: 0;
     font-weight: normal
 }
 
-div.contents.row h2 strong {
+div.main_post h2 strong {
     font-weight: bold;
     padding-right: 5px;
     font-size: 1.2em
 }
 
-div.contents.row .new_user {
+div.main_post.new_user {
     font-family: "游ゴシック", "YuGothic"
 }
 
-div.contents.row div.content__post {
-    margin: 20px 0;
-    padding: 30px;
+div.main_post{
+	float: left;
+	padding: 10px;
+	height: 300px;
+	width: 200px
+	
+}
+
+div.main_post div.main_post2 {
+    margin: 0 0;
+    padding: 0px;
     position: relative;
-    height: 400px;
+    height: 300px;
+    width: 200px;
     color: #fff;
     background-size: cover;
     background-position: center center;
     border-radius: 3px;
-    box-shadow: 0 0 10px rgba(41, 41, 41, 0.2)
+    box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+    /* float: left; */
 }
 
-div.contents.row div.content__post:after {
+div.main_post div.main_post2:after {
     content: '';
     position: absolute;
     top: 0;
@@ -701,22 +755,22 @@ div.contents.row div.content__post:after {
     border-radius: 3px
 }
 
-div.contents.row div.content__post .more {
+div.main_post div.main_post2 .more {
     position: absolute;
     cursor: pointer;
-    top: 20px;
-    right: 30px;
+    top: 7px;
+    right: 0px;
     z-index: 2;
     height: 100px;
     width: 80px;
     text-align: right
 }
 
-div.contents.row div.content__post .more:hover ul.more_list {
+div.main_post div.main_post2 .more:hover ul.more_list {
     display: block
 }
 
-div.contents.row div.content__post .more ul.more_list {
+div.main_post div.main_post2 .more ul.more_list {
     position: absolute;
     text-align: left;
     width: 80px;
@@ -729,60 +783,60 @@ div.contents.row div.content__post .more ul.more_list {
     border-radius: 3px
 }
 
-div.contents.row div.content__post .more ul.more_list li {
+div.main_post div.main_post2.more ul.more_list li {
     border-bottom: 1px solid #ddd
 }
 
-div.contents.row div.content__post .more ul.more_list li:last-child {
+div.main_post div.main_post2 .more ul.more_list li:last-child {
     border-bottom: 0
 }
 
-div.contents.row div.content__post .more ul.more_list li a {
+div.main_post div.main_post2 .more ul.more_list li a {
     display: block;
-    padding: 5px
+    padding: 5px;
+    font-size: 10px;
+    text-align: center;
 }
 
-div.contents.row div.content__post .more ul.more_list li a:hover {
+div.main_post div.main_post2 .more ul.more_list li a:hover {
     background-color: #57c3e9;
     color: #fff
 }
 
-div.contents.row div.content__post p {
-    position: absolute;
-    left: 30px;
-    right: 100px;
-    bottom: 30px;
-    margin: 0;
-    font-size: 20px;
+div.main_post div.main_post2 span.store {
+   position: absolute;
+    left: 2px;
+    bottom: 1px;
     z-index: 2;
-    font-weight: bold;
-    text-shadow: 0 0 2px #000, 0 0 1px #000, 0 0 1px #000
+    font-size: 13px;
+    color: black;
 }
 
-div.contents.row div.content__post span.name {
+div.main_post div.main_post2 span.name {
     position: absolute;
-    right: 30px;
-    bottom: 30px;
+    right: 5px;
+    bottom: 1px;
     z-index: 2;
-    font-size: 13px
+    font-size: 13px;
+    color: black;
 }
 
-div.contents.row div.content__post span.name a {
+div.main_post div.main_post2 span.name a {
     display: block;
     color: #aaa
 }
 
-div.contents.row div.content__post span.name a:hover {
+div.main_post div.main_post2 span.name a:hover {
     text-decoration: underline;
     color: #aaa
 }
 
-div.contents.row div.content__post span.name span {
+div.main_post div.main_post2 span.name span {
     font-size: 9px;
     display: block
 }
 
-div.contents.row form {
+div.main_post form {
     margin: 20px 0;
     padding: 30px;
     box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
@@ -790,7 +844,7 @@ div.contents.row form {
     box-sizing: border-box
 }
 
-div.contents.row form h3 {
+div.main_post form h3 {
     margin: 0 0 20px;
     text-align: center;
     font-weight: normal;
@@ -798,7 +852,7 @@ div.contents.row form h3 {
     color: #666666
 }
 
-div.contents.row form input, div.contents.row form textarea {
+div.main_post form input, div.main_post form textarea {
     width: 100%;
     margin: 5px 0 15px;
     padding: 10px;
@@ -807,7 +861,7 @@ div.contents.row form input, div.contents.row form textarea {
     font-family: "游ゴシック", "YuGothic"
 }
 
-div.contents.row form input[type="submit"] {
+div.main_post form input[type="submit"] {
     background-color: #57c3e9;
     border-radius: 20px;
     color: #fff;
@@ -815,11 +869,11 @@ div.contents.row form input[type="submit"] {
     font-size: 18px
 }
 
-div.contents.row form input[type="submit"]:hover {
+div.main_post form input[type="submit"]:hover {
     background-color: #84d3ef
 }
 
-div.contents.row .success {
+div.main_post .success {
     margin: 20px 0;
     padding: 30px;
     box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
@@ -828,7 +882,7 @@ div.contents.row .success {
     text-align: center
 }
 
-div.contents.row .success h3 {
+div.main_post .success h3 {
     margin: 10px auto
 }
 
@@ -885,12 +939,12 @@ footer p {
   text-align: center;
 }
 
-div.contents.row div.content__post .more ul.more_list li form {
+div.div.main_post div.main_post2 .more ul.more_list li form {
     margin: 0;
     padding: 0;
 }
 
-div.contents.row div.content__post .more ul.more_list li input[type=submit] {
+div.div.main_post div.main_post2 .more ul.more_list li input[type=submit] {
     display: block;
     margin: 0;
     padding: 0;
@@ -902,12 +956,12 @@ div.contents.row div.content__post .more ul.more_list li input[type=submit] {
     padding: 5px;
 }
 
-div.contents.row div.content__post .more ul.more_list li input[type=submit]:hover {
+div.div.main_post div.main_post2 .more ul.more_list li input[type=submit]:hover {
     background-color: #57c3e9;
 	color: #fff
 }
 
-div.contents.row div.content__post .more ul.more_list li input[type=submit] {
+div.div.main_post div.main_post2 .more ul.more_list li input[type=submit] {
     -webkit-transition-property: all;
 	-moz-transition-property: all;
 	-o-transition-property: all;
@@ -920,4 +974,3 @@ div.contents.row div.content__post .more ul.more_list li input[type=submit] {
 	-moz-transition-timing-function: linear;
 	-o-transition-timing-function: linear;
 	transition-timing-function: linear
-}

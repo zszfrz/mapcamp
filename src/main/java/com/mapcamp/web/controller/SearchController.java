@@ -34,7 +34,7 @@ public class SearchController {
 //	}
 
 	// テンプレートから値を取得し検索
-	@RequestMapping(value = "/posts/main", method = RequestMethod.POST)
+	@RequestMapping(value = "/searchform", method = RequestMethod.POST)
 	public ModelAndView search(@RequestParam(defaultValue = "") String Param, ModelAndView mav) {
 
 		if (Param == "") {
