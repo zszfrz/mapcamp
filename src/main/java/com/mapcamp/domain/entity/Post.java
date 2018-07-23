@@ -31,11 +31,13 @@ import javax.persistence.Table;
 		
 		@OneToMany(mappedBy = "post")
 	    private List<Comment> comments;
+
 		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
 		
+
 
 		@Column(nullable = false, columnDefinition = "TEXT")
 	    private String text;
@@ -58,11 +60,8 @@ import javax.persistence.Table;
 	    @Column(nullable = false)
 	    private String category;
 	  
-	    
 
-	    
 	    private Date nowdate;
-
 	    
 	    
 	    public Long getId() {
@@ -81,7 +80,6 @@ import javax.persistence.Table;
 	    }
 	    
 
-	    
 	    public String getImage() {
 	        return image;
 	    }

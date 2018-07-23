@@ -107,6 +107,7 @@ public class PostServiceImpl implements PostService{
     public List<Post> findBycategoryLike(String param) {
         return postService.findBycategoryLike("%" + param + "%");
     }
+
     
 //    //引数：storeIdでDBからStoreを取り出し、Postにセット
 //    @Override

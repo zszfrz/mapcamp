@@ -35,9 +35,6 @@ public class MainController {
 
 	@Autowired
 	private PostRepository postRepository;
-
-	
-
 	
 	@Autowired
 	private PostService postService;
