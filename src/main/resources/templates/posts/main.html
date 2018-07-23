@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="UTF-8" th:remove="all" />
+    <script type="text/javascript" src="/js/box.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,13 @@
          				 <span>■</span>
            					 <ul class="more_list">
            				 		<li>
-            						<a th:href="@{'/post/' + ${post.id}}">To BOX</a>
+           				 		<form
+                                th:action="@{'/' + ${post.id} + '/add'}"
+                                method="post">
+                                <input type="submit" value="ToBox" />
+                                </form>
+   								  <!-- <input type="button" value = "a" onClick="sendList(post.id)" /> -->
+            						<!-- <a href="@{'/' + ${post_id} + '/add'}">To BOX</a> -->
             					</li>
            					</ul>
            			</div> 

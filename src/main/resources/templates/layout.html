@@ -21,7 +21,7 @@
 						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
 					<!-- <a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック -->
 					<a class="post" href="/posts/new">投稿する</a> //チェック
-					<form th:action="@{/user/logout}" method="post">
+					<form th:action="@{/logout}" method="post">
 						<input type="submit" value="ログアウト" />
 					</form>
 				</th:block>
@@ -36,7 +36,7 @@
 	
 	<div class="content" layout:fragment="content"></div>
 
-	<div class="adv" layout:fragment="adv">
+		<div class="adv" layout:fragment="adv">
 		<p style="text-align: center">
 		    <a href="https://r.gnavi.co.jp/6uj0v1uz0000/">
                 <img src="http://uds.gnst.jp/rest/img/6uj0v1uz0000/s_0003.jpg?t=1427827068" height="80" width="33%"  />
@@ -53,7 +53,6 @@
 	<div class="footer">
         Copyright mapcamp 2018.
     </div>
-	
 	</body>
 	</html>
 	
