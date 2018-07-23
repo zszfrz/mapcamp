@@ -1,69 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout:decorator=">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="index">
+
 <head>
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="/css/posts/post_setting.css" />
-<link rel="stylesheet" href="/css/posts/post_style.css" />
-<title>Index Page</title>
+    <meta charset="UTF-8" th:remove="all" />
 </head>
+
 <body>
-	<header class="header">
-		<div class="header__bar row">
-			<h1 class="grid-6">
-				<a href="/">Mapcamp</a>
-			</h1>
-			<div class="grid-6 user_nav">
-				<a class="post" href="/posts/new">投稿する</a>
-			</div>
-		</div>
-	</header>
-
-<!--  	<form action="login" method="post">
-		<div>
-			<input type="submit" value="ログイン">
-		</div>
-	</form> -->
-
+	<div layout:fragment="right">
 <!-- 検索フォーム -->
-	<form th:action="@{/search}" method="get" name="search">
+	<form th:action="@{/posts/main}" method="post" name="search">
 		<!--  <tr>
 			<td>キーワード検索</td>
 			<td><input type="text" name="keyword_s" size="20"
-				th:value="${value}" /></td>
+				th:value="*{value}" /></td>
 		</tr>-->
 		<tr>
 			<td>カテゴリー検索</td>
 			<td><input type="text" name="category_s" size="20"
-				th:value="${value}" /></td>
+				value="" /></td>
 		</tr>
 		<!-- <tr>
 			<td>評価検索</td>
 			<td><input type="text" name="rate_s" size="20"
-				th:value="${value}" /></td>
+				th:value="*{value}" /></td>
 		</tr>  -->
 		<tr>
 			<td><input type="submit" value="SEACH" /></td>
 		</tr>
 	</form>
 
-	<div layout:frament="right">
-		<div class="contents clearfix">
-			<div class="contents row " th:each="post : ${posts}">
-				<!-- 拡張for文 -->
-				<div class="content__post"
-					th:style="'background-image: url(' + @{${post.image}} + ');'">
-					<p th:text="${post.shopname}"></p>
-					<span class="name" th:text="${post.user.name}"></span>
-				</div>
-			</div>
+		<div class="main_post" th:each="post : ${posts}">
+			<div class="main_post2 clearfix" >
+				<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"> 
+					<img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+				</a> 
+			 <!-- <th:block th:if="${login_user != null} ? ${login_user.id.equals(post.user.id)}">  --> 
+
+				 	<div class="more">
+         				 <span>■</span>
+           					 <ul class="more_list">
+           				 		<li>
+            						<a th:href="@{'/post/' + ${post.id}}">To BOX</a>
+            					</li>
+           					</ul>
+           			</div> 
+
+         	<!--  </th:block> -->
+        <!-- <p th:text="${post.shopname}"></p> -->
+         <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}">  
+			<span class="name" th:text="${post.user.name}"></span>
+		 </a>
 		</div>
-	</div>
-
-
-
-	<!-- <footer>
-        <p>Copyright Mapcamp 2017.</p>
-    </footer>  -->
+   	</div>
+   </div>
 </body>
 </html>
