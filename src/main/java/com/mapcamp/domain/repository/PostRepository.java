@@ -11,6 +11,7 @@ import com.mapcamp.domain.entity.Post;
 public interface PostRepository extends JpaRepository<Post, Long> {
 
 	
+	List<Post> findBycategoryLike(String param);
 
 //
 //	//検索ワード

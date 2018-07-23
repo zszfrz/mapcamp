@@ -37,6 +37,15 @@ public class MainController {
 	
 	@Autowired
 	private PostService postService;
+//	@Autowired
+  //  private UserRepository userRepository;
+	
+//	@Autowired
+	  //  private PostRepository postRepository;
+	
+	
+	@Autowired
+	private PostService postService;
 
 	@ModelAttribute(name = "loginUser")
     private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
@@ -57,6 +66,7 @@ public class MainController {
 		mav.addObject("wannago_list", post_list);
 		
 //		mav.setViewName("index");
+
 		mav.setViewName("posts/main");
 		return mav;
 	}

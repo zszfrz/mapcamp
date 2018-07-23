@@ -25,7 +25,6 @@ import javax.persistence.Table;
 	@JoinColumn(updatable = false)
 	private User user;
 		
-
 	@OneToMany(mappedBy = "post")
 	private List<Comment> comments;
 		
@@ -59,9 +58,7 @@ import javax.persistence.Table;
 	    @Column(nullable = false)
 	    private String category;
 	  
-	    
 	    private Date nowdate;
-
 	    
 	    
 	    public Long getId() {
@@ -78,7 +75,6 @@ import javax.persistence.Table;
 	    public void setText(String text) {
 	        this.text = text;
 	    }
-	    
 	    
 	    public String getImage() {
 	        return image;
@@ -116,8 +112,14 @@ import javax.persistence.Table;
 	        this.speed = speed;
 	    }
 	    
-	    
+	    public String getCategory() {
+	        return category;
+	    }
 
+	    public void setCategory(String category) {
+	        this.category = category;
+	    }
+	    
 	    
 	    public Date getNowDate() {
 	        return nowdate;
@@ -136,13 +138,6 @@ import javax.persistence.Table;
 	        this.user = user;
 	    }
 	    
-	    public Store getStore() {
-	        return store;
-	    }
-
-	    public void setStore(Store store) {
-	        this.store = store;
-	    }
 	    
 	    public List<Comment> getComments() {
 	        return comments;
@@ -152,25 +147,6 @@ import javax.persistence.Table;
 	        this.comments = comments;
 	    }
 
-	    
-
-	    
-	   	public String getCategory() {
-			return category;
-		}
-
-		public void setCategory(String category) {
-			this.category = category;
-		}
-		
-//		public String getCategory2() {
-//			return category2;
-//		}
-//
-//		public void setCategory2(String category2) {
-//			this.category2 = category2;
-//		}
-//	    
 		
 
 }

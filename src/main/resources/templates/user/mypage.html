@@ -1,55 +1,73 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<!-- xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout" -->
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
 
 <head>
-	<meta charset="UTF-8" th:remove="all" />
-	<title>My Page</title>
-	<link rel="stylesheet" type="text/css" href="../css/mypage.css" />
+<meta charset="UTF-8" th:remove="all" />
+<title>My Page</title>
+<!-- <link rel="stylesheet" type="text/css" href="../css/mypage.css" /> -->
 </head>
 
-<body class="yj950-2">
+<body>
+	<div layout:fragment="main">
+		<div class="contents row" th:object="${userForm}">
 
-	<div class="bgcolor-white pt1em pb1em" id="contents"
-		layout:fragment="content">
-		<div id="main_cnt_wrapper">
-			<div id="yjContentsBody">
-				<div class="yjContainer">
-					<div class="form_box">
-						<h2>My Page</h2>
-						<form class="new_user" id="new_user" th:action="@{'/login'}"
-							action="/login" accept-charset="UTF-8" method="post">
+			<div class="more">
 
-							<div th:if="${param.error}" id="error_explanation">
-								<h2 th:text="'Email or password is not correct.'">error</h2>
-							</div>
-
-							<div>
-								<input autofocus="autofocus" placeholder="メールアドレスを入力"
-									type="email" value="" name="email" id="user_email" />
-							</div>
-
-							<div>
-								<input autocomplete="off" placeholder="パスワードを入力" type="password"
-									name="password" id="user_password" />
-							</div>
-
-							<div class="submit">
-								<div class="action">
-									<input type="submit" name="commit" value="Sign in" />
-								</div>
-							</div>
-
-							<!-- <strong>Forgotten your password?</strong> -->
-
+<!-- 				<th:block
+					th:if="${loginUser != null} ? ${user.id.equals(loginUser.id)}">
+					<li><a th:href="@{'/users/' + ${user.id} + '/edit'}">編集</a></li>
+					<li>
+						<form th:action="@{'/users/' + ${user.id} + '/delete'}"
+							method="user">
+							<input type="submit" value="削除" />
 						</form>
+					</li>
+				</th:block> -->
+
+
+				<div class="label">
+					<label for="user_email">Email</label><br /> <input
+						th:field="${email}" autofocus="autofocus" type="email" value=""
+						name="email" id="user_email" />
+				</div>
+
+				<div class="label">
+					<label for="user_name">Name</label><br /> <input
+						th:field="${name}" type="text" name="name" id="user_name" />
+				</div>
+
+				<div class="field">
+					<input th:field="${file}" type="file" name="file" id="user_avatar" />
+				</div>
+
+				<div class="label">
+					<label for="user_password">Password</label> <br /> <input
+						th:field="${password}" autocomplete="off" type="password"
+						name="password" id="user_password" />
+				</div>
+
+				<div class="label">
+					<label for="birthday">Birthday</label><br /> <input
+						th:field="${birthday}" type="date" name="birthday" id="birthday" />
+				</div>
+
+				<div class="label">
+					<label for="sex">sex</label><br />
+					<div th:switch="${sex}">
+						<p th:case="1">女性</p>
+						<p th:case="2">男性</p>
+						<p th:case="*">未選択</p>
 					</div>
 				</div>
+
+				<div class="container"></div>
+
+
 			</div>
+
 		</div>
 	</div>
-
 </body>
-
 </html>

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="index">
 
-
 <head>
     <meta charset="UTF-8" th:remove="all" />
 </head>
 
 <body>
 	<div layout:fragment="right">
+
 		<div class="main_post" th:each="post : ${posts}">
 			<div class="main_post2 clearfix" >
 				<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"> 

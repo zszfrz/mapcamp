@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout" -->
+
+<head>
+	<meta charset="UTF-8" th:remove="all" />
+	<title>My Page</title>
+	<link rel="stylesheet" type="text/css" href="../css/mypage.css" />
+</head>
+
+<body class="yj950-2">
+
+	<div class="bgcolor-white pt1em pb1em" id="contents"
+		layout:fragment="content">
+		<div id="main_cnt_wrapper">
+			<div id="yjContentsBody">
+				<div class="yjContainer">
+					<div class="form_box">
+						<h2>My Page</h2>
+						<form class="new_user" id="new_user" th:action="@{'/login'}"
+							action="/login" accept-charset="UTF-8" method="post">
+
+							<div th:if="${param.error}" id="error_explanation">
+								<h2 th:text="'Email or password is not correct.'">error</h2>
+							</div>
+
+							<div>
+								<input autofocus="autofocus" placeholder="メールアドレスを入力"
+									type="email" value="" name="email" id="user_email" />
+							</div>
+
+							<div>
+								<input autocomplete="off" placeholder="パスワードを入力" type="password"
+									name="password" id="user_password" />
+							</div>
+
+							<div class="submit">
+								<div class="action">
+									<input type="submit" name="commit" value="Sign in" />
+								</div>
+							</div>
+
+							<!-- <strong>Forgotten your password?</strong> -->
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
