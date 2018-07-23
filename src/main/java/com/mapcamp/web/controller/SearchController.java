@@ -40,6 +40,7 @@ public class SearchController {
 		if (Param == "") {
 			mav.setViewName("/posts/main");
 		} else {
+			
 			System.out.println("param" + Param);
 			mav.addObject("value", Param);
 			List<Post> searchShows = postService.findBycategoryLike(Param);

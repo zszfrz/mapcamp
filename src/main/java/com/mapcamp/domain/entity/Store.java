@@ -39,6 +39,7 @@ public class Store {
 		return id;
 	}
 
+
 	public void setStoreId(Long id) {
 		this.id = id;
 	}
@@ -97,7 +98,7 @@ public class Store {
 	}
 	
 	public void setPosts(List<Post> posts) {
-		this.posts=posts;
+		this.posts = posts;
 	}
 
 }
