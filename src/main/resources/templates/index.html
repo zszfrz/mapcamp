@@ -47,7 +47,7 @@
 					<img th:src="@{'/posts/' + ${wannago_post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
 						</a>
 						
-						<a href="/posts/1" th:href="@{${wannago_post.stores.url}}">  
+						<a href="/posts/1" th:href="@{${wannago_post.stores.url}}" target="_blank"> 
 							<span th:text="${wannago_post.stores.name}">店名</span>
 						 </a>
 						
