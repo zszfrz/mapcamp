@@ -37,29 +37,23 @@
 				<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"> 
 					<img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
 				</a> 
-			 <!-- <th:block th:if="${login_user != null} ? ${login_user.id.equals(post.user.id)}">  --> 
+			 <!-- <th:block th:if="${login_user != null} ? ${login_user.id.equals(loginUser.userId)}"> -->
 
 				 	<div class="more">
          				 <span>■</span>
            					 <ul class="more_list">
            				 		<li>
-<<<<<<< HEAD
            				 		<form
                                 th:action="@{'/' + ${post.id} + '/add'}"
                                 method="post">
                                 <input type="submit" value="ToBox" />
                                 </form>
-   								  <!-- <input type="button" value = "a" onClick="sendList(post.id)" /> -->
-            						<!-- <a href="@{'/' + ${post_id} + '/add'}">To BOX</a> -->
-=======
-            						<a th:href="@{'/post/' + ${post.id}}">To BOX</a>
->>>>>>> 9592c9884e60f387dd1f19c6da809b8cb71efeb4
             					</li>
            					</ul>
            			</div> 
-
-         	<!--  </th:block> -->
-        <!-- <p th:text="${post.shopname}"></p> -->
+				<!-- </th:block> -->
+        
+        
          <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}">  
 			<span class="name" th:text="${post.user.name}"></span>
 		 </a>

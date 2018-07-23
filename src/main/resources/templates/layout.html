@@ -19,8 +19,8 @@
 			<div class="user_nav">
 				<th:block th:if="${loginUser != null}">
 
-					<div class="icon"
-						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div>
+					<!-- <div class="icon"
+						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
 					<!-- <a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック -->
 					<a class="post" href="/posts/new">投稿する</a> //チェック
 					<form th:action="@{/logout}" method="post">
@@ -54,16 +54,8 @@
 		</p>
 	</div>
 
-<<<<<<< HEAD
-	<div class="footer">
-        Copyright mapcamp 2018.
-    </div>
-	</body>
-	</html>
-	
-=======
+
 	<div class="footer">Copyright mapcamp 2018.</div>
 
 </body>
 </html>
->>>>>>> 9592c9884e60f387dd1f19c6da809b8cb71efeb4
