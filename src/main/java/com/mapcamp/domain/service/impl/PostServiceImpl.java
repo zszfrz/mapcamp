@@ -37,10 +37,18 @@ public class PostServiceImpl implements PostService{
 	@Autowired
     private UserService userService;
 
-//    @Override
-//    public Post save(Post post){
-//        return postRepository.save(post);
-//    }
+    @Override
+    public Post save(Post post){
+        return postRepository.save(post);
+    }
+    
+    @Override
+    public Post delete(Post post){
+        return postRepository.save(post);
+    } 
+    
+    
+    
 	
     @Override
     public Post findOneOrNew(String shopname){
@@ -91,6 +99,7 @@ public class PostServiceImpl implements PostService{
         Path path = Paths.get("upload", "posts", post.getId().toString(), post.getImage());  // ②
         return Files.readAllBytes(path);  // ③
     }
+    
     
     
 //    //検索部分の処理
