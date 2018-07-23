@@ -10,8 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class PostForm {
 	
-	@NotBlank
-	private String shopname;
+	
 
 	private MultipartFile file;
 	
@@ -46,12 +45,7 @@ public class PostForm {
 	
 
 	
-	public String getShopname() {
-		  return shopname;
-	}
-	public void setShopname(String shopname) {
-		  this.shopname = shopname;
-	}
+	
 	
 	public MultipartFile getFile() {
 	    return file;

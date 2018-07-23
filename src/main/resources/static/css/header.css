@@ -3,7 +3,7 @@ html, body{
 }
 
 .header{
-	height: 100px;
+	height: 68px;
 	width: 100%;
 	border-bottom: 2px solid #d8d8d8;
 	background-color: #ffffff;
@@ -27,7 +27,7 @@ html, body{
 }
 
 .footer{
-	position:relative;
+	position:fixed;
 	bottom: 0;
 	height: 100px;
 	width: 100%;

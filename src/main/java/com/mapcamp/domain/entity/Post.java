@@ -44,7 +44,7 @@ import javax.persistence.Table;
 		
 		
 		@Column(nullable = false, columnDefinition = "TEXT")
-	    private String comment;
+	    private String text;
 
 	    private String image;
 	    
@@ -75,12 +75,12 @@ import javax.persistence.Table;
 	        this.id = id;
 	    }
 	    
-	    public String getComment() {
-	        return comment;
+	    public String getText() {
+	        return text;
 	    }
 
-	    public void setComment(String comment) {
-	        this.comment = comment;
+	    public void setText(String text) {
+	        this.text = text;
 	    }
 	    
 //	    public String getShopname() {
