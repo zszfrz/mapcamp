@@ -47,7 +47,7 @@ public class MainController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
-		List<Post> posts = postRepository.findAll();
+		List<Post> posts = postRepository.findAllByOrderByNowdateDesc();
 		List<Post> post_list = new ArrayList<Post>();
 
 		if (session_list.size() > 0 && session_list.get(0) != null) {

@@ -43,8 +43,6 @@ public class PostForm {
 	@Column(nullable = false)
     private String category;
 	
-
-	
 	public MultipartFile getFile() {
 	    return file;
 	}
