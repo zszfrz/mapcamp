@@ -40,7 +40,7 @@ public class Store {
 	}
 
 	public void setStoreId(Long store_id) {
-		this.id = store_id;
+		this.id = id;
 	}
 
 	public Long getLat() {
