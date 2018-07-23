@@ -23,6 +23,7 @@ import com.mapcamp.domain.entity.User;
 import com.mapcamp.domain.repository.UserRepository;
 import com.mapcamp.domain.service.UserService;
 import com.mapcamp.security.LoginUserDetails;
+import com.mapcamp.web.form.PostForm;
 import com.mapcamp.web.form.UserForm;
 
 @Controller
@@ -90,4 +91,22 @@ public class UserController {
 	    return userService.downloadProfileImage(id);
 	}
 	
+	@GetMapping("/user/{userId}/edit")
+	public String editUser(@PathVariable Long userId, UserForm form, Model model) {
+		User user = userService.findOne(userId);
+		model.addAttribute("user", user);
+		return "user/edit";
+	}
+
+	@PostMapping(value = "/user/{userId}/edit")
+	public String updateUser(@Validated UserForm form, @PathVariable Long userId, BindingResult result, Model model,
+			User editUser, @AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException {
+		User user = userService.findOne(userId);
+		if (!user.getId().equals(loginUserDetails.getUserId())) {
+			return "redirect:/user/" + userId + "/edit";
+		}
+		BeanUtils.copyProperties(form, user);
+		userService.save(user);
+		return "user/update";
+	}
 }
