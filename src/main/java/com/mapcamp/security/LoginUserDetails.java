@@ -8,7 +8,7 @@ public class LoginUserDetails extends org.springframework.security.core.userdeta
 
     private Long userId;
 
-    //(※①)
+    //うまくいってないs
     public LoginUserDetails(User user) {
         super(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("ROLE_USER"));
         this.userId = user.getId();

@@ -30,6 +30,7 @@ public interface PostService {
 	byte[] downloadImage(Long postId) throws IOException;
 	
 
+	List<Post> findBycategoryLike(String param);
 	
 
 }

@@ -12,9 +12,4 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 	
 	List<Post> findAllByOrderByNowdateDesc();
 
-//
-//	//検索ワード
-//    List<Post> findAllByTitleLike(String keyword);
-//	
-//    List<Post> findAll();
 }
