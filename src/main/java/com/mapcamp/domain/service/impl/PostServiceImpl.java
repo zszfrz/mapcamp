@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,13 +72,18 @@ public class PostServiceImpl implements PostService{
     public Post findByShopname(String shopname){
         return postService.findByShopname(shopname);
     }
+    
+//    @Override 
+//    public List<Post> findAllByOrderByNowdateDesc(){
+//    	return postService.findAllByOrderByNowdateDesc();
+//    }
 
     //userIdでDBからUser情報を取り出し、postにセット ,Long postId
     @Override
     public Post save(Post post, Long userId, MultipartFile file) throws IOException {
         //post.setPost(postService.findOne(postId));
         post.setUser(userService.findOne(userId));
-        post = postRepository.save(post);
+        post = postService.save(post);
         if (!file.isEmpty()) {
             post.setImage(uploadPostImage(file, post.getId()));  // ②
         }
@@ -101,12 +107,13 @@ public class PostServiceImpl implements PostService{
     }
     
     
-    
-//    //検索部分の処理
-//    @Override
-//    public List<Post> findAllByTitleLike(String keyword) {
-//        return postRepository.findAllByTitleLike("%" + keyword + "%");
-//    }
+
+    //検索部分の処理
+    @Override
+    public List<Post> findBycategoryLike(String param) {
+        return postService.findBycategoryLike("%" + param + "%");
+    }
+
     
 //    //引数：storeIdでDBからStoreを取り出し、Postにセット
 //    @Override

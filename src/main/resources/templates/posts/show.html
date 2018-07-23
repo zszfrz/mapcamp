@@ -5,7 +5,7 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
 <link rel="stylesheet" href="/css/registration.css" />
-<link rel="stylesheet" href="/css/posts/post_style.css" />
+<link rel="stylesheet" href="/css/posts/post__main_style.css" />
 <title>Show Page</title>
 </head>
 <body>
@@ -13,10 +13,11 @@
     <div class="contents row" th:object="${post}">
       <div class="content__post">
         <img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+		<th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.userId)}">
 		<div class="more">
                 <span>■</span>
                 <ul class="more_list">
-                     <th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.userId)}">
+                     
                         <li><a
                             th:href="@{'/posts/' + ${post.id} + '/edit'}">編集</a></li>
                         <li>
@@ -26,10 +27,13 @@
                                 <input type="submit" value="削除" />
                             </form>
                         </li>
-                    </th:block>
                 </ul>
             </div>
+               </th:block>
           </div>    
+          ■投稿時間
+       <p th:text="${#dates.format(nowdate, 'yyyy/MM/dd HH:mm:ss')}"></p>
+ 
         <span>Yummy</span>
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.yummy * 10}" class="star-actived"></i></span></span>
         <span>Clean</span>
@@ -40,13 +44,17 @@
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span></span>
        
 
+ 		
  
        <span class="name">
-
-       	<br><span>■投稿者</span><a th:href="@{`/user/` + ${user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
+       	<br><span>■投稿者</span><a th:href="@{`/user/` + ${post.user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
                 </a></br>
             </span>   
             
+
+           ■StoreName
+           <a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
+           <span class="store" th:text="${post.stores.name}"></span></a>
 
            ■Category
         <p th:text="*{category}"></p>   

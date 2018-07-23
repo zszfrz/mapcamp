@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
-<link rel="stylesheet" href="/css/posts/post_style.css" />
-<title>New Post Page</title>
+<link rel="stylesheet" href="/css/posts/post_main_style.css" />
+<title>Post Edit Page</title>
 </head>
 <body>
     <div layout:fragment="main"> 
@@ -13,11 +13,6 @@
             <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
              <h3>編集する</h3>
 
-            <!-- <div style="margin: 8px 0">
-                    <label style="margin-right: 8px">Shopname</label>
-                    <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
-                    <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
-                </div>  -->
 				<div style="margin: 8px 0" class="search-control">
 					<input type="search" id="site-search" name="q"
 						placeholder="Please input shopname..."
@@ -53,6 +48,7 @@
 									
 								</div>
                 
+
                         
                         <div class="field">
                 <label style="margin-right: 8px">■Picture</label>

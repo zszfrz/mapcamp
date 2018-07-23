@@ -5,7 +5,7 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
 <link rel="stylesheet" href="/css/registration.css" />
-<link rel="stylesheet" href="/css/posts/post_style.css" />
+<link rel="stylesheet" href="/css/posts/post_main_style.css" />
 <title>New Post Page</title>
 </head>
 <body>
@@ -14,11 +14,6 @@
         <div class="container">
             <form th:action="@{/posts/new}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
 
-            <!-- <div style="margin: 8px 0">
-                    <label style="margin-right: 8px">Shopname</label>
-                    <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
-                    <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
-                </div> -->
 
 				<!-- <form role="search"> -->
 					<div style="margin: 8px 0" class="search-control">
@@ -28,7 +23,8 @@
 						<button>Search</button>
 					</div>
 				<!-- </form> -->
-			
+
+
 				<div class = "category">
 					<label for="category">■Category</label>
 								<label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"

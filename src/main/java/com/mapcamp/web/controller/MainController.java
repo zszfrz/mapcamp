@@ -39,15 +39,13 @@ public class MainController {
 	@Autowired
 	private PostService postService;
 
-	@ModelAttribute(name = "loginUser")
-    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
-        return loginUserDetails;
-    }	
+
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
-		List<Post> posts = postRepository.findAll();
+		List<Post> posts = postRepository.findAllByOrderByNowdateDesc();
 		List<Post> post_list = new ArrayList<Post>();
+
 		if (session_list.size() > 0 && session_list.get(0) != null) {
 			for(Long l: session_list) {//session_listにはpostIdが入っている
 				post_list.add(postService.findOne(l));
@@ -100,7 +98,6 @@ public class MainController {
 	public  ModelAndView sendList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
 		setList(post_id);
 		mav.setViewName("redirect:/");
-		//Post p = postService.findOne(post_id);
 		return mav;
 	}
 	
@@ -109,7 +106,6 @@ public class MainController {
 	public  ModelAndView deleteList(@PathVariable("post_id") Long post_id, ModelAndView mav) {
 		deleteList(post_id);
 		mav.setViewName("redirect:/");
-		//Post p = postService.findOne(post_id);
 		return mav;
 	}
 	
