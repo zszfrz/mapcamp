@@ -26,19 +26,18 @@ import javax.persistence.Table;
 	private User user;
 		
 
-	@OneToMany(mappedBy = "post")
-	private List<Comment> comments;
+		@ManyToOne
+	    private Store stores;
 		
-	@ManyToOne
-	private Store store;
+		@OneToMany(mappedBy = "post")
+	    private List<Comment> comments;
 		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
 		
-		
-		@Column(nullable = false, columnDefinition = "TEXT")
 
+		@Column(nullable = false, columnDefinition = "TEXT")
 	    private String text;
 
 
@@ -60,6 +59,8 @@ import javax.persistence.Table;
 	    private String category;
 	  
 	    
+
+	    
 	    private Date nowdate;
 
 	    
@@ -79,6 +80,7 @@ import javax.persistence.Table;
 	        this.text = text;
 	    }
 	    
+
 	    
 	    public String getImage() {
 	        return image;
@@ -116,8 +118,14 @@ import javax.persistence.Table;
 	        this.speed = speed;
 	    }
 	    
-	    
+	    public String getCategory() {
+	        return category;
+	    }
 
+	    public void setCategory(String category) {
+	        this.category = category;
+	    }
+	    
 	    
 	    public Date getNowDate() {
 	        return nowdate;
@@ -128,6 +136,7 @@ import javax.persistence.Table;
 	    }
 	    
 	    
+
 	    public User getUser() {
 	        return user;
 	    }
@@ -136,13 +145,6 @@ import javax.persistence.Table;
 	        this.user = user;
 	    }
 	    
-	    public Store getStore() {
-	        return store;
-	    }
-
-	    public void setStore(Store store) {
-	        this.store = store;
-	    }
 	    
 	    public List<Comment> getComments() {
 	        return comments;
@@ -152,25 +154,6 @@ import javax.persistence.Table;
 	        this.comments = comments;
 	    }
 
-	    
-
-	    
-	   	public String getCategory() {
-			return category;
-		}
-
-		public void setCategory(String category) {
-			this.category = category;
-		}
-		
-//		public String getCategory2() {
-//			return category2;
-//		}
-//
-//		public void setCategory2(String category2) {
-//			this.category2 = category2;
-//		}
-//	    
 		
 
 }

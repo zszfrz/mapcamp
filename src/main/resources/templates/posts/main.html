@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="index">
 
+<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8" th:remove="all" />
     <script type="text/javascript" src="/js/box.js"></script>
+=======
+<head>
+    <meta charset="UTF-8" th:remove="all" />
+>>>>>>> 9592c9884e60f387dd1f19c6da809b8cb71efeb4
 </head>
 
 <body>
 	<div layout:fragment="right">
+<<<<<<< HEAD
+=======
+<!-- 検索フォーム -->
+	<form th:action="@{/posts/main}" method="post" name="search">
+		<!--  <tr>
+			<td>キーワード検索</td>
+			<td><input type="text" name="keyword_s" size="20"
+				th:value="*{value}" /></td>
+		</tr>-->
+		<tr>
+			<td>カテゴリー検索</td>
+			<td><input type="text" name="category_s" size="20"
+				value="" /></td>
+		</tr>
+		<!-- <tr>
+			<td>評価検索</td>
+			<td><input type="text" name="rate_s" size="20"
+				th:value="*{value}" /></td>
+		</tr>  -->
+		<tr>
+			<td><input type="submit" value="SEACH" /></td>
+		</tr>
+	</form>
+
+>>>>>>> 9592c9884e60f387dd1f19c6da809b8cb71efeb4
 		<div class="main_post" th:each="post : ${posts}">
 			<div class="main_post2 clearfix" >
 				<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"> 
@@ -20,6 +50,7 @@
          				 <span>■</span>
            					 <ul class="more_list">
            				 		<li>
+<<<<<<< HEAD
            				 		<form
                                 th:action="@{'/' + ${post.id} + '/add'}"
                                 method="post">
@@ -27,6 +58,9 @@
                                 </form>
    								  <!-- <input type="button" value = "a" onClick="sendList(post.id)" /> -->
             						<!-- <a href="@{'/' + ${post_id} + '/add'}">To BOX</a> -->
+=======
+            						<a th:href="@{'/post/' + ${post.id}}">To BOX</a>
+>>>>>>> 9592c9884e60f387dd1f19c6da809b8cb71efeb4
             					</li>
            					</ul>
            			</div> 

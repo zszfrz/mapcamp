@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
 
+
                 .antMatchers("/","/css/**", "/js/**", "/font/**","/user/registration","/posts/**/post-image.jpg","/posts/{\\d}").permitAll()
 
 //                .antMatchers("/products/{\\d}", "/products/search").permitAll()
@@ -40,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
        
                 .antMatchers("/user/mypage").permitAll()
+
 
                 //.antMatchers("/posts/**").authenticated()
                 .anyRequest().authenticated()

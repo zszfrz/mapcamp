@@ -29,6 +29,9 @@ public class UserController {
 	private UserService userService;
 	
 
+	@Autowired
+	private UserDetailsService userDetailsService;
+
 
 	 // マイページの表示 表示させたいページのidを取得して表示(※①)
 	 @GetMapping("/user/{id}")
