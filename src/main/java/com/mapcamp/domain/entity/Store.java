@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Store {
 
 	
-	@OneToMany(mappedBy = "store")
+	@OneToMany(mappedBy = "stores")
     private List<Post> posts;
 	
 
@@ -35,12 +35,12 @@ public class Store {
 
 	private String url;
 
-	public Long getId() {
+	public Long getStoreId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setStoreId(Long store_id) {
+		this.id = store_id;
 	}
 
 	public Long getLat() {

@@ -107,12 +107,13 @@ public class PostServiceImpl implements PostService{
     }
     
     
-    
-//    //検索部分の処理
-//    @Override
-//    public List<Post> findAllByTitleLike(String keyword) {
-//        return postRepository.findAllByTitleLike("%" + keyword + "%");
-//    }
+
+    //検索部分の処理
+    @Override
+    public List<Post> findBycategoryLike(String param) {
+        return postService.findBycategoryLike("%" + param + "%");
+    }
+
     
 //    //引数：storeIdでDBからStoreを取り出し、Postにセット
 //    @Override

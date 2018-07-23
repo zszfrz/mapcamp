@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/css/map/map.css" />
+
+
+<title>Map Camp</title>
+</head>
+
+<body>
+	<div layout:fragment="right">
+		<div id="mapbox"></div>
+		
+		<script type="text/javascript" src="/js/map.js" th:src="@{/js/map.js}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvC2RwbA3Et1jHMcZy_2CHgM-4W_S07bQ&amp;callback=initMap"></script>		
+			
+</div>
+
+</body>
+</html>

@@ -13,6 +13,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.mapcamp.domain.entity.User;
 import com.mapcamp.domain.repository.UserRepository;
 import com.mapcamp.domain.service.UserService;
@@ -23,13 +25,8 @@ import com.mapcamp.web.form.UserForm;
 public class UserController {
 
 	@Autowired
-	private UserRepository userRepository;
-
-	@Autowired
 	private UserService userService;
 	
-
-
 	 // マイページの表示 表示させたいページのidを取得して表示(※①)
 	 @GetMapping("/user/{id}")
 	 public String show(@PathVariable Long id, Model model) {
@@ -80,4 +77,11 @@ public class UserController {
 		return "redirect:/";
 
 	}
+	
+	@GetMapping("/users/{id}/profile-image.jpg")
+	@ResponseBody
+	public byte[] downloadProfileImage(@PathVariable Long id) throws IOException {
+	    return userService.downloadProfileImage(id);
+	}
+	
 }
