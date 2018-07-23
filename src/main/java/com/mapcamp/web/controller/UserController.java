@@ -40,9 +40,7 @@ public class UserController {
 	 return "user/mypage";
 	 }
 	 
-	
-	 
-	 
+
 
     @GetMapping("/login")
     public String loginForm(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {

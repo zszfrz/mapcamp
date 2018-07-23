@@ -48,7 +48,8 @@
             
 
            ■StoreName
-           <span class="store" th:text="${post.stores.name}"></span>
+           <a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
+           <span class="store" th:text="${post.stores.name}"></span></a>
 
            ■Category
         <p th:text="*{category}"></p>   

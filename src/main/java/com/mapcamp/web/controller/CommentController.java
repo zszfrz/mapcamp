@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mapcamp.domain.entity.Comment;
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.entity.User;
-import com.mapcamp.domain.repository.CommentRepository;
+import com.mapcamp.domain.service.CommentService;
 import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.service.UserService;
 import com.mapcamp.security.LoginUserDetails;
@@ -19,18 +19,14 @@ import com.mapcamp.security.LoginUserDetails;
 public class CommentController {
 
 	@Autowired
-    CommentRepository commentRepository;
+    CommentService commentService;
 
     @Autowired
     PostService postService;
 
     @Autowired
     UserService userService;
-    @ModelAttribute(name = "loginUser")
-    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
-        return loginUserDetails;
-    }
-   
+    
 
     @RequestMapping(value = "/posts/{postId}/comment", method = RequestMethod.POST)
     ModelAndView createComment(@ModelAttribute Comment comment, @PathVariable Long postId,
@@ -39,7 +35,7 @@ public class CommentController {
         User user = userService.findOne(loginUserDetails.getUserId());
         comment.setPost(post);
         comment.setUser(user);
-        commentRepository.saveAndFlush(comment);
+        commentService.saveAndFlush(comment);
         mav.setViewName("redirect:/posts/" + postId);
         return mav;
     }
