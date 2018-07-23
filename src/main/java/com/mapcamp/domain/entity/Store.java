@@ -21,7 +21,7 @@ public class Store {
 
 	@Id
 	@GeneratedValue
-	private Long store_id;
+	private Long id;
 
 	private Long lat;
 
@@ -36,11 +36,11 @@ public class Store {
 	private String url;
 
 	public Long getStoreId() {
-		return store_id;
+		return id;
 	}
 
 	public void setStoreId(Long store_id) {
-		this.store_id = store_id;
+		this.id = store_id;
 	}
 
 	public Long getLat() {

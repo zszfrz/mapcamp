@@ -1,25 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="index">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> 384d045feef416e67fa7f375cec3caae2829a926
 <head>
     <meta charset="UTF-8" th:remove="all" />
-    <script type="text/javascript" src="/js/box.js"></script>
-=======
-<head>
-    <meta charset="UTF-8" th:remove="all" />
->>>>>>> 9592c9884e60f387dd1f19c6da809b8cb71efeb4
 </head>
 
 <body>
 	<div layout:fragment="right">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 <!-- 検索フォーム -->
 	<form th:action="@{/posts/main}" method="post" name="search">
 		<!--  <tr>
@@ -42,10 +31,7 @@
 		</tr>
 	</form>
 
->>>>>>> 9592c9884e60f387dd1f19c6da809b8cb71efeb4
-=======
 
->>>>>>> 384d045feef416e67fa7f375cec3caae2829a926
 		<div class="main_post" th:each="post : ${posts}">
 			<div class="main_post2 clearfix" >
 				<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"> 
