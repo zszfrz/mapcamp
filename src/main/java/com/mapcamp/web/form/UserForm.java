@@ -25,7 +25,7 @@ public class UserForm {
 
 	private MultipartFile file;
 	
-	private Integer sex;
+	private String sex;
 
 	private Date birthday;
 
@@ -70,11 +70,11 @@ public class UserForm {
 	    this.file = file;
 	}
 
-	public Integer getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(Integer sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 

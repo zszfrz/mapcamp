@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mapcamp.domain.entity.Post;
-import com.mapcamp.domain.repository.PostRepository;
 import com.mapcamp.domain.service.PostService;
 import com.mapcamp.security.LoginUserDetails;
 import com.mapcamp.web.form.PostForm;
@@ -29,12 +27,6 @@ public class PostController {
 
 	@Autowired
 	private PostService postService;
-	
-	
-	@ModelAttribute(name = "loginUser")
-    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
-        return loginUserDetails;
-    }
 	
 	
 	@GetMapping("/posts/new")
@@ -90,6 +82,7 @@ public class PostController {
 	ModelAndView show(@PathVariable Long postId, ModelAndView mav) {
 		Post post = postService.findOne(postId);
 		mav.addObject("post", post);
+		mav.addObject("nowdate",post.getNowDate());
 		mav.setViewName("posts/show");
 		return mav;
 	}

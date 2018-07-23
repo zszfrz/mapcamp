@@ -142,6 +142,14 @@ import javax.persistence.Table;
 	        this.user = user;
 	    }
 	    
+	    public Store getStores() {
+	        return stores;
+	    }
+
+	    public void setStores(Store stores) {
+	        this.stores = stores;
+	    }
+	    
 	    
 	    public List<Comment> getComments() {
 	        return comments;
