@@ -92,7 +92,7 @@ public class Store {
 		this.url = url;
 	}
 	
-	//add　PostとStore繋ぎたい
+
 	public List<Post> getPosts(){
 		return posts;
 	}
@@ -100,5 +100,7 @@ public class Store {
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
+	
+
 
 }
