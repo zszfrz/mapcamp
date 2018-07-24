@@ -18,10 +18,13 @@
 			</h1>
 			<div class="user_nav">
 				<th:block th:if="${loginUser != null}">
+			 <div class="icon"
+						th:if="${loginUser.profileImage != null}"
+						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div>
+             <div class="icon" th:if="${loginUser.profileImage == null}">
+						<img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" /></div>
+					 <a href="/user/1" class="post" th:href="@{'/user/' + ${loginUser.userId}}" th:text="${loginUser.name}">Guest</a>
 
-					<!-- <div class="icon"
-						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
-					<!-- <a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック -->
 					<a class="post" href="/posts/new">投稿する</a> //チェック
 					<form th:action="@{/logout}" method="post">
 						<input type="submit" value="ログアウト" />
@@ -39,7 +42,11 @@
 
 	<div class="content" layout:fragment="content"></div>
 
+<<<<<<< HEAD
 		<!-- <div class="adv" layout:fragment="adv">
+=======
+	<!-- 	<div class="adv" layout:fragment="adv">
+>>>>>>> 20e199bf9a52957e68bdb26543866ef948d79fe1
 		<p style="text-align: center">
 			<a href="https://r.gnavi.co.jp/6uj0v1uz0000/"> <img
 				src="http://uds.gnst.jp/rest/img/6uj0v1uz0000/s_0003.jpg?t=1427827068"
@@ -56,6 +63,6 @@
 
 
 	<div class="footer">Copyright mapcamp 2018.</div>
-
+ -->
 </body>
 </html>

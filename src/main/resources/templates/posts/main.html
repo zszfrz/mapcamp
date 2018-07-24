@@ -38,7 +38,7 @@
 					<img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
 				</a> 
 
-			<!--  <th:block th:if="${login_user != null} ? ${login_user.id.equals(loginUser.userId)}"> -->
+			
 
 				 	<div class="more">
          				 <span>■</span>
@@ -52,10 +52,10 @@
             					</li>
            					</ul>
            			</div> 
-				<!-- </th:block> -->
+
        
-         	<a href="/posts/1" th:href="@{${post.store.url}}">
-         	     <span class="store" th:text="${post.store.name}"></span>
+         	<a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
+         	     <span class="store" th:text="${post.stores.name}"></span>
          	</a>
 
          <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}">  
