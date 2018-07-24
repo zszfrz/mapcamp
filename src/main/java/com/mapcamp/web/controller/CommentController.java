@@ -19,15 +19,14 @@ import com.mapcamp.security.LoginUserDetails;
 public class CommentController {
 
 	@Autowired
-    CommentService commentService;
+    private CommentService commentService;
 
     @Autowired
-    PostService postService;
+    private PostService postService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
     
-
     @RequestMapping(value = "/posts/{postId}/comment", method = RequestMethod.POST)
     ModelAndView createComment(@ModelAttribute Comment comment, @PathVariable Long postId,
             @AuthenticationPrincipal LoginUserDetails loginUserDetails, ModelAndView mav) {

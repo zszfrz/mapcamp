@@ -46,9 +46,9 @@ public class MainRestController{
 				//	obj2.put("name", "とり"); //sample
 				//	obj2.put("lat", 35.662613); //sample
 				//	obj2.put("lon", 139.780453); //sample
-				obj2.put("name", postService.findOne(id).getStore().getName()); //storeがないため
-				obj2.put("lat", postService.findOne(id).getStore().getLat());
-				obj2.put("lon", postService.findOne(id).getStore().getLon());
+				obj2.put("name", postService.findOne(id).getStores().getName()); //storeがないため
+				obj2.put("lat", postService.findOne(id).getStores().getLat());
+				obj2.put("lon", postService.findOne(id).getStores().getLon());
 				obj1.put("store", obj2);
 				map.add(obj1);
 			}
