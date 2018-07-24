@@ -69,44 +69,12 @@
 				<script>
 					var route = document.getElementById('route');
 					route.addEventListener('click', function() {
-
-						getLatLon();
-						window.location.href = '/route';
-
+						getLatLon();					
 					});
 				</script>
 
 			</div>
 
-
-			<div class="right_top" layout:fragment="right_top">
-				<div class="search_box">
-					<p>検索フォーム</p>
-					<form th:action="@{/searchform}" method="post">
-<!-- 						<tr>
-							<td>キーワード検索</td>
-							<td><input type="text" name="keyword_s" size="20"
-								th:value="*{value}" /></td>
-						</tr> -->
-						<tr>
-							<td>カテゴリー検索</td>
-							<td><input type="text" name="category_s" size="20" value="" /></td>
-						</tr>
-<!-- 						<tr>
-							<td>評価検索</td>
-							<td><input type="text" name="rate_s" size="20"
-								th:value="*{value}" /></td>
-						</tr> -->
-						<tr>
-							<td><input type="submit" value="search" /></td>
-						</tr>
-					</form>
-				</div>
-			</div>
-
-			<div class="right" layout:fragment="right"></div>
-
-		</div>
 
 
 			<div class="right_top" layout:fragment="right_top"></div>
