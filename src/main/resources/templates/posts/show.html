@@ -47,33 +47,32 @@
  		
  
        <span class="name">
-       	<br><span>■投稿者</span><a th:href="@{`/user/` + ${post.user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
+       	<span>■投稿者</span><br><a th:href="@{`/user/` + ${post.user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
                 </a></br>
             </span>   
             
 
            ■StoreName
-           <a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
-           <span class="store" th:text="${post.stores.name}"></span></a>
+           <br><a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
+           <span class="store" th:text="${post.stores.name}"></span></a></br>
 
-           ■Category
+           <br>■Category</br>
         <p th:text="*{category}"></p>   
 
             
               ■投稿者コメント
         <p th:text="*{text}"></p>   
-        </div>    
+          
          
-         <div class="container">
 
-       <th:block th:if="${loginUser != null}">
-
-            コメント機能
+       <div th:if="${loginUser != null}" class="container">
+			コメント機能
+			<p th:text="${post.id}"></p>
             <form method="post" th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${commentForm}">
                 <textarea cols="30" name="comment" placeholder="コメントする" rows="2"></textarea>
                 <input type="submit" value="SEND" />
             </form>
-        </th:block>
+ 
              <div class="comments">
                 <h4>＜コメント一覧＞</h4>
                 <p th:if="post.comments != null" th:each="comment : ${post.comments}"  th:inline="text">
@@ -81,11 +80,8 @@
                     <span th:text="${comment.text}">コメント</span>
                 </p>
             </div>
-
-
-        </div>
-        
+		</div>      
  </div>
-    
+    </div>
 </body>
 </html>

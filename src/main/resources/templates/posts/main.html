@@ -53,10 +53,12 @@
            					</ul>
            			</div> 
 
+
        
          	<a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
          	     <span class="store" th:text="${post.stores.name}"></span>
          	</a>
+
 
          <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}">  
 			<span class="name" th:text="${post.user.name}"></span>
