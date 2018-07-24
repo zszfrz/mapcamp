@@ -3,28 +3,58 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="content">
 <head>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="/css/index.css" />
-<title>Map Camp</title>
-
-<script src="/js/jquery-3.3.1.js"></script>
+    <meta charset="UTF-8" th:remove="all" />
+    <script src="/js/jquery-3.3.1.js"></script>
 </head>
+
 <body>
 	<div layout:fragment="main">
 		<div class="mainbox">
 			<div class="left">
 
 				<div class="wannago">行きたいところリスト</div>
-
 				<div class="wannago_posts">
 					<div class="transe" th:if="${wannago_list} == null">
 						<p>店名</p>
 					</div>
 					<th:block th:each="wannago_post : ${wannago_list}">
-						<div class="wannago_box" th:href="@{'/posts/' + ${post.id}}"
-							th:style="background-image: url(' + @{${wannago_post.image}} + ');'">
-							<p th:text="${wannago_post.storeName}">店名</p>
-							<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"></a>
+					<div class ="wannago_box"><a th:href="@{'/posts/' + ${wannago_post.id}}"> 
+					<div class="more">
+           					 <ul class="more_list">
+           				 		<li>
+           				 		<form
+                                th:action="@{'/' + ${wannago_post.id} + '/delete'}"
+                                method="post">
+                                <input type="submit" value="Cancel" />
+                                </form>
+            					</li>
+            					<li>
+           				 		<form
+                                th:action="@{'/' + ${wannago_post.id} + '/up'}"
+                                method="post">
+                                <input type="submit" value="↑" />
+                                </form>
+            					</li>
+            					<li>
+           				 		<form
+                                th:action="@{'/' + ${wannago_post.id} + '/down'}"
+                                method="post">
+                                <input type="submit" value="↓" />
+                                </form>
+            					</li>
+           					</ul>
+           			</div> 
+					<img th:src="@{'/posts/' + ${wannago_post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+						</a>
+						
+						<a href="/posts/1" th:href="@{${wannago_post.stores.url}}">  
+							<span th:text="${wannago_post.stores.name}">店名</span>
+						 </a>
+						
+						
+							<a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}"></a>
+							
+							
 						</div>
 
 					</th:block>
@@ -42,7 +72,11 @@
 			</div>
 
 
-			<div class="right" layout:fragment="right"></div>
+			<div class = "right_top" layout:fragment = "right_top"></div>
+			<div class="right" layout:fragment="right"></div> 
+
+			
+
 		</div>
 
 	</div>

@@ -13,18 +13,14 @@
     <div class="contents row">
         <div class="container">
             <form th:action="@{/posts/new}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
-
-
-				<!-- <form role="search"> -->
+	
 					<div style="margin: 8px 0" class="search-control">
 						<input type="search" id="site-search" name="q"
 							placeholder="Please input shopname..."
 							aria-label="Search through site content" />
 						<button>Search</button>
 					</div>
-				<!-- </form> -->
-
-
+					
 				<div class = "category">
 					<label for="category">■Category</label>
 								<label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"

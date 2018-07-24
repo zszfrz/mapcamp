@@ -1,22 +1,68 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout:decorator=layout" layout:decorator="index">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="index">
+
+
 <head>
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="/css/posts/post_setting.css" />
-<link rel="stylesheet" href="/css/posts/post_style.css" /> 
-<title>Index Page</title>
+    <meta charset="UTF-8" th:remove="all" />
 </head>
-<body>  
-    <div layout:frament="right">
-	    <div class="contents clearfix">
-	    	<div class="contents row " th:each="post : ${posts}"><!-- 拡張for文 -->
-	        	<div class="content__post" th:style="'background-image: url(' + @{${post.image}} + ');'">
-	            	<p th:text="${post.shopname}"></p>
-	            	<span class="name" th:text="${post.user.name}"></span>
-	            	
-	         	</div>
-	    	</div>
-	    </div>
-    </div>
+
+<body>
+	<div layout:fragment="right">
+
+<!-- 検索フォーム -->
+	<form th:action="@{/posts/main}" method="post" name="search">
+		<!--  <tr>
+			<td>キーワード検索</td>
+			<td><input type="text" name="keyword_s" size="20"
+				th:value="*{value}" /></td>
+		</tr>-->
+		<tr>
+			<td>カテゴリー検索</td>
+			<td><input type="text" name="category_s" size="20"
+				value="" /></td>
+		</tr>
+		<!-- <tr>
+			<td>評価検索</td>
+			<td><input type="text" name="rate_s" size="20"
+				th:value="*{value}" /></td>
+		</tr>  -->
+		<tr>
+			<td><input type="submit" value="SEACH" /></td>
+		</tr>
+	</form>
+
+
+		<div class="main_post" th:each="post : ${posts}">
+			<div class="main_post2 clearfix" >
+				<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"> 
+					<img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+				</a> 
+
+			<!--  <th:block th:if="${login_user != null} ? ${login_user.id.equals(loginUser.userId)}"> -->
+
+				 	<div class="more">
+         				 <span>■</span>
+           					 <ul class="more_list">
+           				 		<li>
+           				 		<form
+                                th:action="@{'/' + ${post.id} + '/add'}"
+                                method="post">
+                                <input type="submit" value="ToBox" />
+                                </form>
+            					</li>
+           					</ul>
+           			</div> 
+				<!-- </th:block> -->
+       
+         	<a href="/posts/1" th:href="@{${post.stores.url}}">
+         	     <span class="store" th:text="${post.stores.name}"></span>
+         	</a>
+
+         <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}">  
+			<span class="name" th:text="${post.user.name}"></span>
+		 </a>
+		</div>
+   	</div>
+   </div>
 </body>
 </html>
