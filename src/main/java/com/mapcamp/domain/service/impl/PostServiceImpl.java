@@ -41,13 +41,7 @@ public class PostServiceImpl implements PostService{
         return postRepository.save(post);
     }
     
-    @Override
-    public Post delete(Post post){
-        return postRepository.save(post);
-    } 
-    
-    
-    
+  
 	
     @Override
     public Post findOneOrNew(String shopname){
