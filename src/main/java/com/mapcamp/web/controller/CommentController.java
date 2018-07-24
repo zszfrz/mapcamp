@@ -11,16 +11,19 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mapcamp.domain.entity.Comment;
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.entity.User;
-import com.mapcamp.domain.service.CommentService;
+import com.mapcamp.domain.repository.CommentRepository;
 import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.service.UserService;
 import com.mapcamp.security.LoginUserDetails;
 
 public class CommentController {
 
-	@Autowired
-    CommentService commentService;
+//	@Autowired
+//    CommentService commentService;
 
+	@Autowired
+	CommentRepository commentRepository;
+	
     @Autowired
     PostService postService;
 
@@ -35,7 +38,7 @@ public class CommentController {
         User user = userService.findOne(loginUserDetails.getUserId());
         comment.setPost(post);
         comment.setUser(user);
-        commentService.saveAndFlush(comment);
+        commentRepository.saveAndFlush(comment);
         mav.setViewName("redirect:/posts/" + postId);
         return mav;
     }
