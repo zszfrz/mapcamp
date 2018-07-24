@@ -19,7 +19,8 @@ public class SearchController {
 	@Autowired
 	private PostRepository searchShows;
 	
-	@Autowired PostService postService;
+	@Autowired
+	private PostService postService;
 
 	// 検索画面(main) 遷移画面(search)
 	// コントローラーからテンプレートへ値を渡す GET

@@ -46,11 +46,12 @@
 
 .search_box{
 display: table;
-	margin: 0.5em auto;
+/* 	margin: 0.5em auto;
 	padding: 0;
-	border: 1px solid #0e0e0e;
+	border: 1px solid #0e0e0e; */
+	padding: 0;
 	width: 90%;
-	height: 200px;
+	height: 90%;
 }
 
 .wannago{
