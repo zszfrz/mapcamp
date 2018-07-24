@@ -59,6 +59,8 @@
 						
 						
 							<a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}"></a>
+							</div>
+							</th:block>
 
 				</div>
 				<div id="route" th:if="${loginUser} != null">ルート探索</div>
@@ -77,10 +79,7 @@
 
 			<div class="right_top" layout:fragment="right_top"></div>
 			<div class="right" layout:fragment="right"></div>
-
-
-		</div>
-
+</div>
 	</div>
 
 </body>
