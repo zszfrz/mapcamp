@@ -3,8 +3,12 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="content">
 <head>
-    <meta charset="UTF-8" th:remove="all" />
-    <script src="/js/jquery-3.3.1.js"></script>
+<meta charset="utf-8" th:remove="all" />
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+<link rel="stylesheet" href="/css/index.css" />
+<title>Map Camp</title>
+<script src="/js/jquery-3.3.1.js"></script>
 </head>
 
 <body>
@@ -18,62 +22,58 @@
 						<p>店名</p>
 					</div>
 					<th:block th:each="wannago_post : ${wannago_list}">
-					<div class ="wannago_box"><a th:href="@{'/posts/' + ${wannago_post.id}}"> 
-					<div class="more">
-           					 <ul class="more_list">
-           				 		<li>
-           				 		<form
-                                th:action="@{'/' + ${wannago_post.id} + '/delete'}"
-                                method="post">
-                                <input type="submit" value="Cancel" />
-                                </form>
-            					</li>
-            					<li>
-           				 		<form
-                                th:action="@{'/' + ${wannago_post.id} + '/up'}"
-                                method="post">
-                                <input type="submit" value="↑" />
-                                </form>
-            					</li>
-            					<li>
-           				 		<form
-                                th:action="@{'/' + ${wannago_post.id} + '/down'}"
-                                method="post">
-                                <input type="submit" value="↓" />
-                                </form>
-            					</li>
-           					</ul>
-           			</div> 
-					<img th:src="@{'/posts/' + ${wannago_post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
-						</a>
-						
-						<a href="/posts/1" th:href="@{${wannago_post.stores.url}}" target="_blank"> 
-							<span th:text="${wannago_post.stores.name}">店名</span>
-						 </a>
-						
-						
-							<a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}"></a>
-							
-							
+
+						<div class="wannago_box">
+							<a th:href="@{'/posts/' + ${wannago_post.id}}">
+								<div class="more">
+									<ul class="more_list">
+										<li>
+											<form th:action="@{'/' + ${wannago_post.id} + '/delete'}"
+												method="post">
+												<input type="submit" value="Cancel" />
+											</form>
+										</li>
+										<li>
+											<form th:action="@{'/' + ${wannago_post.id} + '/up'}"
+												method="post">
+												<input type="submit" value="↑" />
+											</form>
+										</li>
+										<li>
+											<form th:action="@{'/' + ${wannago_post.id} + '/down'}"
+												method="post">
+												<input type="submit" value="↓" />
+											</form>
+										</li>
+									</ul>
+								</div> 
+								<img th:src="@{'/posts/' + ${wannago_post.id} + '/post-image.jpg'}"
+								src="/avatars/original/missing.png" alt="Missing" />
+							</a> <a href="/posts/1" th:href="@{${wannago_post.store.url}}"> <span
+								th:text="${wannago_post.store.name}">店名</span>
+							</a> <a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}"></a>
 						</div>
 
 					</th:block>
 
 				</div>
-				<div id="route">ルート探索</div>
+				<div id="route" th:if="${loginUser} != null">ルート探索</div>
+				<script type="text/javascript" src="/js/map.js"
+					th:src="@{/js/map.js}"></script>
 				<script>
 					var route = document.getElementById('route');
 					route.addEventListener('click', function() {
-						getLatLon();
-						window.location.href = '/route';						
+						getLatLon();					
 					});
 				</script>
 
 			</div>
 
-			<div class = "right_top" layout:fragment = "right_top"></div>
-			<div class="right" layout:fragment="right"></div> 
-			
+
+
+			<div class="right_top" layout:fragment="right_top"></div>
+			<div class="right" layout:fragment="right"></div>
+
 
 		</div>
 
