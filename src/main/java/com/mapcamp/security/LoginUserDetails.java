@@ -10,7 +10,6 @@ public class LoginUserDetails extends org.springframework.security.core.userdeta
     private String profileImage;
     private String name;
 
-    //うまくいってないs
     public LoginUserDetails(User user) {
         super(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList("ROLE_USER"));
         this.userId = user.getId();

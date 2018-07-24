@@ -18,22 +18,19 @@ import com.mapcamp.security.LoginUserDetails;
 
 public class CommentController {
 
+
+
 	@Autowired
-    CommentRepository commentRepository;
+	private CommentRepository commentRepository;
+	
+    @Autowired
+    private PostService postService;
 
     @Autowired
-    PostService postService;
-
-    @Autowired
-    UserService userService;
-    @ModelAttribute(name = "loginUser")
-    private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
-        return loginUserDetails;
-    }
-   
-
+    private UserService userService;
+    
     @RequestMapping(value = "/posts/{postId}/comment", method = RequestMethod.POST)
-    ModelAndView createComment(@ModelAttribute Comment comment, @PathVariable Long postId,
+    public ModelAndView createComment(@ModelAttribute Comment comment, @PathVariable Long postId,
             @AuthenticationPrincipal LoginUserDetails loginUserDetails, ModelAndView mav) {
         Post post = postService.findOne(postId);
         User user = userService.findOne(loginUserDetails.getUserId());
