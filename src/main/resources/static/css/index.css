@@ -31,6 +31,29 @@
    
 }
 
+.right_top{
+	margin-top: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-right: 100px;
+	display: inline-block;
+    vertical-align: top;
+    float: left;
+    width: 500px;
+    height: 60px;
+   
+}
+
+.search_box{
+display: table;
+/* 	margin: 0.5em auto;
+	padding: 0;
+	border: 1px solid #0e0e0e; */
+	padding: 0;
+	width: 90%;
+	height: 90%;
+}
+
 .wannago{
 	margin-left: 1em;
 }
