@@ -20,9 +20,9 @@
 				<th:block th:if="${loginUser != null}">
 			 <!-- <div class="icon"
 						th:if="${loginUser.profileImage != null}"
-						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
+						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> 
              <div class="icon" th:if="${loginUser.profileImage == null}">
-						<img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" /></div>
+						<img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" /></div> -->
 					 <a href="/user/1" class="post" th:href="@{'/user/' + ${loginUser.userId}}" th:text="${loginUser.name}">Guest</a>
 
 					<a class="post" href="/posts/new">投稿する</a> //チェック
