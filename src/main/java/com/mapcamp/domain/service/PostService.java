@@ -25,7 +25,6 @@ public interface PostService {
     //postとuserを結びつけて保存　userIdを受け取れるように Long postId追加？
 	Post save(Post post,Long userId,MultipartFile file) throws IOException;
 	Post save(Post post);
-	Post delete(Post post);
 	byte[] downloadImage(Long postId) throws IOException;
 	
 
