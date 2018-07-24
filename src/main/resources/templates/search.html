@@ -38,10 +38,11 @@
 		<!-- テスト -->
 		<div class="contents clearfix">
 			<div class="contents row " th:each="searchShow : ${searchShows}">
-				<div class="content__post"
+				<!-- <div class="content__post"
 					th:style="'background-image: url(' + @{${searchShow.image}} + ');'">
-					<p th:text="${searchShow.store.name}"></p>
-				</div>
+					<p th:text="${searchShow.stores.name}"></p>
+			 </div> -->
+			 <p th:text="*{searchShow.text}"></p>
 			</div>
 		</div>
 
@@ -53,9 +54,8 @@
 	</div>
 <body>
 	<div th:each="post : ${searchShow}">
-		 <p th:text="${searchShow}"></p>
-		<p th:text="${post.shopname}"></p>
-		<p th:text="${post.comment}"></p>
+		<p th:text="${post.name}"></p>
+		<p th:text="${post.text}"></p>
 		<p th:text="${post.image}"></p>
 		<p th:text="${post.id}"></p>
 	</div>
