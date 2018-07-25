@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.repository.PostRepository;
@@ -54,13 +56,15 @@ public class SearchController {
 		return mav;
 	}
 
-//	// 検索結果をsearchへ表示
-//	@RequestMapping(value = "/search", method = RequestMethod.GET)
-//	public ModelAndView login(ModelAndView mav) {
-//		mav.setViewName("search");
-//		mav.addObject("searchShows", searchShows);
-//		System.out.println(mav);
-//		return mav;
-//	}
+	// 検索結果をsearchへ表示
+	//@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@GetMapping("search")
+	public ModelAndView search_show(ModelAndView mav, RedirectAttributes redirectAttributes) {
+		mav.setViewName("posts/main");
+		//mav.addObject("searchShows", searchShows);
+		redirectAttributes.addFlashAttribute("message", "新規レコードを作成しました");
+		System.out.println(mav);
+		return mav;
+	}
 
 }
