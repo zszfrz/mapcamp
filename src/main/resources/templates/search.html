@@ -33,18 +33,18 @@
 				</a>
 
 				<!-- <p th:text="${searchShow.text}"></p> -->
-				<!-- <div class="more">
+				<div class="more">
          				 <span>■</span>
            					 <ul class="more_list">
            				 		<li>
            				 		<form
-                                th:action="@{'/' + ${post.id} + '/add'}"
+                                th:action="@{'/' + ${searchShow.id} + '/add'}"
                                 method="post">
                                 <input type="submit" value="ToBox" />
                                 </form>
             					</li>
            					</ul>
-           			</div>  -->
+           			</div> 
 
 				<a href="/posts/1" th:href="@{${searchShow.stores.url}}"
 					target="_blank"> <span class="store"

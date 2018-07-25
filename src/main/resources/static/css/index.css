@@ -80,6 +80,10 @@ display: table;
 	height: 400px;
 }
 
+.wannago_box.more.more_list ul li{
+	display: inline-block;
+}
+
 .wannago_box img{
 	max-width: 50%;
 	height: 300px;
