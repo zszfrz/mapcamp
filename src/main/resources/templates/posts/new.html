@@ -25,7 +25,14 @@
 						<button type="submit">Search</button>
 					</div>
 				</form>
-        
+				
+				<form th:action="@{/new/select/{id}}" th:object="${select}">
+                <span>■Shopname</span><br>
+                <a th:href="@{'/new/' + 'select/'+ ${id}}" th:inline="text">
+                <span th:text="${list.name}">shopname</span>
+                </a></br>
+                </form>
+
             <form th:action="@{/posts/new}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
 				<div class = "category">
 					<label for="category">■Category</label>

@@ -24,17 +24,15 @@
 					</div>
 				</form>
         
+               <form th:action="@{/edit/select/{id}}" th:object="${select}">
+                <span>■Shopname</span><br>
+                <a th:href="@{'/edit/' + 'select/'+ ${id}}" th:inline="text">
+                <span th:text="${list.name}">shopname</span>
+                </a></br>
+                </form>
+        
             <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
-             <h3>Edit</h3>
-
-				<div style="margin: 8px 0" class="search-control">
-					<input type="search" id="site-search" name="q"
-						placeholder="Please input shopname..."
-						aria-label="Search through site content">
-					<button>Search</button>
-				</div>
-
-                
+             <h3>Edit</h3>                
                 <div class = "category">
 					<label for="category">■Category</label>
 								<label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"
