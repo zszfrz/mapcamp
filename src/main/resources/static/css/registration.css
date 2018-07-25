@@ -6891,16 +6891,6 @@ hr.yjSeparation {
     display: none;
 }
 
-#wrapper, #main_cnt_wrapper {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-}
-
-#wrapper.w970 {
-    width: 970px;
-}
 
 #yjContentsFooter {
     margin-top: 10px;
