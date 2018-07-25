@@ -36,14 +36,16 @@ public class PostServiceImpl implements PostService{
 	@Autowired
     private UserService userService;
 
-//    @Override
-//    public Post save(Post post){
-//        return postRepository.save(post);
-//    }
+    @Override
+    public Post save(Post post){
+        return postRepository.save(post);
+    }
+    
+  
 	
     @Override
     public Post findOneOrNew(String shopname){
-        Post post = postRepository.findByShopname(shopname);
+        Post post = postService.findByShopname(shopname);
         if(post == null) post = new Post();
         return post;
     }
@@ -57,12 +59,22 @@ public class PostServiceImpl implements PostService{
     public Post findOne(Long id){
         return postRepository.findOne(id);
     }
+    
+    @Override
+    public Post findByShopname(String shopname){
+        return postService.findByShopname(shopname);
+    }
+    
+//    @Override 
+//    public List<Post> findAllByOrderByNowdateDesc(){
+//    	return postService.findAllByOrderByNowdateDesc();
+//    }
 
+    //userIdでDBからUser情報を取り出し、postにセット ,Long postId
     @Override
     public Post save(Post post, Long userId, MultipartFile file) throws IOException {
-        //review.setProduct(productService.findOne(productId));
         post.setUser(userService.findOne(userId));
-        post = postRepository.save(post);
+        post = postService.save(post);
         if (!file.isEmpty()) {
             post.setImage(uploadPostImage(file, post.getId()));  // ②
         }
@@ -86,9 +98,12 @@ public class PostServiceImpl implements PostService{
     }
     
     
-//    @Override
-//    public List<Post> findAllByTitleLike(String keyword) {
-//        return postRepository.findAllByTitleLike("%" + keyword + "%");
-//    }
+
+    //検索部分の処理
+    @Override
+    public List<Post> findBycategoryLike(String param) {
+        return postService.findBycategoryLike("%" + param + "%");
+    }
+
 	
 }

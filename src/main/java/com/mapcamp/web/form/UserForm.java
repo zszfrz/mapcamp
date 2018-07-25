@@ -23,7 +23,6 @@ public class UserForm {
 	@NotBlank
 	private String name;
 
-	//private String profileImage;
 	private MultipartFile file;
 	
 	private String sex;
@@ -62,14 +61,6 @@ public class UserForm {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-//	public String getProfileImage() {
-//		return profileImage;
-//	}
-//
-//	public void setImage(String profileImage) {
-//		this.profileImage = profileImage;
-//	}
 	
 	public MultipartFile getFile() {
 	    return file;
@@ -94,7 +85,5 @@ public class UserForm {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-
-
 
 }

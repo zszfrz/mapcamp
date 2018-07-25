@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="content">
 <head>
 	<meta charset="UTF-8" />
 	<title>サインアップ</title>
@@ -9,7 +11,7 @@
 <body class="yj950-2">
 
 	<div class="bgcolor-white pt1em pb1em" id="contents"
-		layout:fragment="content">
+		layout:fragment="main">
 		<div id="main_cnt_wrapper">
 			<div id="yjContentsBody">
 				<div class="yjContainer">
@@ -55,7 +57,7 @@
 									id="user_avatar" />
 							</div>
 
-<!-- 							<div class="label">
+              <div class="label">
 								<label for="birthday">Birthday</label><br /> <input
 									th:field="*{birthday}" placeholder="生年月日" type="date"
 									name="birthday" id="birthday" />
@@ -64,10 +66,10 @@
 							<div class="label">
 								<label for="sex">sex</label><br /> 
 								<input th:field="*{sex}" placeholder="性別" type="radio"
-									name="sex" id="sex" value="female" />　女性
+									name="sex" id="sex" value="Female" />　Female
 								<input th:field="*{sex}" placeholder="性別" type="radio"
-									name="sex" id="sex" value="male" />　男性　
-							</div> -->
+									name="sex" id="sex" value="Male" />　Male　
+							</div>
 							
 
 							<div class="submit">

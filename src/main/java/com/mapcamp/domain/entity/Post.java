@@ -1,5 +1,8 @@
 package com.mapcamp.domain.entity;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 	
 	
@@ -16,24 +21,26 @@ import javax.persistence.Table;
 	public class Post{
 		
 		
-		@ManyToOne
-		@JoinColumn(updatable = false)
-		private User user;
+	@ManyToOne
+	@JoinColumn(updatable = false)
+	private User user;
 		
+
+		@ManyToOne
+	    private Store stores;
+		
+		@OneToMany(mappedBy = "post")
+	    private List<Comment> comments;
+
 		
 		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
 		
-		@Column(nullable = false)
-		private String shopname;
-		
-//		@Column(nullable = false)
-//		private String nickname;
-		
-		
+
 		@Column(nullable = false, columnDefinition = "TEXT")
-	    private String comment;
+	    private String text;
+
 
 	    private String image;
 	    
@@ -48,8 +55,12 @@ import javax.persistence.Table;
 	    
 	    @Column(nullable = false)
 	    private Integer speed;
+	    
+	    @Column(nullable = false)
+	    private String category;
+	  
 
-//	    private String makeDate;
+	    private Date nowdate;
 	    
 	    
 	    public Long getId() {
@@ -59,32 +70,15 @@ import javax.persistence.Table;
 	        this.id = id;
 	    }
 	    
-	    public String getComment() {
-	        return comment;
+	    public String getText() {
+	        return text;
 	    }
 
-	    public void setComment(String comment) {
-	        this.comment = comment;
+	    public void setText(String text) {
+	        this.text = text;
 	    }
 	    
-	    public String getShopname() {
-	        return shopname;
-	    }
 
-	    public void setShopname(String shopname) {
-	        this.shopname = shopname;
-	    }
-	    
-//	    public String getNickname() {
-//	        return nickname;
-//	    }
-//
-//	    public void setNickname(String nickname) {
-//	        this.nickname = nickname;
-//	    }
-	    
-	    
-	    
 	    public String getImage() {
 	        return image;
 	    }
@@ -121,7 +115,25 @@ import javax.persistence.Table;
 	        this.speed = speed;
 	    }
 	    
+	    public String getCategory() {
+	        return category;
+	    }
+
+	    public void setCategory(String category) {
+	        this.category = category;
+	    }
 	    
+	    
+	    public Date getNowDate() {
+	        return nowdate;
+	    }
+
+	    public void setNowDate() {
+	        this.nowdate = new Date();
+	    }
+	    
+	    
+
 	    public User getUser() {
 	        return user;
 	    }
@@ -130,5 +142,23 @@ import javax.persistence.Table;
 	        this.user = user;
 	    }
 	    
+	    public Store getStores() {
+	        return stores;
+	    }
+
+	    public void setStores(Store stores) {
+	        this.stores = stores;
+	    }
+	    
+	    
+	    public List<Comment> getComments() {
+	        return comments;
+	    }
+
+	    public void setComments(List<Comment> comments) {
+	        this.comments = comments;
+	    }
+
+		
 
 }

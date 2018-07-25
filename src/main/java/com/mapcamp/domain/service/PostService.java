@@ -16,12 +16,19 @@ public interface PostService {
 
     Page<Post> findAll(Pageable pageable);
 
-    Post findOne(Long id);
-
-    //List<Post> findAllByTitleLike(String keyword);
+    Post findOne(Long post_id);
+    
+	Post findByShopname(String shopname);
 	
+//	List<Post> findAllByOrderByNowdateDesc();
+   
+    //postとuserを結びつけて保存　userIdを受け取れるように Long postId追加？
 	Post save(Post post,Long userId,MultipartFile file) throws IOException;
+	Post save(Post post);
 	byte[] downloadImage(Long postId) throws IOException;
+	
+
+	List<Post> findBycategoryLike(String param);
 	
 
 }

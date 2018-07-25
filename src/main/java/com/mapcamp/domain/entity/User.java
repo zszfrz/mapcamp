@@ -18,8 +18,12 @@ public class User {
 	@GeneratedValue
 	private Long id;
 
+	//1ユーザー：多post
 	@OneToMany(mappedBy = "user")
     private List<Post> posts;
+	
+	@OneToMany(mappedBy = "user")
+    private List<Comment> comments;
 	
 	@Column(nullable = false, unique = true)
 	private String email;
@@ -32,10 +36,10 @@ public class User {
 
 	private String profileImage;
 	
-	//@Column(nullable = false)
-	private Integer sex;
+	@Column(nullable = false)
+	private String sex;
 	
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	private Date birthday;
 
 	// ゲッターセッター
@@ -47,15 +51,6 @@ public class User {
 		this.id = id;
 	}
 
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
-	
-	
 	public String getEmail() {
 		return email;
 	}
@@ -88,11 +83,11 @@ public class User {
 	    this.profileImage = profileImage;
 	}
 	
-	public Integer getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 	
@@ -103,4 +98,21 @@ public class User {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	
+ 	public List<Post> getPosts() {
+ 		return posts;
+ 	}
+
+ 	public void setPosts(List<Post> posts) {
+ 		this.posts = posts;
+ 	}
+
+	public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
 }

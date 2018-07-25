@@ -1,84 +1,106 @@
 package com.mapcamp.domain.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "stores")
 public class Store {
 
-    @Id
-    @GeneratedValue
-    private String store_id;
+	
+	@OneToMany(mappedBy = "stores")
+    private List<Post> posts;
+	
 
-    private String lat;
-    
-    private String lon;
-    
-    private String name;
-    
-    private String price;
-    
-    private String time;
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    private String url;
+	private Long lat;
 
-    public String getStoreId() {
-        return store_id;
-    }
+	private Long lon;
 
-    public void setStoreId(String store_id) {
-        this.store_id = store_id;
-    }
+	private String name;
 
-    public String getLat() {
-        return lat;
-    }
+	private Long price;
 
-    public void setLat(String lat) {
-        this.lat = lat;
-    }
-    
-    public String getLon() {
-        return lon;
-    }
+	private String time;
 
-    public void setLon(String lon) {
-        this.lon = lon;
-    }
-    
-    public String getName() {
-        return name;
-    }
+	private String url;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getPrice() {
-        return price;
-    }
+	public Long getStoreId() {
+		return id;
+	}
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-    
-    public String getTime() {
-        return time;
-    }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
+	public void setStoreId(Long id) {
+		this.id = id;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public Long getLat() {
+		return lat;
+	}
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+	public void setLat(Long lat) {
+		this.lat = lat;
+	}
+
+	public Long getLon() {
+		return lon;
+	}
+
+	public void setLon(Long lon) {
+		this.lon = lon;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
+		this.price = price;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+
+	public List<Post> getPosts(){
+		return posts;
+	}
+	
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+	
+
 
 }

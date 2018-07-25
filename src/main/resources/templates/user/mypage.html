@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="content">
+
+<head>
+<meta charset="UTF-8" />
+<!-- <link rel="stylesheet" type="text/css" href="../css/mypage.css" /> -->
+<link rel="stylesheet" href="/css/posts/post_main_style.css" />
+</head>
+
+<body>
+	<div layout:fragment="main">
+	<div class="contents row" th:object="${user}">
+      <div class="content__post">
+      
+	<th:block th:if="${loginUser != null} ? ${user.id.equals(loginUser.userId)}">
+	<p class="post" th:text="${loginUser.name}">Guest</p>さんのMypage
+	
+	<img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+
+
+			<br>■Name</br>
+	        <p th:text="*{name}"></p>   
+			■Email
+	        <p th:text="*{email}"></p>   
+	        ■BirthDay
+	        <p th:text="*{birthday}"></p>   
+	        ■Sex
+	        <p th:text="*{sex}"></p>  
+	        
+	        <a th:href="@{'/user/' + ${user.id} + '/edit'}">Edit User Information</a>
+	        
+	        </th:block>
+	        
+	        <th:block th:unless="${loginUser != null} ? ${user.id.equals(loginUser.userId)}">
+	        <p>You are not this user.</p>
+	        </th:block>
+	        
+
+</div>
+</div>
+
+
+			</div>
+
+</body>
+</html>

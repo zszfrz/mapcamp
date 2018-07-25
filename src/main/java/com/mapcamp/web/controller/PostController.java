@@ -1,8 +1,6 @@
 package com.mapcamp.web.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,97 +22,79 @@ import com.mapcamp.domain.service.PostService;
 import com.mapcamp.security.LoginUserDetails;
 import com.mapcamp.web.form.PostForm;
 
-
-
 @Controller
 public class PostController {
+
+
+	@Autowired
+	private PostService postService;
 	
 	@Autowired
 	private PostRepository postRepository;
-	
-	@Autowired
-    private PostService postService;
-	
-	
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//    public ModelAndView index(ModelAndView mav) {
-//		List<Post> posts = postRepository.findAll();
-//        mav.addObject("posts", posts);
-//        mav.setViewName("posts/main"); 
-//        return mav;
-//    }
-	
 	
 	
 	@GetMapping("/posts/new")
     public String newPost(PostForm form,
                             Model model) {
-        
         return "posts/new";
-    }
-    
-	
-	@PostMapping("/posts/new")
-	public String createPost(@Validated PostForm form,
-	                           BindingResult result,
-	                           Model model,Post newPost,@AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException{
-	    if (result.hasErrors()) {
-	        return newPost( form, model);
-	    }
-	    Post post = new Post();
-        BeanUtils.copyProperties(form, post);
-        postService.save(post,loginUserDetails.getUserId(),form.getFile());
-        return "posts/create";
+    }    
+
+	// ユーザーとPostの処理
+	@PostMapping("/posts/new") // "/users/{userId}/posts"
+	public String createPost(@Validated PostForm form, BindingResult result, Model model, Post newPost,
+			@AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException {
+		if (result.hasErrors()) {
+			return newPost(form, model);
+		}
+		Post post = new Post();
+		BeanUtils.copyProperties(form, post);
+		post.setNowDate();
+		postService.save(post, loginUserDetails.getUserId(), form.getFile());
+		return "posts/create";
 	}
-	
+
 	@GetMapping("/posts/{postId}/edit")
-    public String editPost(@PathVariable Long postId,
-                            PostForm form,
-                            Model model) {
-        Post post = postService.findOne(postId);
-        model.addAttribute("post", post);
-        return "posts/edit";
-    }
-	
+	public String editPost(@PathVariable Long postId, PostForm form, Model model) {
+		Post post = postService.findOne(postId);
+		model.addAttribute("post", post);
+		return "posts/edit";
+	}
+
 	@PostMapping(value = "/posts/{postId}/edit")
-	public String updatePost(@Validated PostForm form,
-			@PathVariable Long postId,
-            BindingResult result,
-            Model model,Post editPost,@AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException {        
-	    Post post = postRepository.findOne(postId);
-	    if (!post.getUser().getId().equals(loginUserDetails.getUserId())) {
-	        return "redirect:/posts/" + postId + "/edit";
-	    }
-	    BeanUtils.copyProperties(form, post);
-	    postRepository.save(post);
-	    return "posts/update";
+	public String updatePost(@Validated PostForm form, @PathVariable Long postId, BindingResult result, Model model,
+			Post editPost, @AuthenticationPrincipal LoginUserDetails loginUserDetails) throws IOException {
+		Post post = postService.findOne(postId);
+		if (!post.getUser().getId().equals(loginUserDetails.getUserId())) {
+			return "redirect:/posts/" + postId + "/edit";
+		}
+		BeanUtils.copyProperties(form, post);
+		postService.save(post);
+		return "posts/update";
 	}
-	
+
 	@PostMapping(value = "/posts/{postId}/delete")
-	public String deletePost(
-			@PathVariable Long postId,
-            @AuthenticationPrincipal LoginUserDetails loginUserDetails){        
-	    Post post = postRepository.findOne(postId);
-	    if (!post.getUser().getId().equals(loginUserDetails.getUserId())) {
-	        return "redirect:/";
-	    }
-	    postRepository.delete(post);
-	    return "posts/delete";
+	public String deletePost(@PathVariable Long postId, @AuthenticationPrincipal LoginUserDetails loginUserDetails) {
+		Post post = postService.findOne(postId);
+		if (!post.getUser().getId().equals(loginUserDetails.getUserId())) {
+			return "redirect:/";
+		}
+		postRepository.delete(post);
+		return "posts/delete";
 	}
-	
+
 	@RequestMapping(value = "/posts/{postId}", method = RequestMethod.GET)
-    ModelAndView show(@PathVariable Long postId, ModelAndView mav) {
-        Post post = postRepository.findOne(postId);
-        mav.addObject("post", post);
-        mav.setViewName("posts/show");
-        return mav;
-    }
-	
+	ModelAndView show(@PathVariable Long postId, ModelAndView mav) {
+		Post post = postService.findOne(postId);
+		mav.addObject("post", post);
+		mav.addObject("nowdate",post.getNowDate());
+		mav.setViewName("posts/show");
+		return mav;
+	}
+
 	@GetMapping("/posts/{id}/post-image.jpg")
 	@ResponseBody
 	public byte[] downloadImage(@PathVariable Long id) throws IOException {
-	    return postService.downloadImage(id);
+		return postService.downloadImage(id);
 	}
 
 }
-

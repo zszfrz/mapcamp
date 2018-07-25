@@ -10,16 +10,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.mapcamp.domain.entity.Store;
-import com.mapcamp.domain.repository.StoreRepository;
 import com.mapcamp.domain.service.StoreService;
 
 public class GourNavi {
 	
 	@Autowired
     private static StoreService storeService;
-	
-	@Autowired
-	private static StoreRepository storeRepository;
 	
 	public static void main(String[] args) {
 		// アクセスキー
@@ -81,6 +77,7 @@ public class GourNavi {
 			JsonNode restList = nodeList.path("rest");
 			Iterator<JsonNode> rest = restList.iterator();
 			// 店舗番号、店舗名、最寄の路線、最寄の駅、最寄駅から店までの時間、店舗の小業態を出力
+			Store store = new Store();
 			while (rest.hasNext()) {
 				JsonNode r = rest.next();
 				String id = r.path("id").asText();
@@ -90,20 +87,27 @@ public class GourNavi {
 				String budget = r.path("budget").asText();
 				String opentime = r.path("opentime").asText();
 				String url = r.path("url").asText();
+//				String line = r.path("access").path("line").asText();
+//				String station = r.path("access").path("station").asText();
+//				String walk = r.path("access").path("walk").asText() + "分";
+//				String categorys = "";
+
+//				for (JsonNode n : r.path("code").path("category_name_s")) {
+//					categorys += n.asText();
+//				}
 				
 				//Store store = storeService.findOneOrNew(name);
-				Store store = new Store();
-				store.setStoreId(id);
-				store.setLat(latitude);
-				store.setLon(longitude);
-				store.setName(name);
-				store.setPrice(budget);
-				store.setTime(opentime);
-				store.setUrl(url);
+//				//Store store = new Store();
+//				store.setStoreId(id);
+//				store.setLat(latitude);
+//				store.setLon(longitude);
+//				store.setName(name);
+//				store.setPrice(budget);
+//				store.setTime(opentime);
+//				store.setUrl(url);
 				System.out.println(id + "¥t" + name + "¥t" + latitude + "¥t" + longitude + "¥t" + budget + "¥t" + opentime+ "¥t" + url);
-//				storeService.save(store);
-				storeRepository.saveAndFlush(store);
-				System.out.println("finish");
+				storeService.save(store);
+				
 				
 			}
 		}

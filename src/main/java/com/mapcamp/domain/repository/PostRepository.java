@@ -9,11 +9,7 @@ import com.mapcamp.domain.entity.Post;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
+	
+	List<Post> findAllByOrderByNowdateDesc();
 
-	
-	Post findByShopname(String shopname);
-
-    //List<Post> findAllByTitleLike(String keyword);
-	
-	
 }
