@@ -28,4 +28,6 @@ public interface StoreService {
 	List<Map<String, String>> getResponse();
 
 	public Map<String, String> getOneResponse(String id);
+	
+	public Store preSave(Map<String, String> select);
 }

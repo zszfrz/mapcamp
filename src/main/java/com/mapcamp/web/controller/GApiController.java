@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mapcamp.api.Select;
 import com.mapcamp.domain.service.StoreService;
 
 public class GApiController {
@@ -15,7 +16,7 @@ public class GApiController {
 	private StoreService storeService;
 
 	@PostMapping("/select")
-	public ModelAndView gnavinew(ModelAndView mav, @ModelAttribute String text) {
+	public ModelAndView gnavinew(ModelAndView mav, @ModelAttribute("selectform") Select select) {
 		String acckey = "58a9cc097cca953276da1b8389ed535a";
 		String format = "json";
 		String gnaviRestUri = "https://api.gnavi.co.jp/RestSearchAPI/20150630/";
@@ -23,11 +24,11 @@ public class GApiController {
 		String prmKeyid = "&keyid=" + acckey;
 		//		String prmLat = "&latitude=" + lat;
 		//		String prmLon = "&longitude=" + lon;
-		//		String prmRange = "&range=" + range;
-		String prmName = "&name=" + text;
+		String prmAddress = "&address=" + select.getAddress();
+		String prmName = "&name=" + select.getShopname();
 
 		// URI組み立て
-		String uri = gnaviRestUri + prmFormat + prmKeyid + prmName;
+		String uri = gnaviRestUri + prmFormat + prmKeyid + prmName + prmAddress;
 		
 		storeService.getNodeList(uri);
 		
@@ -38,14 +39,14 @@ public class GApiController {
 	
 	@GetMapping("/new/select/{id}")
 	public ModelAndView newConfirm(ModelAndView mav, @PathVariable("id") String id) {	
-		mav.addObject("response", storeService.getOneResponse(id));
+		mav.addObject("select", storeService.getOneResponse(id));
 		mav.setViewName("posts/new");
 		return mav;
 	}
 	
 	@GetMapping("/edit/select/{id}")
 	public ModelAndView editConfirm(ModelAndView mav, @PathVariable("id") String id) {	
-		mav.addObject("response", storeService.getOneResponse(id));
+		mav.addObject("select", storeService.getOneResponse(id));
 		mav.setViewName("posts/edit");
 		return mav;
 	}

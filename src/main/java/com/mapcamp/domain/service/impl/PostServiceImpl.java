@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mapcamp.domain.entity.Post;
+import com.mapcamp.domain.entity.Store;
 import com.mapcamp.domain.repository.PostRepository;
 import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.service.UserService;
@@ -78,8 +79,9 @@ public class PostServiceImpl implements PostService{
 
     //userIdでDBからUser情報を取り出し、postにセット ,Long postId
     @Override
-    public Post save(Post post, Long userId, MultipartFile file) throws IOException {
+    public Post save(Post post, Long userId, MultipartFile file, Store store) throws IOException {
         post.setUser(userService.findOne(userId));
+        post.setStores(store);
         post = postService.save(post);
         if (!file.isEmpty()) {
             post.setImage(uploadPostImage(file, post.getId()));  // ②

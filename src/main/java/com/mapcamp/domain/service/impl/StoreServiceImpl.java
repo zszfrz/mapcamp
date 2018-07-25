@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.entity.Store;
 import com.mapcamp.domain.repository.StoreRepository;
+import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.service.StoreService;
 
 @Service
@@ -30,13 +31,28 @@ public class StoreServiceImpl implements StoreService{
 
 	@Autowired
 	private StoreRepository storeRepository;
+	
+	private List<Map<String, String>> resList;
+	
+	@Override
+	public Store preSave(Map<String, String> select) {
+		Store store = new Store();
+		store.setLat(select.get("lat"));
+		store.setLon(select.get("lon"));
+		store.setName(select.get("name"));
+		store.setPrice(Long.parseLong(select.get("budget")));
+		store.setTime(select.get("opentime"));
+		store.setUrl(select.get("url"));
+		save(store);
+		return store;
+	}
 
 	@Override
 	public Store save(Store store){
 		return storeRepository.save(store);
 	}
 
-	private List<Map<String, String>> resList;
+	
 
 	@Override
 	public Store findOneOrNew(String name){
@@ -151,5 +167,7 @@ public class StoreServiceImpl implements StoreService{
 		}
 		return null;
 	}
+	
+	
 }
 
