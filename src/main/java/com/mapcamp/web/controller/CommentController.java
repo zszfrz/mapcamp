@@ -1,7 +1,10 @@
 package com.mapcamp.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,8 @@ import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.service.UserService;
 import com.mapcamp.security.LoginUserDetails;
 
+
+@Controller
 public class CommentController {
 
 
@@ -28,6 +33,7 @@ public class CommentController {
 
     @Autowired
     private UserService userService;
+    
     
     @RequestMapping(value = "/posts/{postId}/comment", method = RequestMethod.POST)
     public ModelAndView createComment(@ModelAttribute Comment comment, @PathVariable Long postId,

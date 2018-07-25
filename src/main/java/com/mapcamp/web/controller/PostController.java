@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mapcamp.api.Select;
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.entity.Store;
+import com.mapcamp.domain.repository.PostRepository;
 import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.service.StoreService;
 import com.mapcamp.security.LoginUserDetails;
@@ -36,7 +37,10 @@ public class PostController {
 	
 	@Autowired
 	private StoreService storeService;
-	
+
+	@Autowired
+	private PostRepository postRepository;
+
 	
 	@GetMapping("/posts/new")
     public String newPost(PostForm form,
@@ -94,7 +98,7 @@ public class PostController {
 		if (!post.getUser().getId().equals(loginUserDetails.getUserId())) {
 			return "redirect:/";
 		}
-		postService.delete(post);
+		postRepository.delete(post);
 		return "posts/delete";
 	}
 
