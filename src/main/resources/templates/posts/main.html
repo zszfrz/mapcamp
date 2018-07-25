@@ -3,7 +3,9 @@
 
 
 <head>
-    <meta charset="UTF-8" th:remove="all" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/posts/post_main_style.css" />
+    <link rel="stylesheet" href="/css/index.css" />
 </head>
 
 <body>
@@ -51,8 +53,6 @@
            					</ul>
            			</div> 
 
-
-       
          	<a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
          	     <span class="store" th:text="${post.stores.name}"></span>
          	</a>

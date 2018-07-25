@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/css/index.css" />
 <!-- <link rel="stylesheet" href="/css/posts/post_setting.css" /> -->
 <link rel="stylesheet" href="/css/posts/post_main_style.css" />
+<!-- <link rel="stylesheet" href="/css/registration.css" /> -->
 <title>Map Camp</title>
 </head>
 <body>
@@ -18,9 +19,10 @@
 			</h1>
 			<div class="user_nav">
 				<th:block th:if="${loginUser != null}">
-			 
+
              <div class="icon" th:if="${loginUser.profileImage != null}">
 						<img th:src="@{'/users/' + ${loginUser.userId} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" /></div>
+						
 					 <a href="/user/1" class="post" th:href="@{'/user/' + ${loginUser.userId}}" th:text="${loginUser.name}">Guest</a>
 
 					<a class="post" href="/posts/new">投稿する</a>
@@ -39,6 +41,7 @@
 
 	<div class="content" layout:fragment="content"></div>
 
+
 	<!-- 	<div class="adv" layout:fragment="adv">
 		<p style="text-align: center">
 			<a href="https://r.gnavi.co.jp/6uj0v1uz0000/"> <img
@@ -52,7 +55,7 @@
 				height="80" width="33%" />
 			</a>
 		</p>
-	</div>
+	</div> 
 
 
 	<div class="footer">Copyright mapcamp 2018.</div>
