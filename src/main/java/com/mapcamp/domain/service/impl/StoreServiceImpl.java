@@ -31,17 +31,21 @@ public class StoreServiceImpl implements StoreService{
 
 	@Autowired
 	private StoreRepository storeRepository;
-	
+
 	private List<Map<String, String>> resList;
-	
+
 	@Override
 	public Store preSave(Map<String, String> select) {
 		Store store = new Store();
 		store.setLat(select.get("lat"));
 		store.setLon(select.get("lon"));
 		store.setName(select.get("name"));
-		store.setPrice(Long.parseLong(select.get("budget")));
-		store.setTime(select.get("opentime"));
+		if(select.get("budget") != null && !select.get("budget").equals("")) {
+			store.setPrice(Long.parseLong(select.get("budget")));
+		}
+		if(select.get("budget") != null && !select.get("budget").equals("")) {
+			store.setTime(select.get("opentime"));
+		}
 		store.setUrl(select.get("url"));
 		save(store);
 		return store;
@@ -52,7 +56,7 @@ public class StoreServiceImpl implements StoreService{
 		return storeRepository.save(store);
 	}
 
-	
+
 
 	@Override
 	public Store findOneOrNew(String name){
@@ -101,6 +105,8 @@ public class StoreServiceImpl implements StoreService{
 			JsonNode restList = nodeList.path("rest");
 			Iterator<JsonNode> rest = restList.iterator();
 			// 店舗番号、店舗名、経緯度、予算、営業時間、URLを出力
+
+			resList = new ArrayList<Map<String, String>>();
 			while (rest.hasNext()) {
 				JsonNode r = rest.next();
 				String id = r.path("id").asText();
@@ -118,8 +124,6 @@ public class StoreServiceImpl implements StoreService{
 	}
 
 	public List<Map<String, String>> setResponse(String id, String name, String lat, String lon, String budget, String opentime, String url) {
-
-		resList = new ArrayList<Map<String, String>>();
 		Map<String, String> list = new HashMap<String, String>();
 
 		if(id != null) {
@@ -167,7 +171,7 @@ public class StoreServiceImpl implements StoreService{
 		}
 		return null;
 	}
-	
-	
+
+
 }
 
