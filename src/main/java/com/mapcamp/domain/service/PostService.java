@@ -30,5 +30,6 @@ public interface PostService {
 
 	List<Post> findAllByCategoryLike(String param);
 	
+	
 
 }

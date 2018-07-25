@@ -33,7 +33,6 @@ html, body{
 }
 
 .adv ul li{
-	/* float:left; */
 	display: inline-block;
 }
 

@@ -22,6 +22,15 @@ public class SearchController {
 	@Autowired
 	private PostService postService;
 
+	private List<Post> searchShows;
+	
+	
+	public List<Post> getSearch(){
+		
+		return searchShows;
+	}
+	
+
 	// 検索画面(main) 遷移画面(search)
 	// コントローラーからテンプレートへ値を渡す GET
 //	@RequestMapping(value = "/posts/main", method = RequestMethod.GET) // searchへ
@@ -39,21 +48,18 @@ public class SearchController {
 	public ModelAndView search(@RequestParam("Param") String Param, ModelAndView mav) {
 
 		if (Param == "") {
-			mav.setViewName("/posts/main");
+			mav.setViewName("redirect:/");
 		} else {
 			
-			System.out.println("param" + Param);
 			mav.addObject("Param", Param);
-			List<Post> searchShows = postRepository.findAllByCategoryLike(Param);
-			System.out.println(searchShows);
+			searchShows = postRepository.findAllByCategoryLike(Param);
 			mav.addObject("searchShows", searchShows);
-
-			System.out.println(mav);
 			mav.setViewName("search");
 		}
 		return mav;
 	}
 
+	
 //	// 検索結果をsearchへ表示
 //	@RequestMapping(value = "/search", method = RequestMethod.GET)
 //	public ModelAndView login(ModelAndView mav) {

@@ -29,10 +29,14 @@ public class MainController {
 	
 	@Autowired
 	private PostService postService;
+	
+	@Autowired
+	private SearchController searchController;
 
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
+		
 		List<Post> posts = postRepository.findAllByOrderByNowdateDesc();
 		List<Post> post_list = new ArrayList<Post>();
 
@@ -43,6 +47,9 @@ public class MainController {
 		}
 		
 		if(post_list.size() > 0) {
+			if(searchController.getSearch().size()>0) {
+				posts = searchController.getSearch();
+			}
 		for(Post a : post_list){
 		    for(Post b : posts){
 		        if(a.equals(b)){
