@@ -13,9 +13,11 @@
 	<div layout:fragment="main">
 	<div class="contents row" th:object="${user}">
       <div class="content__post">
-	
-	<!-- <div class="icon"><img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" /></div> -->
+      
+	<th:block th:if="${loginUser != null} ? ${user.id.equals(loginUser.userId)}">
 	<p class="post" th:text="${loginUser.name}">Guest</p>さんのMypage
+	
+	<img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
 
 
 			<br>■Name</br>
@@ -28,6 +30,13 @@
 	        <p th:text="*{sex}"></p>  
 	        
 	        <a th:href="@{'/user/' + ${user.id} + '/edit'}">Edit User Information</a>
+	        
+	        </th:block>
+	        
+	        <th:block th:unless="${loginUser != null} ? ${user.id.equals(loginUser.userId)}">
+	        <p>You are not this user.</p>
+	        </th:block>
+	        
 
 </div>
 </div>
