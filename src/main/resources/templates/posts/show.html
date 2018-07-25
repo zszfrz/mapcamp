@@ -4,9 +4,8 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
-<link rel="stylesheet" href="/css/registration.css" />
-<link rel="stylesheet" href="/css/posts/post__main_style.css" />
-<title>Show Page</title>
+<!-- <link rel="stylesheet" href="/css/registration.css" /> -->
+<link rel="stylesheet" href="/css/posts/post_main_style.css" />
 </head>
 <body>
     <div layout:fragment="main"> 
@@ -42,44 +41,24 @@
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.staff * 10}" class="star-actived"></i></span></span>
         <span>Speed</span>
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span></span>
-       
-
-<<<<<<< HEAD
-    
- 
-       <span class="name">
-
-       	<br><span>■投稿者</span><a th:href="@{`/user/` + ${user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
-                </a></br>
-            </span>   
-            
-
-=======
- 		
- 
+      
+      
        <span class="name">
        	<span>■投稿者</span><br><a th:href="@{`/user/` + ${post.user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
                 </a></br>
             </span>   
             
->>>>>>> 20e199bf9a52957e68bdb26543866ef948d79fe1
 
            ■StoreName
            <br><a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
            <span class="store" th:text="${post.stores.name}"></span></a></br>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> 20e199bf9a52957e68bdb26543866ef948d79fe1
-           ■Category
-=======
+
            <br>■Category</br>
->>>>>>> 5fa20039cbd76ffe0682a929d539d1d8ca2e12bc
         <p th:text="*{category}"></p>   
 
-            
+          
               ■投稿者コメント
         <p th:text="*{text}"></p>   
           

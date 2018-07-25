@@ -27,9 +27,9 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
-body {
+/* body {
     margin: 0;
-}
+} */
 
 a {
     background: transparent;
@@ -43,10 +43,10 @@ a:active, a:hover {
     outline: 0;
 }
 
-h1 {
+/* h1 {
     font-size: 2em;
     margin: 0.67em 0;
-}
+} */
 
 abbr[title] {
     border-bottom: 1px dotted;
@@ -1880,11 +1880,11 @@ Yahoo!Japan Movies CSS for PC
     padding: 1em 0.5em 1.5em;
 }
 
-body {
+/* body {
     font-size: 16px;
     font-family: roboto, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", Meiryo, "MS PGothic", sans-serif;
     line-height: 1.5;
-}
+} */
 
 p {
     margin: 0 0 0.5em 0;
@@ -1902,9 +1902,9 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-h1 {
+/* h1 {
     font-size: 44px;
-}
+} */
 
 h2, .text-xxlarge {
     font-size: 28px;
@@ -5010,10 +5010,10 @@ a:hover .listview__element, a:hover .listview>li>a, .listview>li>a:hover, .ui-so
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.header {
+/* .header {
     position: relative;
     padding: 0 0.25em;
-}
+} */
 
 .header--section {
     margin-bottom: 1em;
