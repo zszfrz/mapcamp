@@ -452,11 +452,11 @@ ul li {
 
 body, html {
     height: 100%;
-    background-color: #f5f5f3
+    background-color: #f5f5f3;
 }
 
 body {
-    padding-top: 60px
+    padding-top: 68px;
 }
 
 h1, h2, h3, h4, h5, h6, body {
@@ -620,7 +620,6 @@ header.header div.header__bar.row div.grid-6 a.post {
 
 header.header .user_nav {
     position: relative;
-    height: 100px;
     position: absolute;
     right: 0
 }
