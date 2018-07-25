@@ -6,8 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -60,6 +63,8 @@ public class PostServiceImpl implements PostService{
         return postRepository.findOne(id);
     }
     
+    
+    
     @Override
     public Post findByShopname(String shopname){
         return postService.findByShopname(shopname);
@@ -97,13 +102,53 @@ public class PostServiceImpl implements PostService{
         return Files.readAllBytes(path);  // ③
     }
     
+    @Override
+    public List<Post> findAllByCategory(String param){
+    	return postRepository.findAllByCategory(param);
+    }
+    
     
     //検索部分の処理
     @Override
-    public List<Post> findAllByCategoryLike(String param) {
-    	List<Post> search= postService.findAllByCategoryLike(".*" + param + ".*");
+    public List<Post> findAllByColumnLike(String param) {
+    	List<Post> posts_all = postRepository.findAll();
+    	List<Post> search = new ArrayList<Post>();
+    	for(Post a : posts_all) {
+    		if(Pattern.compile(param).matcher(a.getCategory()).find()) {//Category
+    			search.add(a);
+    		}
+//    		if(Pattern.compile(param).matcher(a.getText()).find()) {//Text
+//    			if(search.size()>0) {
+//    				for(Post b : search) {
+//    					if(!a.equals(b)) {
+//    						search.add(a);
+//    					}
+//    				}
+//    			}
+//    			else {search.add(a);}
+//    		}
+//    		if(Pattern.compile(param).matcher(a.getUser().getName()).find()) {//UserName
+//    			if(search.size()>0) {
+//    			for(Post b : search) {
+//    				if(!a.equals(b)) {
+//    			search.add(a);
+//    				}
+//    			}
+//    		}
+//    			else {search.add(a);}
+//    		}
+//    		if(Pattern.compile(param).matcher(a.getStores().getName()).find()) {//StoreName
+//    			if(search.size()>0) {
+//    			for(Post b : search) {
+//    				if(!a.equals(b)) {
+//    			search.add(a);
+//    				}
+//    			}
+//    		}
+//    			else {search.add(a);}
+//    	}
+    		
+    	}
     	return search;
     }
-
-	
 }

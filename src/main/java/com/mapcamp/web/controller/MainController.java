@@ -46,10 +46,7 @@ public class MainController {
 			}
 		}
 		
-		if(post_list.size() > 0) {
-			if(searchController.getSearch().size()>0) {
-				posts = searchController.getSearch();
-			}
+		
 		for(Post a : post_list){
 		    for(Post b : posts){
 		        if(a.equals(b)){
@@ -58,7 +55,7 @@ public class MainController {
 		        }
 		    }
 		}
-		}
+		
 		mav.addObject("posts", posts);
 		mav.addObject("wannago_list", post_list);
 		mav.setViewName("posts/main");
