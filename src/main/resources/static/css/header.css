@@ -1,5 +1,6 @@
 html, body{
-	background-color: #f5f5f3;
+	/* background-color: #f5f5f3; */
+	background-color: #3e98bb;
 }
 
 .header{
@@ -22,16 +23,18 @@ html, body{
 	width: 100%;
 	border-bottom: 2px solid #d8d8d8;
 	border-top: 2px solid #d8d8d8;
-	float:left;
+	float:middle;
 }
 
 .adv img{
 	width: 150px; 
 	height: 70px;
-  object-fit: contain;
-  
-	
-	
+  object-fit: contain;	
+}
+
+.adv ul li{
+	/* float:left; */
+	display: inline-block;
 }
 
 .footer{
@@ -41,7 +44,7 @@ html, body{
 	width: 100%;
 	text-align: center;
 	color: #d8d8d8;
-	padding-top: 2em;
+	padding-top: 0.8em;
 }
 
 
@@ -66,13 +69,13 @@ header h1{
 	margin-right: 2em;
 }
 
-.icon{
+.icon img{
 	display: inline-block;
 	margin: 0;
 	padding: 0;
 	height: 50px;
 	width: 50px;
-	background-color: #030303;
+	background-color: #f5f5f3;
 	margin-right: 2em;
 	vertical-align: middle;
 }
