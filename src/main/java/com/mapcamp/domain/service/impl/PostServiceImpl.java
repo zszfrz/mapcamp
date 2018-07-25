@@ -43,13 +43,7 @@ public class PostServiceImpl implements PostService{
         return postRepository.save(post);
     }
     
-    @Override
-    public Post delete(Post post){
-        return postRepository.save(post);
-    } 
-    
-    
-    
+  
 	
     @Override
     public Post findOneOrNew(String shopname){
@@ -81,7 +75,6 @@ public class PostServiceImpl implements PostService{
     //userIdでDBからUser情報を取り出し、postにセット ,Long postId
     @Override
     public Post save(Post post, Long userId, MultipartFile file) throws IOException {
-        //post.setPost(postService.findOne(postId));
         post.setUser(userService.findOne(userId));
         post = postService.save(post);
         if (!file.isEmpty()) {
@@ -114,12 +107,5 @@ public class PostServiceImpl implements PostService{
         return postService.findAllBycategoryLike("%" + param + "%");
     }
 
-    
-//    //引数：storeIdでDBからStoreを取り出し、Postにセット
-//    @Override
-//    public void save(Post post,Long store_id) {
-//    	post.setStoreId(StoreService.findOne(store_id));//エラー
-//    	postRepository.save(post);
-//    }
 	
 }

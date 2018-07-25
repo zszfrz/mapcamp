@@ -38,14 +38,14 @@ public class SearchController {
 
 	// テンプレートから値を取得し検索
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public ModelAndView search(@RequestParam(defaultValue = "") String Param, ModelAndView mav) {
+	public ModelAndView search(@RequestParam("Param") String Param, ModelAndView mav) {
 
 		if (Param == "") {
 			mav.setViewName("/posts/main");
 		} else {
 			
 			System.out.println("param" + Param);
-			mav.addObject("value", Param);
+			mav.addObject("Param", Param);
 			List<Post> searchShows = postService.findAllBycategoryLike(Param);
 			System.out.println(searchShows);
 			mav.addObject("searchShows", searchShows);
@@ -57,8 +57,9 @@ public class SearchController {
 	}
 
 	// 検索結果をsearchへ表示
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView login(ModelAndView mav) {
+	@RequestMapping(value = "search", method = RequestMethod.GET)
+	public ModelAndView search_show(ModelAndView mav) {
+		//public ModelAndView search_show(@ModelAttribute IndexForm indexForm, Model model) {
 		mav.setViewName("search");
 		mav.addObject("searchShows", "searchShows");
 		System.out.println(mav);

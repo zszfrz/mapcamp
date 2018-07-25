@@ -69,7 +69,7 @@
 			<div class="right_top" layout:fragment="right_top">
 				<div class="search_box">
 					<p>検索フォーム</p>
-					<form th:action="@{/search}" method="get">
+					<form th:action="@{/search}" method="post">
 						<!-- 						<tr>
 							<td>キーワード検索</td>
 							<td><input type="text" name="keyword_s" size="20"
@@ -77,7 +77,7 @@
 						</tr> -->
 						<tr>
 							<td>カテゴリー検索</td>
-							<td><input type="text" name="category_s" size="20" value="" /></td>
+							<td><input type="text" name="Param" size="20" value="" /></td>
 						</tr>
 						<!-- 						<tr>
 							<td>評価検索</td>

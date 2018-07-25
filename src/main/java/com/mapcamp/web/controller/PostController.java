@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mapcamp.domain.entity.Post;
+import com.mapcamp.domain.repository.PostRepository;
 import com.mapcamp.domain.service.PostService;
 import com.mapcamp.security.LoginUserDetails;
 import com.mapcamp.web.form.PostForm;
@@ -27,6 +28,9 @@ public class PostController {
 
 	@Autowired
 	private PostService postService;
+	
+	@Autowired
+	private PostRepository postRepository;
 	
 	
 	@GetMapping("/posts/new")
@@ -74,7 +78,7 @@ public class PostController {
 		if (!post.getUser().getId().equals(loginUserDetails.getUserId())) {
 			return "redirect:/";
 		}
-		postService.delete(post);
+		postRepository.delete(post);
 		return "posts/delete";
 	}
 
