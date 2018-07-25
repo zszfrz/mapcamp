@@ -17,9 +17,10 @@ import com.mapcamp.domain.service.PostService;
 public class SearchController {
 
 	@Autowired
-	private PostRepository searchShows;
+	private PostRepository postRepository ;
 	
-	@Autowired PostService postService;
+	@Autowired
+	private PostService postService;
 
 	// 検索画面(main) 遷移画面(search)
 	// コントローラーからテンプレートへ値を渡す GET
@@ -34,16 +35,16 @@ public class SearchController {
 //	}
 
 	// テンプレートから値を取得し検索
-	@RequestMapping(value = "/posts/main", method = RequestMethod.POST)
-	public ModelAndView search(@RequestParam(defaultValue = "") String Param, ModelAndView mav) {
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public ModelAndView search(@RequestParam("Param") String Param, ModelAndView mav) {
 
 		if (Param == "") {
 			mav.setViewName("/posts/main");
 		} else {
 			
 			System.out.println("param" + Param);
-			mav.addObject("value", Param);
-			List<Post> searchShows = postService.findBycategoryLike(Param);
+			mav.addObject("Param", Param);
+			List<Post> searchShows = postRepository.findAllByCategoryLike(Param);
 			System.out.println(searchShows);
 			mav.addObject("searchShows", searchShows);
 
@@ -53,13 +54,13 @@ public class SearchController {
 		return mav;
 	}
 
-	// 検索結果をsearchへ表示
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView login(ModelAndView mav) {
-		mav.setViewName("search");
-		mav.addObject("searchShows", searchShows);
-		System.out.println(mav);
-		return mav;
-	}
+//	// 検索結果をsearchへ表示
+//	@RequestMapping(value = "/search", method = RequestMethod.GET)
+//	public ModelAndView login(ModelAndView mav) {
+//		mav.setViewName("search");
+//		mav.addObject("searchShows", searchShows);
+//		System.out.println(mav);
+//		return mav;
+//	}
 
 }

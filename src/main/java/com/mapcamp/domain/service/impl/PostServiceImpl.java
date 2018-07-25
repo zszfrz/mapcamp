@@ -101,8 +101,9 @@ public class PostServiceImpl implements PostService{
 
     //検索部分の処理
     @Override
-    public List<Post> findBycategoryLike(String param) {
-        return postService.findBycategoryLike("%" + param + "%");
+    public List<Post> findAllByCategoryLike(String param) {
+    	List<Post> search= postService.findAllByCategoryLike("%" + param + "%");
+    	return search;
     }
 
 	
