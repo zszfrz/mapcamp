@@ -10,6 +10,20 @@
     <div layout:fragment="main"> 
     <div class="contents row">
         <div class="container">
+        
+         <form th:action="@{/select}" th:object="${selectForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/select/1" method="post">
+
+					<div style="margin: 8px 0" class="search-control">
+					    <input type="search" id="site-search" name="shopname"
+							placeholder="Please input shopname..."
+							aria-label="Search through site content" />
+						<input type="search" id="site-search" name="address"
+							placeholder="Please input address..."
+							aria-label="Search through site content" />
+						<button type="submit">Search</button>
+					</div>
+				</form>
+        
             <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
              <h3>Edit</h3>
 
