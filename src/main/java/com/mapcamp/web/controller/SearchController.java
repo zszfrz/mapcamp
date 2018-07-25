@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,13 +18,14 @@ import com.mapcamp.domain.service.PostService;
 public class SearchController {
 
 	@Autowired
-	private PostRepository searchShows;
+	private PostRepository postRepository;
 	
-	@Autowired PostService postService;
+	@Autowired 
+	private PostService postService;
 
 	// 検索画面(main) 遷移画面(search)
 	// コントローラーからテンプレートへ値を渡す GET
-//	@RequestMapping(value = "/posts/main", method = RequestMethod.GET) // searchへ
+//	@RequestMapping(value = "/", method = RequestMethod.GET) // searchへ
 //	public ModelAndView find(ModelAndView mav) {
 //		// Post searchShow = postRepository.findOne(1L); //postid=1をsearchShowにセット
 //		List<Post> searchShows = postRepository.findAll();// 複数取得したいのでList
@@ -32,34 +34,37 @@ public class SearchController {
 //		mav.setViewName("search");// 使用するビューをセット
 //		return mav;
 //	}
+	
 
 	// テンプレートから値を取得し検索
-	@RequestMapping(value = "/posts/main", method = RequestMethod.POST)
-	public ModelAndView search(@RequestParam(defaultValue = "") String Param, ModelAndView mav) {
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public ModelAndView search(@RequestParam("Param") String Param, ModelAndView mav) {
 
 		if (Param == "") {
 			mav.setViewName("/posts/main");
 		} else {
 			
-			System.out.println("param" + Param);
-			mav.addObject("value", Param);
-			List<Post> searchShows = postService.findBycategoryLike(Param);
-			System.out.println(searchShows);
+			//System.out.println("param" + Param);
+			mav.addObject("Param", Param);
+			List<Post> searchShows = postRepository.findAllByCategory(Param);
+			//System.out.println(searchShows);
 			mav.addObject("searchShows", searchShows);
 
-			System.out.println(mav);
+			//System.out.println(mav);
 			mav.setViewName("search");
 		}
 		return mav;
 	}
 
-	// 検索結果をsearchへ表示
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView login(ModelAndView mav) {
-		mav.setViewName("search");
-		mav.addObject("searchShows", searchShows);
-		System.out.println(mav);
-		return mav;
-	}
+//	// 検索結果をsearchへ表示
+//	@RequestMapping(value = "/search", method = RequestMethod.GET)
+//	public ModelAndView search_show(ModelAndView mav) {
+//		//public ModelAndView search_show(@ModelAttribute IndexForm indexForm, Model model) {
+//		mav.setViewName("search");
+//		//mav.addObject("searchShows", "searchShows");
+//		//System.out.println(mav);
+//		return mav;
+//	}
 
 }

@@ -13,79 +13,40 @@
 </head>
 
 <body>
-	<header class="header">
-		<div class="header__bar row">
-			<h1 class="grid-6">
-				<a href="/">mapcamp</a>
-			</h1>
-			<div class="grid-6 user_nav">
-				<th:block th:if="${login_user != null}">
-					<a class="post" href="/posts/new">投稿する</a>
-					<form th:action="@{/user/logout}" method="post">
-						<input type="submit" value="ログアウト" />
-					</form>
-				</th:block>
-				<th:block th:if="${login_user == null}">
-					<a class="post" href="/user/login">ログイン</a>
-					<a class="post" href="/user/registration">登録</a>
-				</th:block>
-			</div>
-		</div>
-	</header>
-	<!-- <div class="contents row" th:object="${post}">
-		<div class="content__post">
-			<img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}"
-				src="/avatars/original/missing.png" alt="Missing" />
-			<div class="more">
-				<span>■</span>
-				<ul class="more_list">
-					<th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.id)}"> 
-					<li><a th:href="@{'/posts/' + ${post.id} + '/edit'}">編集</a></li>
-					<li>
-						<form th:action="@{'/posts/' + ${post.id} + '/delete'}"
-							method="post">
-							<input type="submit" value="削除" />
-						</form>
-					</li>
-					  </th:block> 
-				</ul>
-			</div>
-		</div>
-
-		<p th:text="*{shopname}"></p>
-
-		<div class="container">
-			  <th:block th:if="${loginUser != null}">
-		</div>
-	</div> -->
-
-	<!-- お店の情報を表示 -->
-	<div layout:fragment="right">
-		<hr></hr>
-		<!-- 		<div class="contents clearfix">
-			<div class="contents row " th:each="post : ${posts}">
-				拡張for文
-				<div class="content__post"
-					th:style="'background-image: url(' + @{${post.image}} + ');'">
-					<p th:text="${post.shopname}"></p>
-					<span class="name" th:text="${post.user.name}"></span>
-				</div>
-			</div>
-		</div> -->
-
+<div layout:fragment="right">
+		<!-- <hr></hr>
+ -->
 		<!-- テスト -->
-		<div class="contents clearfix">
-			<div class="contents row " th:each="searchShows : ${searchShows}">
-				拡張for文
-				<div class="content__post"
-					th:style="'background-image: url(' + @{${searchShows.image}} + ');'">
-					<p th:text="${searchShows.shopname}"></p>
-					<span class="name" th:text="${searchShows.user.name}"></span>
-				</div>
-			</div>
-		</div>
+		<div class="main_post" th:each="searchShow : ${searchShows}">
+			<div class="main_post2 clearfix" >
+				<a href="/posts/1" th:href="@{'/posts/' + ${searchShow.id}}"> 
+					<img th:src="@{'/posts/' + ${searchShow.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+				</a> 
 
-	</div>
+				 	<!-- <div class="more">
+         				 <span>■</span>
+           					 <ul class="more_list">
+           				 		<li>
+           				 		<form
+                                th:action="@{'/' + ${post.id} + '/add'}"
+                                method="post">
+                                <input type="submit" value="ToBox" />
+                                </form>
+            					</li>
+           					</ul>
+           			</div>  -->
+
+         	<a href="/posts/1" th:href="@{${searchShow.stores.url}}" target="_blank">
+         	     <span class="store" th:text="${searchShow.stores.name}"></span>
+         	</a>
+
+
+         <a href="/posts/1" th:href="@{'/user/' + ${searchShow.user.id}}">  
+			<span class="name" th:text="${searchShow.user.name}"></span>
+		 </a>
+		</div>
+   	</div>
+
 	<!--
 	検索結果表示 th:text="${post.text}"
 	<div th:object="${識別子名(オブジェクト)}">
@@ -93,18 +54,15 @@
 	</div>
 <body>
 	<div th:each="post : ${searchShow}">
-		 <p th:text="${searchShow}"></p>
-		<p th:text="${post.shopname}"></p>
-		<p th:text="${post.comment}"></p>
+		<p th:text="${post.name}"></p>
+		<p th:text="${post.text}"></p>
 		<p th:text="${post.image}"></p>
 		<p th:text="${post.id}"></p>
 	</div>
 </body> -->
 
 
-	<footer>
-		<p>Copyright mapcamp 2018.</p>
-	</footer>
 
+</div>
 </body>
 </html>

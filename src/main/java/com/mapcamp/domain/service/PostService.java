@@ -1,6 +1,7 @@
 package com.mapcamp.domain.service;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -20,6 +21,7 @@ public interface PostService {
     
 	Post findByShopname(String shopname);
 	
+	
 //	List<Post> findAllByOrderByNowdateDesc();
    
     //postとuserを結びつけて保存　userIdを受け取れるように Long postId追加？
@@ -28,7 +30,7 @@ public interface PostService {
 	byte[] downloadImage(Long postId) throws IOException;
 	
 
-	List<Post> findBycategoryLike(String param);
+	List<Post> findAllBycategoryLike(String param);
 	
 
 }

@@ -14,6 +14,7 @@
 <body>
 	<header class="header">
 
+
 			<h1>
 				<a href="/">Map Camp</a>
 			</h1>
@@ -26,6 +27,7 @@
 					 <a href="/user/1" class="post" th:href="@{'/user/' + ${loginUser.userId}}" th:text="${loginUser.name}">Guest</a>
 
 					<a class="post" href="/posts/new">投稿する</a>
+
 					<form th:action="@{/logout}" method="post">
 						<input type="submit" value="ログアウト" />
 					</form>
@@ -40,7 +42,6 @@
 	</header>
 
 	<div class="content" layout:fragment="content"></div>
-
 
 	<!-- 	<div class="adv" layout:fragment="adv">
 		<p style="text-align: center">

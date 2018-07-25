@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.repository.PostRepository;
 import com.mapcamp.domain.service.PostService;
+import com.mapcamp.domain.service.StoreService;
 import com.mapcamp.domain.service.UserService;
 
 
@@ -65,10 +67,7 @@ public class PostServiceImpl implements PostService{
         return postService.findByShopname(shopname);
     }
     
-//    @Override 
-//    public List<Post> findAllByOrderByNowdateDesc(){
-//    	return postService.findAllByOrderByNowdateDesc();
-//    }
+    
 
     //userIdでDBからUser情報を取り出し、postにセット ,Long postId
     @Override
@@ -101,8 +100,9 @@ public class PostServiceImpl implements PostService{
 
     //検索部分の処理
     @Override
-    public List<Post> findBycategoryLike(String param) {
-        return postService.findBycategoryLike("%" + param + "%");
+    public List<Post> findAllBycategoryLike(String param) {
+    	List<Post> search = postRepository.findAllByCategory("%" + param + "%");
+        return search;
     }
 
 	
