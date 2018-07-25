@@ -6,13 +6,13 @@
 
 .left{
 	width: 394px;
-	height:570px;
+	height:489px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
     vertical-align: top;
    text-align: center;
-    border: 1px solid #191919;
+    border: 4px solid #191919;
     float: left; 
 }
 
@@ -62,7 +62,7 @@ display: table;
 }
 
 .wannago_posts{
-	margin: 0;
+	margin: 10px 10px 10px 10px;
 	width: 90%;
 	height: 400px;
 	overflow-y: auto;
