@@ -71,7 +71,9 @@ public class MainController {
 		return session_list;
 	}
 	
-	
+	public List<Long> getList(){
+		return session_list;
+	}
 	
 	public List<Long> deleteList(Long post_id){
 		if(post_id != null) {
