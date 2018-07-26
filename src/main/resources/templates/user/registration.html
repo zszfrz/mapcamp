@@ -18,7 +18,7 @@
 					<div class="form_box">
 						<h2>
 							mapcamp<br />
-							<span>新規登録</span>
+							<span>New Account</span>
 						</h2>
 
 						<form th:action="@{/user/registration}" th:object="${userForm}"
@@ -28,27 +28,27 @@
 							<div class="label">
 								<label for="user_email">Email</label><br /> <input
 									th:field="*{email}" autofocus="autofocus"
-									placeholder="メールアドレスを入力" type="email" value="" name="email"
+									placeholder="Type your email" type="email" value="" name="email"
 									id="user_email" />
 							</div>
 
 							<div class="label">
 								<label for="user_password">Password</label> <br /> <input
 									th:field="*{password}" autocomplete="off"
-									placeholder="パスワードを入力" type="password" name="password"
+									placeholder="Type your password" type="password" name="password"
 									id="user_password" />
 							</div>
 
 							<div class="label">
 								<label for="user_password_confirmation">Password
 									confirmation</label><br /> <input th:field="*{confirmPassword}"
-									autocomplete="off" placeholder="パスワードを入力（確認）" type="password"
+									autocomplete="off" placeholder="Confirmation" type="password"
 									name="confirmPassword" id="user_password_confirmation" />
 							</div>
 
 							<div class="label">
 								<label for="user_name">Name</label><br /> <input
-									th:field="*{name}" placeholder="ネームを入力（必須）" type="text"
+									th:field="*{name}" placeholder="Type your username（*）" type="text"
 									name="name" id="user_name" />
 							</div>
 
@@ -79,7 +79,7 @@
 							</div>
 
 							<div class="more_link_box">
-								<strong>すでにアカウントを持っていますか？</strong> <a href="/login">Log
+								<strong>Already have an account？</strong> <a href="/login">Log
 									in</a><br />
 							</div>
 						</form>
