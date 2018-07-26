@@ -1,3 +1,5 @@
+
+
 .mainbox{
 	margin: 0 auto;
 	padding: 0 10px;
@@ -76,6 +78,10 @@ display: table;
 	border: 1px solid #0e0e0e;
 	width: 90%;
 	height: 400px;
+}
+
+.wannago_box.more.more_list ul li{
+	display: inline-block;
 }
 
 .wannago_box img{

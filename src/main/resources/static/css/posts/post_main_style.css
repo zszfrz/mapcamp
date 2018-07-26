@@ -290,13 +290,14 @@ i {
 
 ul {
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 ul li {
     list-style: none;
     padding: 0;
-    margin: 0
+    margin: 0;
+    display: inline-block;
 }
 
 .row {
@@ -696,12 +697,6 @@ header.header .user_nav ul li a {
 	clear: both;
 }
 
-.wrapper{
-
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-}
 
 
 div.main_post h2 {
