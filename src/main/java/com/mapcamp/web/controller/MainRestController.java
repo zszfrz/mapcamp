@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.service.PostService;
 
 @RestController
+@SessionAttributes(names="list")
 public class MainRestController{
 
 	@Autowired
@@ -35,20 +37,21 @@ public class MainRestController{
 
 	@RequestMapping(value = "/latlon", method = RequestMethod.GET)
 	@ResponseBody
-	public ArrayList<Map<String, Object>> getLatLon(@ModelAttribute("list")List<Long> list) {
+	public ArrayList<Map<String, Object>> getLatLon() {
 		ArrayList<Map<String, Object>> map = new ArrayList<Map<String, Object>>();
-
+		List<Long> list = mainController.getList();
+		
 		try {			
 			for(Long id: list) {
 				Map<String, Object> obj1 = new HashMap<String, Object>();
 				obj1.put("id", id); 
 				Map<String, Object> obj2 = new HashMap<String, Object>();
-				//	obj2.put("name", "とり"); //sample
-				//	obj2.put("lat", 35.662613); //sample
-				//	obj2.put("lon", 139.780453); //sample
-				obj2.put("name", postService.findOne(id).getStores().getName()); //storeがないため
-				obj2.put("lat", postService.findOne(id).getStores().getLat());
-				obj2.put("lon", postService.findOne(id).getStores().getLon());
+					obj2.put("name", "とり"); //sample
+					obj2.put("lat", 35.662613); //sample
+					obj2.put("lon", 139.780453); //sample
+			//	obj2.put("name", postService.findOne(id).getStores().getName()); //storeがないため
+			//	obj2.put("lat", postService.findOne(id).getStores().getLat());
+			//	obj2.put("lon", postService.findOne(id).getStores().getLon());
 				obj1.put("store", obj2);
 				map.add(obj1);
 			}

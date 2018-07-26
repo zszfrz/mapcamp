@@ -32,12 +32,14 @@ function initMap() {
 		var points = [];
 		for(var i=0; i < data[0].length-1; i++){
 			points.push({ location: new google.maps.LatLng(data[0][i].store.lat , data[0][i].store.lon) });
+			console.log(points[0]);
 		}
 		
+		console.log(data[0][data.length-1].store.lat);
 		//ルート探索条件
 		request = {
 				origin: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), // 出発地
-				destination: new google.maps.LatLng(data[0][data.length].store.lat, data[0][data.length].store.lon), // 目的地
+				destination: new google.maps.LatLng(data[0][data.length-1].store.lat, data[0][data.length-1].store.lon), // 目的地
 				waypoints: [ // 経由地点(指定なしでも可)
 					...points
 					],
@@ -59,8 +61,9 @@ function initMap() {
 			});
 
 			infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-				content: '<div class="sample">' + data[0][i].store.name + '</div>' // 吹き出しに表示する内容
+				content: data[0][i].store.name // 吹き出しに表示する内容
 			});
+			console.log(data[0][i].store.name);
 
 			markerEvent(i); // マーカーにクリックイベントを追加
 		}
