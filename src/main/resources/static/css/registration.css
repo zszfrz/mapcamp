@@ -5002,23 +5002,6 @@ a:hover .listview__element, a:hover .listview>li>a, .listview>li>a:hover, .ui-so
     border-top: 0;
 }
 
-.footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 30px;
-    margin: 0;
-    background-color: #23272e;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* .header {
-    position: relative;
-    padding: 0 0.25em;
-} */
-
-.header--section {
-    margin-bottom: 1em;
-    border-bottom: 3px solid #d7dbe2;
-}
 
 .hr-top {
     border-top: 3px solid #d7dbe2;
@@ -6891,16 +6874,6 @@ hr.yjSeparation {
     display: none;
 }
 
-#wrapper, #main_cnt_wrapper {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-}
-
-#wrapper.w970 {
-    width: 970px;
-}
 
 #yjContentsFooter {
     margin-top: 10px;

@@ -16,71 +16,89 @@
 		<div class="mainbox">
 			<div class="left">
 
-				<div class="wannago">行きたいところリスト</div>
+				<div class="wannago">WANNA GO</div>
 				<div class="wannago_posts">
 					<div class="transe" th:if="${wannago_list} == null">
 						<p>店名</p>
 					</div>
-					
+
 					<th:block th:each="wannago_post : ${wannago_list}">
-					<div class ="wannago_box">
-					<div class="more">
-           					 <ul class="more_list">
-           				 		<li>
-           				 		<form
-                                th:action="@{'/' + ${wannago_post.id} + '/delete'}"
-                                method="post">
-                                <input type="submit" value="Cancel" />
-                                </form>
-            					</li>
-            					<li>
-           				 		<form
-                                th:action="@{'/' + ${wannago_post.id} + '/up'}"
-                                method="post">
-                                <input type="submit" value="↑" />
-                                </form>
-            					</li>
-            					<li>
-           				 		<form
-                                th:action="@{'/' + ${wannago_post.id} + '/down'}"
-                                method="post">
-                                <input type="submit" value="↓" />
-                                </form>
-            					</li>
-           					</ul>
-           			</div> 
-           			
-           			<a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}"> 
-					<img th:src="@{'/posts/' + ${wannago_post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
-				</a> 
-						
-						<a href="/posts/1" th:href="@{${wannago_post.stores.url}}" target="_blank"> 
-							<span th:text="${wannago_post.stores.name}">店名</span>
-						 </a>
-						
-						
-							<a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}"></a>
+						<div class="wannago_box">
+							<div class="more">
+								<ul class="more_list">
+									<li>
+										<form th:action="@{'/' + ${wannago_post.id} + '/delete'}"
+											method="post">
+											<input type="submit" value="Cancel" />
+										</form>
+									</li>
+									<li>
+										<form th:action="@{'/' + ${wannago_post.id} + '/up'}"
+											method="post">
+											<input type="submit" value="↑" />
+										</form>
+									</li>
+									<li>
+										<form th:action="@{'/' + ${wannago_post.id} + '/down'}"
+											method="post">
+											<input type="submit" value="↓" />
+										</form>
+									</li>
+								</ul>
 							</div>
-							</th:block>
+
+							<a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}">
+								<img
+								th:src="@{'/posts/' + ${wannago_post.id} + '/post-image.jpg'}"
+								src="/avatars/original/missing.png" alt="Missing" />
+							</a> 
+							<a href="/posts/1" th:href="@{${wannago_post.stores.url}}"
+								target="_blank"> <span th:text="${wannago_post.stores.name}">店名</span>
+							</a> <a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}"></a>
+						</div>
+					</th:block>
 
 				</div>
-				<div id="route">ルート探索</div>
+
+				<div id="route" >FIND ROUTE</div>
 				<script type="text/javascript" src="/js/map.js"
 					th:src="@{/js/map.js}"></script>
 				<script>
 					var route = document.getElementById('route');
 					route.addEventListener('click', function() {
-						getLatLon();					
+						getLatLon();
 					});
 				</script>
 
 			</div>
 
-
-
-			<div class="right_top" layout:fragment="right_top"></div>
+			<div class="right_top" layout:fragment="right_top">
+				<div class="search_box">
+					<p>検索フォーム</p>
+					<form th:action="@{/search_category}" method="post">
+						<tr>
+							<td>カテゴリー検索</td>
+							<td><input type="text" name="Param" size="20" value="" /></td>
+						</tr>
+						
+						<tr>
+							<td><input type="submit" value="search" /></td>
+						</tr>
+					</form>
+					<form th:action="@{/search_text}" method="post">
+						<tr>
+							<td>投稿者コメント検索</td>
+							<td><input type="text" name="Param" size="20" value="" /></td>
+						</tr>
+						
+						<tr>
+							<td><input type="submit" value="search" /></td>
+						</tr>
+					</form>
+				</div>
+			</div>
 			<div class="right" layout:fragment="right"></div>
-</div>
+		</div>
 	</div>
 
 </body>

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mapcamp.domain.entity.Post;
+import com.mapcamp.domain.entity.Store;
 
 
 public interface PostService {
@@ -20,15 +21,20 @@ public interface PostService {
     
 	Post findByShopname(String shopname);
 	
+	List<Post> findAllByCategory(String param);
+	List<Post> findAllByText(String param);
+	
 //	List<Post> findAllByOrderByNowdateDesc();
    
     //postとuserを結びつけて保存　userIdを受け取れるように Long postId追加？
-	Post save(Post post,Long userId,MultipartFile file) throws IOException;
+	Post save(Post post,Long userId,MultipartFile file, Store store) throws IOException;
 	Post save(Post post);
 	byte[] downloadImage(Long postId) throws IOException;
 	
 
-	List<Post> findBycategoryLike(String param);
+	List<Post> findAllByCategoryLike(String param);
+	List<Post> findAllByTextLike(String param);
+	
 	
 
 }
