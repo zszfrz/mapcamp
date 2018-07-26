@@ -2351,10 +2351,6 @@ blockquote {
     cursor: not-allowed;
 }
 
-.search__query {
-    padding-right: 2em;
-}
-
 .input-confirm {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
