@@ -41,7 +41,7 @@ public class SearchController {
 	public ModelAndView search(@RequestParam("Param") String Param, ModelAndView mav) {
 
 		if (Param == "") {
-			mav.setViewName("/posts/main");
+			mav.setViewName("/");
 		} else {
 			
 			System.out.println("param" + Param);
@@ -59,11 +59,11 @@ public class SearchController {
 	// 検索結果をsearchへ表示
 	//@RequestMapping(value = "/search", method = RequestMethod.GET)
 	@GetMapping("search")
-	public ModelAndView search_show(ModelAndView mav, RedirectAttributes redirectAttributes) {
-		mav.setViewName("posts/main");
-		//mav.addObject("searchShows", searchShows);
-		redirectAttributes.addFlashAttribute("message", "新規レコードを作成しました");
-		System.out.println(mav);
+	public ModelAndView search_show(ModelAndView mav) {
+		mav.setViewName("/");
+//		//mav.addObject("searchShows", searchShows);
+//		redirectAttributes.addFlashAttribute("message", "新規レコードを作成しました");
+//		System.out.println(mav);
 		return mav;
 	}
 
