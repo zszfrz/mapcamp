@@ -21,6 +21,9 @@ public interface PostService {
     
 	Post findByShopname(String shopname);
 	
+	List<Post> findAllByCategory(String param);
+	List<Post> findAllByText(String param);
+	
 //	List<Post> findAllByOrderByNowdateDesc();
    
     //postとuserを結びつけて保存　userIdを受け取れるように Long postId追加？
@@ -30,6 +33,8 @@ public interface PostService {
 	
 
 	List<Post> findAllByCategoryLike(String param);
+	List<Post> findAllByTextLike(String param);
+	
 	
 
 }

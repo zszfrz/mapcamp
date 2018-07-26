@@ -29,10 +29,14 @@ public class MainController {
 	
 	@Autowired
 	private PostService postService;
+	
+	@Autowired
+	private SearchController searchController;
 
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav, @ModelAttribute("list")List<Long> session_list) {
+		
 		List<Post> posts = postRepository.findAllByOrderByNowdateDesc();
 		List<Post> post_list = new ArrayList<Post>();
 
@@ -42,7 +46,7 @@ public class MainController {
 			}
 		}
 		
-		if(post_list.size() > 0) {
+		
 		for(Post a : post_list){
 		    for(Post b : posts){
 		        if(a.equals(b)){
@@ -51,7 +55,7 @@ public class MainController {
 		        }
 		    }
 		}
-		}
+		
 		mav.addObject("posts", posts);
 		mav.addObject("wannago_list", post_list);
 		mav.setViewName("posts/main");
