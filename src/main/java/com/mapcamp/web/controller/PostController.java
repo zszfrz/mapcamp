@@ -2,6 +2,7 @@ package com.mapcamp.web.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
@@ -44,6 +45,8 @@ public class PostController {
 	@Autowired
 	private PostRepository postRepository;
 
+	@Autowired
+	private MainController mainController;
 
 	@GetMapping("/posts/new")
 	public String newPost(PostForm form,
@@ -101,7 +104,10 @@ public class PostController {
 		if (!post.getUser().getId().equals(loginUserDetails.getUserId())) {
 			return "redirect:/";
 		}
+		
+		mainController.deleteList(postId);
 		postRepository.delete(post);
+		
 		return "posts/delete";
 	}
 
