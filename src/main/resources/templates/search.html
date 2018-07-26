@@ -6,22 +6,10 @@
 
 <head>
 <meta charset="UTF-8" />
-<!--  <link rel="stylesheet" href="/css/posts/post_setting.css" />
-<link rel="stylesheet" href="/css/registration.css" />
-<link rel="stylesheet" href="/css/posts/post_style.css" /> -->
 <title>search Page</title>
 </head>
 
 <body>
-	<header class="header">
-		<div class="header__bar row">
-			<h1 class="grid-6">
-				<a href="/">mapcamp</a>
-			</h1>
-		</div>
-	</header>
-
-	<!-- お店の情報を表示 -->
 	<div layout:fragment="right">
 
 		<!-- <p th:text:"${Param}">を検索中...</p> -->
@@ -54,25 +42,6 @@
 				</a>
 			</div>
 		</div>
-
 	</div>
-	<!--
-	検索結果表示 th:text="${post.text}"
-	<div th:object="${識別子名(オブジェクト)}">
-		<p th:text="*{プロパティ名}"></p>
-	</div>
-<body>
-	<div th:each="post : ${searchShow}">
-		<p th:text="${post.name}"></p>
-		<p th:text="${post.text}"></p>
-		<p th:text="${post.image}"></p>
-		<p th:text="${post.id}"></p>
-	</div>
-</body> -->
-
-	<footer>
-		<p>Copyright mapcamp 2018.</p>
-	</footer>
-
 </body>
 </html>

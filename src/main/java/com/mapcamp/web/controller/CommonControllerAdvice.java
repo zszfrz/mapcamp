@@ -17,5 +17,7 @@ public class CommonControllerAdvice {
     private LoginUserDetails setupLoginUser(@AuthenticationPrincipal LoginUserDetails loginUserDetails) {
         return loginUserDetails;
     }
+    
+    
 	
 }
