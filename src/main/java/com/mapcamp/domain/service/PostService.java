@@ -21,6 +21,7 @@ public interface PostService {
 	Post findByShopname(String shopname);
 	
 	List<Post> findAllByCategory(String param);
+	List<Post> findAllByText(String param);
 	
 //	List<Post> findAllByOrderByNowdateDesc();
    
@@ -30,7 +31,8 @@ public interface PostService {
 	byte[] downloadImage(Long postId) throws IOException;
 	
 
-	List<Post> findAllByColumnLike(String param);
+	List<Post> findAllByCategoryLike(String param);
+	List<Post> findAllByTextLike(String param);
 	
 	
 

@@ -16,4 +16,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 	//List<Post> findAllByCategoryLike(String param);
 	
 	List<Post> findAllByText(String param);
+	
 }
