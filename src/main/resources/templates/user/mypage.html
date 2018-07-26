@@ -15,7 +15,7 @@
       <div class="content__post">
       
 	<th:block th:if="${loginUser != null} ? ${user.id.equals(loginUser.userId)}">
-	<p class="post" th:text="${loginUser.name}">Guest</p>さんのMypage
+	<p class="post" th:text="${loginUser.name}">Guest</p>Mypage
 	
 	<img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
 

@@ -25,9 +25,9 @@
 						
 					 <a href="/user/1" class="post" th:href="@{'/user/' + ${loginUser.userId}}" th:text="${loginUser.name}">Guest</a>
 
-					<a class="post" href="/posts/new">投稿する</a>
+					<a class="post" href="/posts/new">New post</a>
 					<form th:action="@{/logout}" method="post">
-						<input type="submit" value="ログアウト" />
+						<input type="submit" value="Logout" />
 					</form>
 				</th:block>
 				<th:block th:if="${loginUser == null}">
