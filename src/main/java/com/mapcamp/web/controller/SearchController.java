@@ -31,19 +31,6 @@ public class SearchController {
 		
 		return searchShows;
 	}
-	
-
-	// 検索画面(main) 遷移画面(search)
-	// コントローラーからテンプレートへ値を渡す GET
-//	@RequestMapping(value = "/posts/main", method = RequestMethod.GET) // searchへ
-//	public ModelAndView find(ModelAndView mav) {
-//		// Post searchShow = postRepository.findOne(1L); //postid=1をsearchShowにセット
-//		List<Post> searchShows = postRepository.findAll();// 複数取得したいのでList
-//		mav.addObject("searchShows", searchShows);// "searchShow"に渡すデータをセットしビューへ ("識別子名(viewで使用できる)",変数)
-//		System.out.println(mav);
-//		mav.setViewName("search");// 使用するビューをセット
-//		return mav;
-//	}
 
 	// テンプレートから値を取得し検索
 	@RequestMapping(value = "/search_category", method = RequestMethod.POST)
@@ -88,14 +75,14 @@ public class SearchController {
 //	}
 	// 検索結果をsearchへ表示
 	//@RequestMapping(value = "/search", method = RequestMethod.GET)
-//	@GetMapping("search")
-//	public ModelAndView search_show(ModelAndView mav, RedirectAttributes redirectAttributes) {
-//		mav.setViewName("redirect:/");
+
+	@GetMapping("search")
+	public ModelAndView search_show(ModelAndView mav) {
+		mav.setViewName("/");
 //		//mav.addObject("searchShows", searchShows);
 //		redirectAttributes.addFlashAttribute("message", "新規レコードを作成しました");
 //		System.out.println(mav);
-//		return mav;
-//	}
-
+		return mav;
+	}
 
 }
