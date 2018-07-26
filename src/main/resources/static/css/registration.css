@@ -2351,10 +2351,6 @@ blockquote {
     cursor: not-allowed;
 }
 
-.search__query {
-    padding-right: 2em;
-}
-
 .input-confirm {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -2457,7 +2453,7 @@ blockquote {
     color: #bd2152;
 }
 
-.btn, a.btn-schedule, .schedulenav>li>a, .schedulenav>li>span, span.btn-schedule {
+a.btn-schedule, .schedulenav>li>a, .schedulenav>li>span, span.btn-schedule {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -2484,7 +2480,7 @@ blockquote {
     max-width: 100%;
 }
 
-.btn, a.btn-schedule, .schedulenav>li>a, .schedulenav>li>span {
+a.btn-schedule, .schedulenav>li>a, .schedulenav>li>span {
     background-color: #d7dbe2;
     color: #686c73;
     box-shadow: 0px 2px 0px 0px #a8b0c0;
