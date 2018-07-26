@@ -56,7 +56,7 @@ public class UserController {
 		if (loginUserDetails != null) {
 			return "redirect:/";
 		}
-		return "/user/registration";
+		return "user/registration";
 	}
 
 	//登録画面でDBにデータ保存
@@ -73,7 +73,7 @@ public class UserController {
 		}
 		
 		if (result.hasErrors()) {
-			return "/user/registration";
+			return "user/registration";
 		}
 		
 		User user = new User();
