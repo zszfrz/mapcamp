@@ -1,3 +1,5 @@
+
+
 .mainbox{
 	margin: 0 auto;
 	padding: 0 10px;
@@ -6,13 +8,13 @@
 
 .left{
 	width: 394px;
-	height:570px;
+	height:489px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
     vertical-align: top;
    text-align: center;
-    border: 1px solid #191919;
+    border: 4px solid #191919;
     float: left; 
 }
 
@@ -29,6 +31,29 @@
    
 }
 
+.right_top{
+	margin-top: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-right: 100px;
+	display: inline-block;
+    vertical-align: top;
+    float: left;
+    width: 500px;
+    height: 60px;
+   
+}
+
+.search_box{
+display: table;
+/* 	margin: 0.5em auto;
+	padding: 0;
+	border: 1px solid #0e0e0e; */
+	padding: 0;
+	width: 90%;
+	height: 90%;
+}
+
 /* form.post form.search {
 	right: 50px;
 	
@@ -39,7 +64,7 @@
 }
 
 .wannago_posts{
-	margin: 0;
+	margin: 10px 10px 10px 10px;
 	width: 90%;
 	height: 400px;
 	overflow-y: auto;
@@ -48,11 +73,15 @@
 
 .wannago_box{
     display: table;
-	margin: 0.5em auto;
+	margin: /* 0.5em */ auto;
 	padding: 0;
-	border: 1px solid #0e0e0e;
+	/* border: 1px solid #0e0e0e; */
 	width: 90%;
 	height: 400px;
+}
+
+.wannago_box.more.more_list ul li{
+	display: inline-block;
 }
 
 .wannago_box img{
@@ -85,12 +114,14 @@
 #route{
        padding: auto 0;
        display:inline-block;
-       height: 2em;
+       height: 24px;
        width: 6em;
        border: 1px solid #0e0e0e;
        text-align: center;
        vertical-align: center;
        margin-right: 0.5em;
+       bottom: 1px;
+       left:2px;
 }
 
 .transe p{
@@ -112,7 +143,9 @@ vertical-align: bottom;
 
 .wannago_box a {
 	display: block;
-    width: 100%;
-    height: 100%;
-
+    /* width: 100%;
+    height: 100%; */
+    text-align: center;
+    font-size: 13px;
+    color: black;
 	}

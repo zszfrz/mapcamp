@@ -290,13 +290,14 @@ i {
 
 ul {
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 ul li {
     list-style: none;
     padding: 0;
-    margin: 0
+    margin: 0;
+    display: inline-block;
 }
 
 .row {
@@ -517,7 +518,7 @@ header form input[type=submit] {
 	background-color: transparent;
 }
 
-.btn, header.header div.header__bar.row div.grid-6 a.post, header input[type=submit] {
+header.header div.header__bar.row div.grid-6 a.post, header input[type=submit] {
     padding: 8px 20px;
     font-size: 14px;
     border: 2px solid #57c3e9;
@@ -695,12 +696,6 @@ header.header .user_nav ul li a {
 	clear: both;
 }
 
-.wrapper{
-
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-}
 
 
 div.main_post h2 {

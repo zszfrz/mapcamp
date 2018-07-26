@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="content">
+
+<head>
+<meta charset="UTF-8" th:remove="all" />
+<title>Shop Select</title>
+
+<link rel="stylesheet" type="text/css" href="../css/registration.css" />
+</head>
+
+<body class="yj950-2">
+
+	<div layout:fragment="main">
+		<div class="main_list" th:each="list : ${response}">
+			<div class="resLists">
+				<th:block th:if="${html == 'new'}">
+					<!-- new -->
+					<a href="/resList/1" th:href="@{'/new/' + 'select/'+ ${list.id}}">
+						<span class="name" th:text="${list.name}"></span>
+					</a>
+				</th:block>
+				<th:block th:if="${html == 'edit'}">
+					<!-- edit -->
+					<a href="/resList/1" th:href="@{'/edit/' + 'select/'+ ${list.id}}">
+						<span class="name" th:text="${list.name}"></span>
+					</a>
+				</th:block>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

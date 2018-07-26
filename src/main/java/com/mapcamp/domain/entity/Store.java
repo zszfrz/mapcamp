@@ -14,18 +14,18 @@ import javax.persistence.Table;
 @Table(name = "stores")
 public class Store {
 
-	
+
 	@OneToMany(mappedBy = "stores")
-    private List<Post> posts;
-	
+	private List<Post> posts;
+
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	private Long lat;
+	private String lat;
 
-	private Long lon;
+	private String lon;
 
 	private String name;
 
@@ -35,28 +35,28 @@ public class Store {
 
 	private String url;
 
-	public Long getStoreId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setStoreId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public Long getLat() {
+	public String getLat() {
 		return lat;
 	}
 
-	public void setLat(Long lat) {
+	public void setLat(String lat) {
 		this.lat = lat;
 	}
 
-	public Long getLon() {
+	public String getLon() {
 		return lon;
 	}
 
-	public void setLon(Long lon) {
+	public void setLon(String lon) {
 		this.lon = lon;
 	}
 
@@ -91,16 +91,16 @@ public class Store {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+
 
 	public List<Post> getPosts(){
 		return posts;
 	}
-	
+
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
-	
+
 
 
 }

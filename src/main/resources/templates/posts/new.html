@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="content">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="content">
 
 <head>
 <meta charset="UTF-8" />
@@ -16,27 +18,39 @@
 label {
 	font-weight: 500;
 }
+.gnavi-search > input {
+	padding: 6px 12px;
+	width: 30%;
+	border: solid 1px #ccc;
+}
+
 </style>
 </head>
 <body>
-<div layout:fragment="main">   
-    <div class="contents row">
-        <div class="container">
-            <form th:action="@{/posts/new}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
-
-
-				<!-- <form role="search"> -->
-					<div style="margin: 8px 0" class="search-control">
-						<input type="search" id="site-search" name="q"
-							placeholder="Please input shopname..."
-							aria-label="Search through site content" />
-						<button>Search</button>
+	<div layout:fragment="main">
+		<div class="contents row">
+			<form th:action="@{/new/selectShop}" th:object="${selectform}" accept-charset="UTF-8" enctype="multipart/form-data" action="/select/1" method="post">
+				<div style="margin: 20px 0" class="search-control">
+					<label for="category">■Shop</label><br />
+					<div class="gnavi-search">
+						<input type="search" id="shop-search" name="shopname" th:field="*{shopname}" placeholder="Please input shopname..." aria-label="Search through site content" />
+						<input type="search" id="site-search" name="address" th:field="*{address}" placeholder="Please input address..." aria-label="Search through site content" />
+						<button class="btn btn-primary" type="submit">Search</button>
 					</div>
-				<!-- </form> -->
+				</div>
+			</form>
 
-
+			<th:block th:if="${select} != null">
+				<span>■Shopname</span>
+				<br />
+				<a th:href="@{${select.url}}" th:inline="text"> <span
+					th:text="${select.name}">shopname</span>
+				</a>
+			</th:block>
+			
+			<form th:action="@{/posts/new}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
 				<div class = "category">
-					<label for="category">■Category</label><br/>
+					<label for="category">■Category</label><br />
 					<label class="text-small">
 						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="レストラン" />
 						<span>レストラン</span>
@@ -56,7 +70,7 @@ label {
 					<label class="text-small">
 						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="和食店(日本食)" />
 						<span>和食店(日本食)</span>
-					</label><br/>
+					</label><br />
 					<label class="text-small">
 						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="居酒屋" />
 						<span>居酒屋</span>
@@ -82,12 +96,11 @@ label {
 						<span>その他</span>
 					</label>
 				</div>
-                
-                
-                <div class="field">
-                <label style="margin-right: 8px">■Picture</label>
-                        <input th:field="*{file}" type="file" name="file" id="post_avatar" />
-                        </div>
+               
+                <div class="field" style="margin: 20px 0;">
+                	<label>■Picture</label>
+                	<input th:field="*{file}" type="file" name="file" id="post_avatar" />
+                </div>
                 
                 <div style="margin: 8px 0">
                     <label style="margin-right: 8px">■評価</label>(10段階評価)
@@ -119,8 +132,7 @@ label {
                     </div>
                 </div>
             </form> 
-        </div>
-    </div>
-    </div>
+		</div>
+	</div>
 </body>
 </html>
