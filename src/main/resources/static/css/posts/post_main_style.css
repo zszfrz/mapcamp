@@ -176,6 +176,20 @@ table {
     border-collapse: collapse;
     border-spacing: 0
 }
+.thumbnail__caption p {
+    line-height: 1.3;
+}
+
+.thumbnail__caption {
+    padding: 0.5em 0 0;
+}
+
+.text-small{
+	/* float:left; */
+    font-size: 14px;
+}
+
+
 
 * , * :before, * :after {
     -moz-box-sizing: border-box;
@@ -185,21 +199,18 @@ table {
 
 img, object, embed {
     max-width: 100%;
-    height: 55%;
+    height: 500px;
+}
+
+div.main_post div.main_post2 img{
+	 max-width: 100%;
+     height: 90%;
 }
 
 object, embed {
     height: 100%
 }
 
-.left {
-    float: left
-}
-
-.right {
-    float: left;
-    
-}
 
 .clearfix {
     * zoom: 1
@@ -279,13 +290,14 @@ i {
 
 ul {
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 ul li {
     list-style: none;
     padding: 0;
-    margin: 0
+    margin: 0;
+    display: inline-block;
 }
 
 .row {
@@ -441,11 +453,11 @@ ul li {
 
 body, html {
     height: 100%;
-    background-color: #f5f5f3
+    background-color: #f5f5f3;
 }
 
 body {
-    padding-top: 60px
+    padding-top: 68px;
 }
 
 h1, h2, h3, h4, h5, h6, body {
@@ -453,13 +465,13 @@ h1, h2, h3, h4, h5, h6, body {
     letter-spacing: 0.15em;
     font-size: 16px;
     color: #666666;
-    font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+    font-family: arial, sans-serif;
     margin: 0
 }
 
 a {
     text-decoration: none;
-    color: #666666;
+    color: #3e98bb;
     font-size: 30px;
 }
 
@@ -506,7 +518,7 @@ header form input[type=submit] {
 	background-color: transparent;
 }
 
-.btn, header.header div.header__bar.row div.grid-6 a.post, header input[type=submit] {
+header.header div.header__bar.row div.grid-6 a.post, header input[type=submit] {
     padding: 8px 20px;
     font-size: 14px;
     border: 2px solid #57c3e9;
@@ -544,7 +556,42 @@ header.header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 5
+    z-index: 5;
+    height: 68px;
+	width: 100%;
+	display: table;
+}
+
+header h1{
+	
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 2em;
+    display: table-cell;
+}
+
+.user_nav{
+	display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+	margin-right: 2em;
+}
+
+.post{
+	text-align: right;
+	display: inline-block;
+	margin-right: 2em;
+}
+
+.icon{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	width: 50px;
+	background-color: #030303;
+	margin-right: 2em;
+	vertical-align: middle;
 }
 
 header.header div.header__bar.row {
@@ -574,7 +621,6 @@ header.header div.header__bar.row div.grid-6 a.post {
 
 header.header .user_nav {
     position: relative;
-    height: 100px;
     position: absolute;
     right: 0
 }
@@ -643,6 +689,15 @@ header.header .user_nav ul li a {
     right: 0
 }
 
+.content{
+	position:relative;
+	width: 100%;
+	margin: 0 auto;
+	clear: both;
+}
+
+
+
 div.main_post h2 {
     margin: 20px 0;
     padding: 0;
@@ -661,15 +716,18 @@ div.main_post.new_user {
 
 div.main_post{
 	float: left;
-	padding: 10px 
+	padding: 10px;
+	height: 300px;
+	width: 200px
+	
 }
 
 div.main_post div.main_post2 {
-    margin: 20px 0;
-    padding: 30px;
+    margin: 0 0;
+    padding: 0px;
     position: relative;
     height: 300px;
-    width: 250px;
+    width: 200px;
     color: #fff;
     background-size: cover;
     background-position: center center;
@@ -744,23 +802,19 @@ div.main_post div.main_post2 .more ul.more_list li a:hover {
     color: #fff
 }
 
-div.main_post div.main_post2 p {
-    position: absolute;
-    left: 30px;
-    right: 100px;
-    bottom: 30px;
-    margin: 0;
-    font-size: 20px;
+div.main_post div.main_post2 span.store {
+   position: absolute;
+    left: 2px;
+    bottom: 1px;
     z-index: 2;
-    font-weight: bold;
-    text-shadow: 0 0 2px #000, 0 0 1px #000, 0 0 1px #000;
+    font-size: 13px;
     color: black;
 }
 
 div.main_post div.main_post2 span.name {
     position: absolute;
-    right: 30px;
-    bottom: 30px;
+    right: 5px;
+    bottom: 1px;
     z-index: 2;
     font-size: 13px;
     color: black;

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="content">
+<head>
+<meta charset="UTF-8" />
+<link rel = "stylesheet" type="text/css" href="../css/registration.css"/>
+<title>User Edit Page</title>
+</head>
+<body>
+    <div layout:fragment="main"> 
+    <div class="contents row">
+        <div class="container">
+            <form th:action="@{'/user/' + ${user.id} + '/edit'}" th:object="${userForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
+             <h3>編集する</h3>
+             <div class="label">
+								<label for="user_email">Email</label><br /> <input
+									th:field="*{email}" autofocus="autofocus"
+									placeholder="メールアドレスを入力" type="email" value="" name="email"
+									id="user_email" />
+							</div>
+
+							<div class="label">
+								<label for="user_password">Password</label> <br /> <input
+									th:field="*{password}" autocomplete="off"
+									placeholder="パスワードを入力" type="password" name="password"
+									id="user_password" />
+							</div>
+
+							<div class="label">
+								<label for="user_password_confirmation">Password
+									confirmation</label><br /> <input th:field="*{confirmPassword}"
+									autocomplete="off" placeholder="パスワードを入力（確認）" type="password"
+									name="confirmPassword" id="user_password_confirmation" />
+							</div>
+
+							<div class="label">
+								<label for="user_name">Name</label><br /> <input
+									th:field="*{name}" placeholder="ネームを入力（必須）" type="text"
+									name="name" id="user_name" />
+							</div>
+
+							<div class="field">
+								<input th:field="*{file}" type="file" name="file"
+									id="user_avatar" />
+							</div>
+
+              <div class="label">
+								<label for="birthday">Birthday</label><br /> <input
+									th:field="*{birthday}" placeholder="生年月日" type="date"
+									name="birthday" id="birthday" />
+							</div>
+
+							<div class="label">
+								<label for="sex">sex</label><br /> 
+								<input th:field="*{sex}" placeholder="性別" type="radio"
+									name="sex" id="sex" value="Female" />　Female
+								<input th:field="*{sex}" placeholder="性別" type="radio"
+									name="sex" id="sex" value="Male" />　Male　
+							</div>
+							
+
+							<div class="submit">
+								<div class="actions">
+									<input type="submit" name="commit" value="Edit User" />
+								</div>
+							</div>
+             
+     </form>
+            
+            
+        </div>
+    </div>
+    </div>
+</body>
+</html>

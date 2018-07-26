@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+
+<head>
+<meta charset="UTF-8" />
+<title>search Page</title>
+</head>
+
+<body>
+	<div layout:fragment="right">
+
+		<!-- <p th:text:"${Param}">を検索中...</p> -->
+		<div class="main_post" th:each="searchShow : ${searchShows}">
+			<div class="main_post2 clearfix">
+				<a href="/posts/1" th:href="@{'/posts/' + ${searchShow.id}}"> <img
+					th:src="@{'/posts/' + ${searchShow.id} + '/post-image.jpg'}"
+					src="/avatars/original/missing.png" alt="Missing" />
+				</a>
+
+
+				<div class="more">
+         				 <span>■</span>
+           					 <ul class="more_list">
+           				 		<li>
+           				 		<form
+                                th:action="@{'/' + ${searchShow.id} + '/add'}"
+                                method="post">
+                                <input type="submit" value="ToBox" />
+                                </form>
+            					</li>
+           					</ul>
+           			</div> 
+
+				<a href="/posts/1" th:href="@{${searchShow.stores.url}}"
+					target="_blank"> <span class="store"
+					th:text="${searchShow.stores.name}"></span>
+				</a> <a href="/posts/1" th:href="@{'/user/' + ${searchShow.user.id}}">
+					<span class="name" th:text="${searchShow.user.name}"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

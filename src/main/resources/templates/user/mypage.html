@@ -1,55 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<!-- xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout" -->
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="content">
 
 <head>
-	<meta charset="UTF-8" th:remove="all" />
-	<title>My Page</title>
-	<link rel="stylesheet" type="text/css" href="../css/mypage.css" />
+<meta charset="UTF-8" />
+<!-- <link rel="stylesheet" type="text/css" href="../css/mypage.css" /> -->
+<link rel="stylesheet" href="/css/posts/post_main_style.css" />
 </head>
 
-<body class="yj950-2">
+<body>
+	<div layout:fragment="main">
+	<div class="contents row" th:object="${user}">
+      <div class="content__post">
+      
+	<th:block th:if="${loginUser != null} ? ${user.id.equals(loginUser.userId)}">
+	<p class="post" th:text="${loginUser.name}">Guest</p>Mypage
+	
+	<img th:src="@{'/users/' + ${user.id} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
 
-	<div class="bgcolor-white pt1em pb1em" id="contents"
-		layout:fragment="content">
-		<div id="main_cnt_wrapper">
-			<div id="yjContentsBody">
-				<div class="yjContainer">
-					<div class="form_box">
-						<h2>My Page</h2>
-						<form class="new_user" id="new_user" th:action="@{'/login'}"
-							action="/login" accept-charset="UTF-8" method="post">
 
-							<div th:if="${param.error}" id="error_explanation">
-								<h2 th:text="'Email or password is not correct.'">error</h2>
-							</div>
+			<br>■Name</br>
+	        <p th:text="*{name}"></p>   
+			■Email
+	        <p th:text="*{email}"></p>   
+	        ■BirthDay
+	        <p th:text="*{birthday}"></p>   
+	        ■Sex
+	        <p th:text="*{sex}"></p>  
+	        
+	        <a th:href="@{'/user/' + ${user.id} + '/edit'}">Edit User Information</a>
+	        
+	        </th:block>
+	        
+	        <th:block th:unless="${loginUser != null} ? ${user.id.equals(loginUser.userId)}">
+	        <p>You are not this user.</p>
+	        </th:block>
+	        
 
-							<div>
-								<input autofocus="autofocus" placeholder="メールアドレスを入力"
-									type="email" value="" name="email" id="user_email" />
-							</div>
+</div>
+</div>
 
-							<div>
-								<input autocomplete="off" placeholder="パスワードを入力" type="password"
-									name="password" id="user_password" />
-							</div>
 
-							<div class="submit">
-								<div class="action">
-									<input type="submit" name="commit" value="Sign in" />
-								</div>
-							</div>
-
-							<!-- <strong>Forgotten your password?</strong> -->
-
-						</form>
-					</div>
-				</div>
 			</div>
-		</div>
-	</div>
 
 </body>
-
 </html>

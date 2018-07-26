@@ -4,32 +4,35 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
-<link rel="stylesheet" href="/css/registration.css" />
-<link rel="stylesheet" href="/css/posts/post_style.css" />
-<title>Show Page</title>
+<!-- <link rel="stylesheet" href="/css/registration.css" /> -->
+<link rel="stylesheet" href="/css/posts/post_main_style.css" />
 </head>
 <body>
     <div layout:fragment="main"> 
     <div class="contents row" th:object="${post}">
       <div class="content__post">
         <img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
+		<th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.userId)}">
 		<div class="more">
                 <span>■</span>
                 <ul class="more_list">
-                     <th:block th:if="${loginUser != null} ? ${post.user.id.equals(loginUser.userId)}">
+                     
                         <li><a
-                            th:href="@{'/posts/' + ${post.id} + '/edit'}">編集</a></li>
+                            th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit</a></li>
                         <li>
                             <form
                                 th:action="@{'/posts/' + ${post.id} + '/delete'}"
                                 method="post">
-                                <input type="submit" value="削除" />
+                                <input type="submit" value="Delete" />
                             </form>
                         </li>
-                    </th:block>
                 </ul>
             </div>
+               </th:block>
           </div>    
+          ■Time of Post
+       <p th:text="${#dates.format(nowdate, 'yyyy/MM/dd HH:mm:ss')}"></p>
+ 
         <span>Yummy</span>
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.yummy * 10}" class="star-actived"></i></span></span>
         <span>Clean</span>
@@ -38,46 +41,42 @@
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.staff * 10}" class="star-actived"></i></span></span>
         <span>Speed</span>
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span></span>
-       
-
- 
-       <span class="name">
-
-       	<br><span>■投稿者</span><a th:href="@{`/user/` + ${user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
-                </a></br>
-            </span>   
+      
+      
+      
+	       	<br>■User
+	       	<a th:href="@{'/user/' + ${post.user.id}}" th:inline="text">
+	       	<span th:text="${post.user.name}">tech太郎</span></a></br>
             
+           ■StoreName
+           <br><a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
+           <span class="store" th:text="${post.stores.name}"></span></a></br>
 
-           ■Category
+           <br>■Category</br>
         <p th:text="*{category}"></p>   
 
-            
-              ■投稿者コメント
+          
+              ■User Comment
         <p th:text="*{text}"></p>   
-        </div>    
+          
          
-         <div class="container">
 
-       <th:block th:if="${loginUser != null}">
-
-            コメント機能
+       <div th:if="${loginUser != null}" class="container">
+			コメント機能
             <form method="post" th:action="@{'/posts/' + ${post.id} + '/comment'}" th:object="${commentForm}">
-                <textarea cols="30" name="comment" placeholder="コメントする" rows="2"></textarea>
+                <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
                 <input type="submit" value="SEND" />
             </form>
-        </th:block>
+ 
              <div class="comments">
-                <h4>＜コメント一覧＞</h4>
+                <h4>＜Comments＞</h4>
                 <p th:if="post.comments != null" th:each="comment : ${post.comments}"  th:inline="text">
-                    <strong><span th:text="${comment.user.name}">投稿者名</span></strong>
-                    <span th:text="${comment.text}">コメント</span>
+                    <strong><a th:href="@{'/user/' + ${comment.user.id}}" th:inline="text"><span th:text="${comment.user.name}">投稿者名</span></a></strong>
+                    <span th:text="${comment.text}">Comment</span>
                 </p>
             </div>
-
-
-        </div>
-        
+		</div>      
  </div>
-    
+    </div>
 </body>
 </html>

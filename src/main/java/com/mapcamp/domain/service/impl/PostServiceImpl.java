@@ -6,8 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,9 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mapcamp.domain.entity.Post;
+import com.mapcamp.domain.entity.Store;
 import com.mapcamp.domain.repository.PostRepository;
 import com.mapcamp.domain.service.PostService;
-import com.mapcamp.domain.service.StoreService;
 import com.mapcamp.domain.service.UserService;
 
 
@@ -37,10 +40,12 @@ public class PostServiceImpl implements PostService{
 	@Autowired
     private UserService userService;
 
-//    @Override
-//    public Post save(Post post){
-//        return postRepository.save(post);
-//    }
+    @Override
+    public Post save(Post post){
+        return postRepository.save(post);
+    }
+    
+  
 	
     @Override
     public Post findOneOrNew(String shopname){
@@ -59,17 +64,24 @@ public class PostServiceImpl implements PostService{
         return postRepository.findOne(id);
     }
     
+    
+    
     @Override
     public Post findByShopname(String shopname){
         return postService.findByShopname(shopname);
     }
+    
+//    @Override 
+//    public List<Post> findAllByOrderByNowdateDesc(){
+//    	return postService.findAllByOrderByNowdateDesc();
+//    }
 
     //userIdでDBからUser情報を取り出し、postにセット ,Long postId
     @Override
-    public Post save(Post post, Long userId, MultipartFile file) throws IOException {
-        //post.setPost(postService.findOne(postId));
+    public Post save(Post post, Long userId, MultipartFile file, Store store) throws IOException {
         post.setUser(userService.findOne(userId));
-        post = postRepository.save(post);
+        post.setStores(store);
+        post = postService.save(post);
         if (!file.isEmpty()) {
             post.setImage(uploadPostImage(file, post.getId()));  // ②
         }
@@ -92,18 +104,70 @@ public class PostServiceImpl implements PostService{
         return Files.readAllBytes(path);  // ③
     }
     
+    //検索部分の処理
+    @Override
+    public List<Post> findAllByCategoryLike(String param) {
+    	List<Post> posts_all = postRepository.findAll();
+    	List<Post> search = new ArrayList<Post>();
+    	for(int i=0 ; i < posts_all.size() ; i++) {
+    		//int k = 0;
+    		if(Pattern.compile(param).matcher(posts_all.get(i).getCategory()).find()) {//Category
+    			search.add(posts_all.get(i));
+    		}
+//    		if(Pattern.compile(param).matcher(posts_all.get(i).getText()).find()) {//Text
+//    			if(search.size()>0) {
+//    				for(int j=0; j < search.size(); j++) {
+//    					if(!posts_all.get(i).equals(search.get(j))) {
+//    						search.add(search.get(j));
+//    						k = 1;
+//    					}
+//    					if(k==1)break;
+//    				}
+//    			}
+//    			else {search.add(posts_all.get(i));}
+//    		}
+//    		if(Pattern.compile(param).matcher(posts_all.get(i).getUser().getName()).find()) {//UserName
+//    			if(search.size()>0) {
+//    				for(int j=0; j < search.size(); j++) {
+//    					if(!posts_all.get(i).equals(search.get(j))) {
+//    						search.add(search.get(j));
+//    						k = 2;
+//    					}
+//    					if(k==2)break;
+//    				}
+//    			}
+//    			else {search.add(posts_all.get(i));}
+//    		}
+//    		if(Pattern.compile(param).matcher(posts_all.get(i).getStores().getName()).find()) {//StoreName
+//    			if(search.size()>0) {
+//    				for(int j=0; j < search.size(); j++) {
+//    					if(!posts_all.get(i).equals(search.get(j))) {
+//    						search.add(search.get(j));
+//    						k = 3;
+//    					}
+//    					if(k==3)break;
+//    				}
+//    			}
+//    			else {search.add(posts_all.get(i));}
+//    		
+//    		}
+//    	}
+    	
     
-//    //検索部分の処理
-//    @Override
-//    public List<Post> findAllByTitleLike(String keyword) {
-//        return postRepository.findAllByTitleLike("%" + keyword + "%");
-//    }
+}
+    	return search;
+    }
     
-//    //引数：storeIdでDBからStoreを取り出し、Postにセット
-//    @Override
-//    public void save(Post post,Long store_id) {
-//    	post.setStoreId(StoreService.findOne(store_id));//エラー
-//    	postRepository.save(post);
-//    }
-	
+    @Override
+    public List<Post> findAllByTextLike(String param) {
+    	List<Post> posts_all = postRepository.findAll();
+    	List<Post> search = new ArrayList<Post>();
+    	for(int i=0 ; i < posts_all.size() ; i++) {
+    		if(Pattern.compile(param).matcher(posts_all.get(i).getText()).find()) {//Category
+    			search.add(posts_all.get(i));
+    		}
+    		}
+    		return search;
+        }
+    
 }
