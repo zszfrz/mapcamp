@@ -21,8 +21,7 @@ public interface PostService {
     
 	Post findByShopname(String shopname);
 	
-	List<Post> findAllByCategory(String param);
-	List<Post> findAllByText(String param);
+
 	
 //	List<Post> findAllByOrderByNowdateDesc();
    

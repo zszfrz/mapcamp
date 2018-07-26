@@ -104,17 +104,6 @@ public class PostServiceImpl implements PostService{
         return Files.readAllBytes(path);  // ③
     }
     
-    @Override
-    public List<Post> findAllByCategory(String param){
-    	return postRepository.findAllByCategory(param);
-    }
-    
-    @Override
-    public List<Post> findAllByText(String param){
-    	return postRepository.findAllByText(param);
-    }
-    
-    
     //検索部分の処理
     @Override
     public List<Post> findAllByCategoryLike(String param) {
