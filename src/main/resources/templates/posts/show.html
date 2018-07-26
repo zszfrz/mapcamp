@@ -18,19 +18,19 @@
                 <ul class="more_list">
                      
                         <li><a
-                            th:href="@{'/posts/' + ${post.id} + '/edit'}">編集</a></li>
+                            th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit</a></li>
                         <li>
                             <form
                                 th:action="@{'/posts/' + ${post.id} + '/delete'}"
                                 method="post">
-                                <input type="submit" value="削除" />
+                                <input type="submit" value="Delete" />
                             </form>
                         </li>
                 </ul>
             </div>
                </th:block>
           </div>    
-          ■投稿時間
+          ■Time of Post
        <p th:text="${#dates.format(nowdate, 'yyyy/MM/dd HH:mm:ss')}"></p>
  
         <span>Yummy</span>
@@ -43,23 +43,20 @@
         <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span></span>
       
       
-       <span class="name">
-       	<span>■投稿者</span><br><a th:href="@{'/user/' + ${post.user.id}}" th:inline="text"><span th:text="${post.user.name}">tech太郎</span>
-                </a></br>
-            </span>   
+      
+	       	<br>■User
+	       	<a th:href="@{'/user/' + ${post.user.id}}" th:inline="text">
+	       	<span th:text="${post.user.name}">tech太郎</span></a></br>
             
-
            ■StoreName
            <br><a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
            <span class="store" th:text="${post.stores.name}"></span></a></br>
-
-
 
            <br>■Category</br>
         <p th:text="*{category}"></p>   
 
           
-              ■投稿者コメント
+              ■User Comment
         <p th:text="*{text}"></p>   
           
          
@@ -72,10 +69,10 @@
             </form>
  
              <div class="comments">
-                <h4>＜コメント一覧＞</h4>
+                <h4>＜Comments＞</h4>
                 <p th:if="post.comments != null" th:each="comment : ${post.comments}"  th:inline="text">
                     <strong><a th:href="@{'/user/' + ${comment.user.id}}" th:inline="text"><span th:text="${comment.user.name}">投稿者名</span></a></strong>
-                    <span th:text="${comment.text}">コメント</span>
+                    <span th:text="${comment.text}">Comment</span>
                 </p>
             </div>
 		</div>      
