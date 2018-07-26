@@ -16,7 +16,7 @@
 		<div class="mainbox">
 			<div class="left">
 
-				<div class="wannago">行きたいところリスト</div>
+				<div class="wannago">WANNA GO</div>
 				<div class="wannago_posts">
 					<div class="transe" th:if="${wannago_list} == null">
 						<p>店名</p>
@@ -51,14 +51,15 @@
 								<img
 								th:src="@{'/posts/' + ${wannago_post.id} + '/post-image.jpg'}"
 								src="/avatars/original/missing.png" alt="Missing" />
-							</a> <a href="/posts/1" th:href="@{${wannago_post.stores.url}}"
+							</a> 
+							<a href="/posts/1" th:href="@{${wannago_post.stores.url}}"
 								target="_blank"> <span th:text="${wannago_post.stores.name}">店名</span>
 							</a> <a href="/posts/1" th:href="@{'/posts/' + ${wannago_post.id}}"></a>
 						</div>
 					</th:block>
 
 				</div>
-				<div id="route" >ルート探索</div>
+				<div id="route" >FIND ROUTE</div>
 				<script type="text/javascript" src="/js/map.js"
 					th:src="@{/js/map.js}"></script>
 				<script>
