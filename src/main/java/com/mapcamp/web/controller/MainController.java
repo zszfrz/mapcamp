@@ -1,7 +1,7 @@
 package com.mapcamp.web.controller;
 
 
-import java.io.IOException;
+
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.repository.PostRepository;
-import com.mapcamp.security.LoginUserDetails;
 
 @Controller
 @SessionAttributes(names="list")
@@ -40,7 +39,7 @@ public class MainController {
 		List<Post> posts = postRepository.findAllByOrderByNowdateDesc();
 		List<Post> post_list = new ArrayList<Post>();
 
-		if (session_list.size() > 0 && session_list.get(0) != null) {
+		if (session_list != null && session_list.size() > 0 && session_list.get(0) != null) {
 			for(Long l: session_list) {//session_listにはpostIdが入っている
 				post_list.add(postService.findOne(l));
 			}
@@ -88,7 +87,7 @@ public class MainController {
 
 	@RequestMapping(value = "/route", method = RequestMethod.GET)
 	public ModelAndView setRoute(ModelAndView mav) {
-		mav.setViewName("/map/map");
+		mav.setViewName("map/map");
 		return mav;
 	}
 
