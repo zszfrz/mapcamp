@@ -1,11 +1,13 @@
 package com.mapcamp;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,6 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Autowired
+    @Lazy
     private PasswordEncoder passwordEncoder;
 
     @Bean
@@ -33,15 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
 
-                .antMatchers("/","/css/**", "/js/**", "/font/**","/user/registration","/posts/**/post-image.jpg","/posts/{\\d}").permitAll()
-
-//                .antMatchers("/products/{\\d}", "/products/search").permitAll()
+                .antMatchers("/","/css/**", "/js/**", "/font/**","/user/registration","/posts/**/post-image.jpg","/posts/{\\d}","/{\\d}/**").permitAll()
                 .antMatchers("/login").permitAll()
-
-       
-                .antMatchers("/user/mypage").permitAll()
-
-                //.antMatchers("/posts/**").authenticated()
                 .anyRequest().authenticated()
             .and()
             .formLogin()

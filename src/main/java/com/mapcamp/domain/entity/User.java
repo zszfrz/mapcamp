@@ -37,7 +37,7 @@ public class User {
 	private String profileImage;
 	
 	@Column(nullable = false)
-	private Integer sex;
+	private String sex;
 	
 	@Column(nullable = false)
 	private Date birthday;
@@ -83,11 +83,11 @@ public class User {
 	    this.profileImage = profileImage;
 	}
 	
-	public Integer getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(Integer sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 	

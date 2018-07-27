@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8" />
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" /> -->
 <link rel="stylesheet" href="/css/reset.css" />
 <link rel="stylesheet" href="/css/header.css" />
 <link rel="stylesheet" href="/css/index.css" />
-<link rel="stylesheet" href="/css/posts/post_setting.css" />
+<!-- <link rel="stylesheet" href="/css/posts/post_setting.css" /> -->
 <link rel="stylesheet" href="/css/posts/post_main_style.css" />
+<!-- <link rel="stylesheet" href="/css/registration.css" /> -->
 <title>Map Camp</title>
 </head>
 <body>
@@ -17,43 +20,59 @@
 			<div class="user_nav">
 				<th:block th:if="${loginUser != null}">
 
-					<!-- <div class="icon"
-						th:style="background-image: url(' + @{${loginUser.profileImage}} + ');'"></div> -->
-					<!-- <a class="post" href="/" th:text="${loginUser.name}">Guest</a> //チェック -->
-					<a class="post" href="/posts/new">投稿する</a> //チェック
+             <div class="icon" th:if="${loginUser.profileImage != null}">
+						<img th:src="@{'/users/' + ${loginUser.userId} + '/profile-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" /></div>
+						
+					 <a href="/user/1" class="post" th:href="@{'/user/' + ${loginUser.userId}}" th:text="${loginUser.name}">Guest</a>
+
+					<a class="post" href="/posts/new">New post</a>
 					<form th:action="@{/logout}" method="post">
-						<input type="submit" value="ログアウト" />
+						<input type="submit" value="Logout" />
 					</form>
 				</th:block>
 				<th:block th:if="${loginUser == null}">
-				<div class="icon"></div>
-					<a class="post" href="/" th:text="'Guest'">Guest</a>
-					<a class="post" href="/login">ログイン</a>
-					<a class="post" href="/user/registration">登録</a>
-				</th:block>
-			</div>
+
+				<a class="post" href="/" th:text="'Guest'">Guest</a>
+				<a class="post" href="/login">LOGIN</a>
+				<a class="post" href="/user/registration">SIGNUP</a>
+			</th:block>
+		</div>
 	</header>
-	
+
 	<div class="content" layout:fragment="content"></div>
 
-	<div class="adv" layout:fragment="adv">
-		<p style="text-align: center">
-		    <a href="https://r.gnavi.co.jp/6uj0v1uz0000/">
-                <img src="http://uds.gnst.jp/rest/img/6uj0v1uz0000/s_0003.jpg?t=1427827068" height="80" width="33%"  />
-            </a>
-            <a href="https://r.gnavi.co.jp/b5p3dds20000/">
-                <img src="http://uds.gnst.jp/rest/img/b5p3dds20000/s_000f.jpg?t=1427827076" height="80" width="33%"  />
-            </a>  
-            <a href="https://r.gnavi.co.jp/7up4cuvr0000/">
-                <img src="http://uds.gnst.jp/rest/img/7up4cuvr0000/s_0n9m.jpg?t=1522114531" height="80" width="33%"  />
-            </a>    
-         </p>
-	</div>
 
-	<div class="footer">
-        Copyright mapcamp 2018.
-    </div>
-	
-	</body>
-	</html>
-	
+ 	<div class="adv" layout:fragment="adv">
+		<ul style="text-align: center">
+			<li><a href="https://r.gnavi.co.jp/6uj0v1uz0000/" target="_blank"> <img
+					src="http://uds.gnst.jp/rest/img/6uj0v1uz0000/s_0003.jpg?t=1427827068"
+					height="80" width="33%" /></a></li>
+			<li><a href="https://r.gnavi.co.jp/b5p3dds20000/" target="_blank"> <img
+					src="http://uds.gnst.jp/rest/img/b5p3dds20000/s_000f.jpg?t=1427827076"
+					height="80" width="33%" /></a></li>
+			<li><a href="https://r.gnavi.co.jp/7up4cuvr0000/" target="_blank"> <img
+					src="http://uds.gnst.jp/rest/img/7up4cuvr0000/s_0n9m.jpg?t=1522114531"
+					height="80" width="33%" /></a></li>
+			<li><a href="https://r.gnavi.co.jp/n898258/" target="_blank"> <img
+					src="https://uds.gnst.jp/rest/img/gz9hj3vj0000/s_019g.jpg?t=1433124190"
+					height="80" width="33%" /></a></li>
+			<li><a href="https://r.gnavi.co.jp/rxg4yd940000/" target="_blank"> <img
+					src="https://uds.gnst.jp/rest/img/rxg4yd940000/s_0000.jpg?t=1434561934"
+					height="80" width="33%" /></a></li>
+			<li><a href="https://r.gnavi.co.jp/31ttdzvy0000/" target="_blank"> <img
+					src="https://uds.gnst.jp/rest/img/31ttdzvy0000/s_0n7k.gif?t=1512626280"
+					height="80" width="33%" /></a></li>
+			<li><a href="https://r.gnavi.co.jp/g747789/" target="_blank"> <img
+					src="https://uds.gnst.jp/rest/img/r1rhe61w0000/s_0ngi.gif?t=1506677281"
+					height="80" width="33%" /></a></li>
+			<li><a href="https://r.gnavi.co.jp/nkegfvpy0000/" target="_blank"> <img
+					src="https://uds.gnst.jp/rest/img/nkegfvpy0000/s_0nkk.jpg?t=1516151316"
+					height="80" width="33%" /></a></li>
+		</ul>
+	</div> 
+
+
+	<div class="footer">Copyright mapcamp 2018.</div>
+
+</body>
+</html>

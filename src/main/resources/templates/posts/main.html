@@ -3,30 +3,39 @@
 
 
 <head>
-    <meta charset="UTF-8" th:remove="all" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/posts/post_main_style.css" />
+    <link rel="stylesheet" href="/css/index.css" />
 </head>
 
 <body>
 	<div layout:fragment="right">
+
 		<div class="main_post" th:each="post : ${posts}">
 			<div class="main_post2 clearfix" >
 				<a href="/posts/1" th:href="@{'/posts/' + ${post.id}}"> 
 					<img th:src="@{'/posts/' + ${post.id} + '/post-image.jpg'}" src="/avatars/original/missing.png" alt="Missing" />
 				</a> 
-			 <!-- <th:block th:if="${login_user != null} ? ${login_user.id.equals(post.user.id)}">  --> 
 
 				 	<div class="more">
          				 <span>■</span>
            					 <ul class="more_list">
            				 		<li>
-            						<a th:href="@{'/post/' + ${post.id}}">To BOX</a>
+           				 		<form
+                                th:action="@{'/' + ${post.id} + '/add'}"
+                                method="post">
+                                <input type="submit" value="ToBox" />
+                                </form>
             					</li>
            					</ul>
            			</div> 
 
-         	<!--  </th:block> -->
-        <!-- <p th:text="${post.shopname}"></p> -->
-         <a href="/posts/1" th:href="@{'/posts/' + ${post.id}}">  
+         	<a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
+         	     <span class="store" th:text="${post.stores.name}"></span>
+         	</a>
+
+
+         <a href="/posts/1" th:href="@{'/user/' + ${post.user.id}}">  
 			<span class="name" th:text="${post.user.name}"></span>
 		 </a>
 		</div>

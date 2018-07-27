@@ -1,99 +1,139 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="content">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="content">
 
 <head>
 <meta charset="UTF-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
 <link rel="stylesheet" href="/css/registration.css" />
-<link rel="stylesheet" href="/css/posts/post_style.css" />
+<link rel="stylesheet" href="/css/posts/post_main_style.css" />
 <title>New Post Page</title>
+<style>
+.category {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+label {
+	font-weight: 500;
+}
+.gnavi-search > input {
+	padding: 6px 12px;
+	width: 30%;
+	border: solid 1px #ccc;
+}
+.rating {
+	text-align: center;
+	width: 100px;
+	padding: 3px;
+}
+.post-button {
+	background-color: #57c3e9;
+	border-radius: 20px;
+	color: #fff;
+	border: 0;
+	width: 100%;
+	padding: 5px;
+	margin-top: 5px;
+}
+#post-shop {
+	border: none;
+}
+</style>
 </head>
 <body>
-<div layout:fragment="main">   
-    <div class="contents row">
-        <div class="container">
-            <form th:action="@{/posts/new}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
-
-            <!-- <div style="margin: 8px 0">
-                    <label style="margin-right: 8px">Shopname</label>
-                    <input th:field="*{shopname}" name="shopname" placeholder="Shopname" type="text" value="" />
-                    <span th:if="${#fields.hasErrors('shopname')}" th:errors="*{shopname}" class="help-block">error!</span>
-                </div> -->
-
-				<!-- <form role="search"> -->
-					<div style="margin: 8px 0" class="search-control">
-						<input type="search" id="site-search" name="q"
-							placeholder="Please input shopname..."
-							aria-label="Search through site content" />
-						<button>Search</button>
+	<div layout:fragment="main">
+		<div class="contents row">
+			<form th:action="@{/new/selectShop}" th:object="${selectform}" accept-charset="UTF-8" enctype="multipart/form-data" action="/select/1" method="post">
+				<div style="margin: 20px 0" class="search-control">
+					<label for="category">■Shop</label><br />
+					<div class="gnavi-search">
+						<input type="search" id="shop-search" name="shopname" th:field="*{shopname}" placeholder="Please input shopname..." aria-label="Search through site content" />
+						<input type="search" id="site-search" name="address" th:field="*{address}" placeholder="Please input address..." aria-label="Search through site content" />
+						<button class="btn btn-primary" type="submit">Search</button>
 					</div>
-				<!-- </form> -->
+				</div>
+			</form>
+
+			<th:block th:if="${select} != null">
+				<span>■Shopname</span>
+				<br />
+				<a th:href="@{${select.url}}" th:inline="text" target="_blank"> <span
+					th:text="${select.name}">shopname</span>
+				</a>
+			</th:block>
 			
+			<form th:action="@{/posts/new}" th:object="${postForm}" accept-charset="UTF-8" enctype="multipart/form-data" action="/entry/1" method="post">
 				<div class = "category">
-					<label for="category">■Category</label>
-								<label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="レストラン" />レストラン</label>
-								 <label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="ファミレス" />ファミレス</label>
-								<label class="text-small"><input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="ファーストフード" />ファーストフード</label>
-								<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="カフェ・喫茶店" /><p class="text-small">カフェ・喫茶店</p>
-									<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="和食店(日本食)" /><p class="text-small">和食店(日本食)</p>
-								<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="居酒屋" /><p class="text-small">居酒屋</p>
-									<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="寿司屋" /><p class="text-small">寿司屋</p>
-								<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="ラーメン" /><p class="text-small">ラーメン</p>
-									<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="中華料理店" /><p class="text-small">中華料理店</p>
-								<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="韓国料理店" /><p class="text-small">韓国料理店</p>
-									<input th:field="*{category}" placeholder="category" type="checkbox"
-									name="category" id="category" value="その他" /><p class="text-small">その他</p>
-									
-								</div>
+					<label for="category">■Category</label><br />
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="レストラン" />
+						<span>レストラン</span>
+					</label>
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="ファミレス" />
+						<span>ファミレス</span>
+					</label>
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="ファーストフード" />
+						<span>ファーストフード</span>
+					</label>
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="カフェ・喫茶店" />
+						<span>カフェ・喫茶店</span>
+					</label>
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="和食店(日本食)" />
+						<span>和食店(日本食)</span>
+					</label><br />
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="居酒屋" />
+						<span>居酒屋</span>
+					</label>
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="寿司屋" />
+						<span>寿司屋</span>
+					</label>
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="ラーメン" />
+						<span>ラーメン</span>
+					</label>										
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="中華料理店" />
+						<span>中華料理店</span>
+					</label>
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="韓国料理店" />
+						<span>韓国料理店</span>
+					</label>
+					<label class="text-small">
+						<input th:field="*{category}" placeholder="category" type="radio" name="category" id="category" value="その他" />
+						<span>その他</span>
+					</label>
+				</div>
+               
+                <div class="field" style="margin: 20px 0;">
+                	<label>■Picture</label>
+                	<input th:field="*{file}" type="file" id="post-shop" />
+                </div>
                 
+                <div style="margin: 20px 0">
+                    <label style="margin-right: 8px">■評価</label>(10段階評価)<br />
+                    <input th:field="*{yummy}" class="rating" placeholder="Yummy" type="number" max="10" min="1" value="1" required="required" /> 
+                    <input th:field="*{clean}" class="rating" placeholder="Clean" type="number" max="10" min="1" value="1" required="required" /> 
+                    <input th:field="*{staff}" class="rating" placeholder="Staff" type="number" max="10" min="1" value="1" required="required" />
+                    <input th:field="*{speed}" class="rating" placeholder="Speed" type="number" max="10" min="1" value="1" required="required" /><br />
+                </div>
                 
-                <div class="field">
-                <label style="margin-right: 8px">■Picture</label>
-                        <input th:field="*{file}" type="file" name="file" id="post_avatar" />
-                        </div>
-                
-                <div style="margin: 8px 0">
-                    <label style="margin-right: 8px">■評価</label>(10段階評価)
-                    <input th:field="*{yummy}" th:errorclass="error-field" class="search__query" name="yummy" placeholder="Yummy" style="text-align: right" type="number" max="10" min="1" value="1" /> 
-                    <span th:if="${#fields.hasErrors('yummy')}" th:errors="*{yummy}" class="help-block">error!</span>
-                </div>
-                <div style="margin: 8px 0">
-                   
-                    <input th:field="*{clean}" th:errorclass="error-field" class="search__query" name="clean" placeholder="Clean" style="text-align: right" type="number" max="10" min="1" value="1" /> 
-                    <span th:if="${#fields.hasErrors('clean')}" th:errors="*{clean}" class="help-block">error!</span>
-                </div>
-                <div style="margin: 8px 0">
-                   
-                    <input th:field="*{staff}" th:errorclass="error-field" class="search__query" name="staff" placeholder="Staff" style="text-align: right" type="number" max="10" min="1" value="1" />
-                    <span th:if="${#fields.hasErrors('staff')}" th:errors="*{staff}" class="help-block">error!</span>
-                </div>
-                <div style="margin: 8px 0">
-              
-                    <input th:field="*{speed}" th:errorclass="error-field" class="search__query" name="speed" placeholder="Speed" style="text-align: right" type="number" max="10" min="1" value="1" />
-                    <span th:if="${#fields.hasErrors('speed')}" th:errors="*{speed}" class="help-block">error!</span>
-                </div>
-                <div style="margin: 8px 0">
-                    <textarea th:feild="*{text}" th:errorclass="error-field" name="text" placeholder="レビューを書いてね！" style="width: 100%; height: 300px" th:text="*{text}"></textarea>
-                    <span th:if="${#fields.hasErrors('text')}" th:errors="*{text}" class="help-block">error!</span>
-                </div>
-                <div class="row">
-                    <div class="col10 push1">
-                        <button type="submit" class="btn btn--block">投稿する<i class="icon-arrow-right"></i></button>
-                    </div>
+                <div style="margin: 20px 0">
+                	<label style="margin-right: 8px">■Review</label>
+					<span th:if="${#fields.hasErrors('text')}" th:errors="*{text}"  th:errorclass="text-danger">error!</span><br />
+					<textarea th:field="*{text}" placeholder="レビューを書いてね！" th:text="*{text}" style="width: 100%; height: 300px;"></textarea>
+                    <button type="submit" class="post-button">Post</button>
                 </div>
             </form> 
-        </div>
-    </div>
-    </div>
+		</div>
+	</div>
 </body>
 </html>
