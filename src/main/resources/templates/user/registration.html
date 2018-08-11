@@ -5,7 +5,34 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>サインアップ</title>
-	 <link rel = "stylesheet" type="text/css" href="../css/registration.css"/>
+	<link rel = "stylesheet" type="text/css" href="../css/registration.css"/>
+	<style>
+	.label-form {
+		width: 330px;
+		margin: 0 auto;
+		padding: 10px 0;
+		font-family: roboto,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic ProN",Meiryo,"MS PGothic",sans-serif;
+		font-size: 12px;
+		font-weight: 700;
+		text-align: left;
+	}
+
+	.form_box input[type=email], .form_box input[type=password], .form_box input[type=text], .form_box input[type=date] {
+		width: 310px;
+		padding: 5px 10px 0;
+		line-height: 30px;
+		box-sizing: content-box;
+	}
+	.form_box input[type=file] {
+	    font-family: Roboto, 游ゴシック, YuGothic, 'ヒラギノ角ゴ Pro W6', 'HIragino Kaku Gothic Pro W6', 'HIragino Kaku Gothic Pro', Meryo, メイリオ, Osaka, 'ＭＳ Ｐゴシック', 'MS P Gothic', sans-serif;
+	    font-size: 14px;
+	    height: 30px;
+	    padding: 14px 10px 0;
+	    width: 310px;
+    	border-radius: 3px;
+    	box-sizing: content-box;
+    }
+	</style>
 </head>
 
 <body class="yj950-2">
@@ -25,45 +52,43 @@
 							class="new_user" id="new_user" enctype="multipart/form-data"
 							action="/user" accept-charset="UTF-8" method="post">
 
-							<div class="label">
+							<div class="label-form">
 								<label for="user_email">Email</label><br /> <input
 									th:field="*{email}" autofocus="autofocus"
 									placeholder="Type your email" type="email" value="" name="email"
 									id="user_email" />
 							</div>
 
-							<div class="label">
+							<div class="label-form">
 								<label for="user_password">Password</label> <br /> <input
 									th:field="*{password}" autocomplete="off"
 									placeholder="Type your password" type="password" name="password"
 									id="user_password" />
 							</div>
 
-							<div class="label">
+							<div class="label-form">
 								<label for="user_password_confirmation">Password
 									confirmation</label><br /> <input th:field="*{confirmPassword}"
 									autocomplete="off" placeholder="Confirmation" type="password"
 									name="confirmPassword" id="user_password_confirmation" />
 							</div>
 
-							<div class="label">
+							<div class="label-form">
 								<label for="user_name">Name</label><br /> <input
 									th:field="*{name}" placeholder="Type your username（*）" type="text"
 									name="name" id="user_name" />
 							</div>
 
 							<div class="field">
-								<input th:field="*{file}" type="file" name="file"
-									id="user_avatar" />
+								<input th:field="*{file}" type="file" name="file" id="user_avatar" />
 							</div>
 
-              <div class="label">
-								<label for="birthday">Birthday</label><br /> <input
-									th:field="*{birthday}" placeholder="生年月日" type="date"
-									name="birthday" id="birthday" />
+              				<div class="label-form">
+								<label for="birthday">Birthday</label><br /> 
+								<input th:field="*{birthday}" placeholder="生年月日" type="date" name="birthday" id="birthday" />
 							</div>
 
-							<div class="label">
+							<div class="label-form">
 								<label for="sex">sex</label><br /> 
 								<input th:field="*{sex}" placeholder="性別" type="radio"
 									name="sex" id="sex" value="Female" />　Female
