@@ -82,8 +82,9 @@ display: table;
 .wannago_posts{
 	margin: 10px 10px 10px 10px;
 	width: 90%;
-	height: 400px;
+	height: 309px;
 	overflow-y: auto;
+	background-color: #EEFFFF; 
 	
 }
 
