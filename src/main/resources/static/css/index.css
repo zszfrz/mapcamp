@@ -7,8 +7,8 @@
 }
 
 .left{
-	width: 350px;
-	height:350px;
+	width: 24%;
+	height:24%;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
@@ -27,7 +27,7 @@
 	display: inline-block;
     vertical-align: top;
     float: left;
-    width: 1050px;
+    width: 76%;
     height: auto;
    
 }
