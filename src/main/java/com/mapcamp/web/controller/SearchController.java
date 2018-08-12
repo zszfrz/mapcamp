@@ -49,37 +49,7 @@ public class SearchController {
 	}
 	
 	
-	@RequestMapping(value = "/search_category", method = RequestMethod.POST)
-	public ModelAndView searchCategory(@RequestParam("Param") String Param, ModelAndView mav) {
-
-		if (Param == "") {
-			mav.setViewName("redirect:/");
-		} else {
-			
-			mav.addObject("Param", Param);
-			searchShows = (postService.findAllByCategoryLike(Param));
-			mav.addObject("searchShows", searchShows);
-			mav.setViewName("search");
-		}
-		return mav;
-	}
 	
-	@RequestMapping(value = "/search_text", method = RequestMethod.POST)
-	public ModelAndView searchText(@RequestParam("Param") String Param, ModelAndView mav) {
-
-		if (Param == "") {
-			mav.setViewName("redirect:/");
-		} else {
-			
-			mav.addObject("Param", Param);
-			searchShows = (postService.findAllByTextLike(Param));
-			mav.addObject("searchShows", searchShows);
-			mav.setViewName("search");
-		}
-		return mav;
-	}
-
-
 	
 //	// 検索結果をsearchへ表示
 //	@RequestMapping(value = "/search", method = RequestMethod.GET)
