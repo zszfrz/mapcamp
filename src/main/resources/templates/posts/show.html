@@ -44,19 +44,19 @@
       
       
       
-	       	<br>■User
+	       	<p>■User</p>
 	       	<a th:href="@{'/user/' + ${post.user.id}}" th:inline="text">
-	       	<span th:text="${post.user.name}">tech太郎</span></a></br>
+	       	<span th:text="${post.user.name}">tech太郎</span></a>
             
-           ■StoreName
-           <br><a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
-           <span class="store" th:text="${post.stores.name}"></span></a></br>
+           <p>■StoreName</p>
+           <a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
+           <span class="store" th:text="${post.stores.name}"></span></a>
 
-           <br>■Category</br>
+           <p>■Category</p>
         <p th:text="*{category}"></p>   
 
           
-              ■User Comment
+              <p>■User Comment</p>
         <p th:text="*{text}"></p>   
           
          
