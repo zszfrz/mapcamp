@@ -1,9 +1,10 @@
 html, body{
-	background-color: #f5f5f3;
+	/* background-color: #f5f5f3; */
+	background-color: #3e98bb;
 }
 
 .header{
-	height: 100px;
+	height: 68px;
 	width: 100%;
 	border-bottom: 2px solid #d8d8d8;
 	background-color: #ffffff;
@@ -11,29 +12,40 @@ html, body{
 }
 
 .content{
-width: 100%;
+	position:relative;
+	width: 100%;
 	margin: 0 auto;
 	clear: both;
 }
 
 .adv{
-	height: 100px;
+	bottom: 0;
 	width: 100%;
 	border-bottom: 2px solid #d8d8d8;
 	border-top: 2px solid #d8d8d8;
+	float:middle;
+}
+
+.adv img{
+	width: 150px; 
+	height: 70px;
+  object-fit: contain;	
+}
+
+.adv ul li{
+	display: inline-block;
 }
 
 .footer{
-	height: 100px;
+	position:relative;
+	bottom: 0;
+	height: 50px;
 	width: 100%;
 	text-align: center;
 	color: #d8d8d8;
-	padding-top: 2em;
+	padding-top: 0.8em;
 }
 
-
-.mainbox{
-}
 
 header h1{
 	
@@ -56,21 +68,22 @@ header h1{
 	margin-right: 2em;
 }
 
-.icon{
+.icon img{
 	display: inline-block;
 	margin: 0;
 	padding: 0;
 	height: 50px;
 	width: 50px;
-	background-color: #030303;
+	background-color: #f5f5f3;
 	margin-right: 2em;
 	vertical-align: middle;
 }
 
 .wrapper{
-
+	height:100%;
     width: 100%;
     margin: 0 auto;
     padding: 0;
+    overflow:auto;
 }
 
