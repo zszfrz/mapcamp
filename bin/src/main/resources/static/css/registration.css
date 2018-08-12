@@ -27,9 +27,9 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
-body {
+/* body {
     margin: 0;
-}
+} */
 
 a {
     background: transparent;
@@ -43,10 +43,10 @@ a:active, a:hover {
     outline: 0;
 }
 
-h1 {
+/* h1 {
     font-size: 2em;
     margin: 0.67em 0;
-}
+} */
 
 abbr[title] {
     border-bottom: 1px dotted;
@@ -1880,11 +1880,11 @@ Yahoo!Japan Movies CSS for PC
     padding: 1em 0.5em 1.5em;
 }
 
-body {
+/* body {
     font-size: 16px;
     font-family: roboto, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", Meiryo, "MS PGothic", sans-serif;
     line-height: 1.5;
-}
+} */
 
 p {
     margin: 0 0 0.5em 0;
@@ -1902,9 +1902,9 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
 }
 
-h1 {
+/* h1 {
     font-size: 44px;
-}
+} */
 
 h2, .text-xxlarge {
     font-size: 28px;
@@ -2351,10 +2351,6 @@ blockquote {
     cursor: not-allowed;
 }
 
-.search__query {
-    padding-right: 2em;
-}
-
 .input-confirm {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -2457,7 +2453,7 @@ blockquote {
     color: #bd2152;
 }
 
-.btn, a.btn-schedule, .schedulenav>li>a, .schedulenav>li>span, span.btn-schedule {
+a.btn-schedule, .schedulenav>li>a, .schedulenav>li>span, span.btn-schedule {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -2484,7 +2480,7 @@ blockquote {
     max-width: 100%;
 }
 
-.btn, a.btn-schedule, .schedulenav>li>a, .schedulenav>li>span {
+a.btn-schedule, .schedulenav>li>a, .schedulenav>li>span {
     background-color: #d7dbe2;
     color: #686c73;
     box-shadow: 0px 2px 0px 0px #a8b0c0;
@@ -5002,23 +4998,6 @@ a:hover .listview__element, a:hover .listview>li>a, .listview>li>a:hover, .ui-so
     border-top: 0;
 }
 
-.footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 30px;
-    margin: 0;
-    background-color: #23272e;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.header {
-    position: relative;
-    padding: 0 0.25em;
-}
-
-.header--section {
-    margin-bottom: 1em;
-    border-bottom: 3px solid #d7dbe2;
-}
 
 .hr-top {
     border-top: 3px solid #d7dbe2;
@@ -6891,16 +6870,6 @@ hr.yjSeparation {
     display: none;
 }
 
-#wrapper, #main_cnt_wrapper {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-}
-
-#wrapper.w970 {
-    width: 970px;
-}
 
 #yjContentsFooter {
     margin-top: 10px;
