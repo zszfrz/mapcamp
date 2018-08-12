@@ -114,47 +114,61 @@ public class PostServiceImpl implements PostService{
     		if(Pattern.compile(param).matcher(posts_all.get(i).getCategory()).find()) {//Category
     			search.add(posts_all.get(i));
     		}
-//    		if(Pattern.compile(param).matcher(posts_all.get(i).getText()).find()) {//Text
-//    			if(search.size()>0) {
-//    				for(int j=0; j < search.size(); j++) {
-//    					if(!posts_all.get(i).equals(search.get(j))) {
-//    						search.add(search.get(j));
-//    						k = 1;
-//    					}
-//    					if(k==1)break;
-//    				}
-//    			}
-//    			else {search.add(posts_all.get(i));}
-//    		}
-//    		if(Pattern.compile(param).matcher(posts_all.get(i).getUser().getName()).find()) {//UserName
-//    			if(search.size()>0) {
-//    				for(int j=0; j < search.size(); j++) {
-//    					if(!posts_all.get(i).equals(search.get(j))) {
-//    						search.add(search.get(j));
-//    						k = 2;
-//    					}
-//    					if(k==2)break;
-//    				}
-//    			}
-//    			else {search.add(posts_all.get(i));}
-//    		}
-//    		if(Pattern.compile(param).matcher(posts_all.get(i).getStores().getName()).find()) {//StoreName
-//    			if(search.size()>0) {
-//    				for(int j=0; j < search.size(); j++) {
-//    					if(!posts_all.get(i).equals(search.get(j))) {
-//    						search.add(search.get(j));
-//    						k = 3;
-//    					}
-//    					if(k==3)break;
-//    				}
-//    			}
-//    			else {search.add(posts_all.get(i));}
-//    		
-//    		}
-//    	}
-    	
+    	}
+    	return search;
+    }
+    		
     
-}
+    
+    @Override
+    public List<Post> findAllByAllLike(String param) {
+    	List<Post> posts_all = postRepository.findAll();
+    	List<Post> search = new ArrayList<Post>();
+    	for(int i=0 ; i < posts_all.size() ; i++) {
+    		if(Pattern.compile(param).matcher(posts_all.get(i).getCategory()).find()) {//Category
+    			search.add(posts_all.get(i));
+    		}
+    		if(Pattern.compile(param).matcher(posts_all.get(i).getText()).find()) {//Text
+    			int k = 0;
+    			if(search.size()>0) {
+    				for(int j=0; j < search.size(); j++) {
+    					if(posts_all.get(i).equals(search.get(j))) {//serchの中にposts_all.get(i)がある
+    						//search.add(search.get(j));
+    						k = 1;
+    					}
+    					if(k==1)break;
+    				}
+    			}
+    			else if(k==0){search.add(posts_all.get(i));}
+    		}
+    		if(Pattern.compile(param).matcher(posts_all.get(i).getUser().getName()).find()) {//UserName
+    			int k = 0;
+    			if(search.size()>0) {
+    				for(int j=0; j < search.size(); j++) {
+    					if(posts_all.get(i).equals(search.get(j))) {
+    						//search.add(search.get(j));
+    						k = 1;
+    					}
+    					if(k==1)break;
+    				}
+    			}
+    			else if(k==0){search.add(posts_all.get(i));}
+    		}
+    		if(Pattern.compile(param).matcher(posts_all.get(i).getStores().getName()).find()) {//StoreName
+    			int k = 0;
+    			if(search.size()>0) {
+    				for(int j=0; j < search.size(); j++) {
+    					if(!posts_all.get(i).equals(search.get(j))) {
+    						//search.add(search.get(j));
+    						k = 1;
+    					}
+    					if(k==1)break;
+    				}
+    			}
+    			else if(k == 0){search.add(posts_all.get(i));}
+    		
+    		}
+    	}
     	return search;
     }
     

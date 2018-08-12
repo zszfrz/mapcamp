@@ -33,6 +33,22 @@ public class SearchController {
 	}
 
 	// テンプレートから値を取得し検索
+	@RequestMapping(value = "/search_all", method = RequestMethod.POST)
+	public ModelAndView searchAll(@RequestParam("Param") String Param, ModelAndView mav) {
+
+		if (Param == "") {
+			mav.setViewName("redirect:/");
+		} else {
+			
+			mav.addObject("Param", Param);
+			searchShows = (postService.findAllByAllLike(Param));
+			mav.addObject("searchShows", searchShows);
+			mav.setViewName("search");
+		}
+		return mav;
+	}
+	
+	
 	@RequestMapping(value = "/search_category", method = RequestMethod.POST)
 	public ModelAndView searchCategory(@RequestParam("Param") String Param, ModelAndView mav) {
 
