@@ -18,7 +18,7 @@ import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.repository.PostRepository;
 
 @Controller
-@SessionAttributes(names="list")
+//@SessionAttributes(names="list")
 public class MainController {
 
 	private List<Long> session_list;
