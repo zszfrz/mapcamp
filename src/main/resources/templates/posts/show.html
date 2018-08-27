@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
-<!-- <link rel="stylesheet" href="/css/registration.css" /> -->
+<link rel="stylesheet" href="/css/registration.css" /> 
 <link rel="stylesheet" href="/css/posts/post_main_style.css" />
 </head>
 <body>
@@ -32,15 +32,13 @@
           </div>    
           ■Time of Post
        <p th:text="${#dates.format(nowdate, 'yyyy/MM/dd HH:mm:ss')}"></p>
- 
         <span>Yummy</span>
-      　 <span class="rating-star"><i th:classappend="'rate-' + ${post.yummy * 10}" class="star-actived"></i></span>
+       <span class="rating-star"><i th:classappend="'rate-' + ${post.yummy * 10}" class="star-actived"></i></span>
         <span>Clean</span>
         <span class="rating-star"><i th:classappend="'rate-' + ${post.clean * 10}" class="star-actived"></i></span>
         <span>Staff</span>
         <span class="rating-star"><i th:classappend="'rate-' + ${post.staff * 10}" class="star-actived"></i></span>
-        <span>Speed</span>
-     　  <span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span>
+        <span>Speed</span> <span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span>
       
       
       
