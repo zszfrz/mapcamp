@@ -7,8 +7,6 @@ import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.entity.Store;
 
 public interface StoreService {

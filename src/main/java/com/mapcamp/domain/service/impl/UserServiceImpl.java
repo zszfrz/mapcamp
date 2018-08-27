@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mapcamp.domain.entity.User;
 import com.mapcamp.domain.repository.UserRepository;
-import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.service.UserService;
 
 @Service

@@ -16,13 +16,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.mapcamp.domain.entity.Post;
 import com.mapcamp.domain.entity.Store;
 import com.mapcamp.domain.repository.StoreRepository;
-import com.mapcamp.domain.service.PostService;
 import com.mapcamp.domain.service.StoreService;
 
 @Service

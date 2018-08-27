@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -150,30 +149,5 @@ public class PostServiceImpl implements PostService{
     	}
     	return search;
     }
-    
-    @Override
-    public List<Post> findAllByCategoryLike(String param) {
-    	List<Post> posts_all = postRepository.findAll();
-    	List<Post> search = new ArrayList<Post>();
-    	for(int i=0 ; i < posts_all.size() ; i++) {
-    		if(Pattern.compile(param).matcher(posts_all.get(i).getCategory()).find()) {//Category
-    			search.add(posts_all.get(i));
-    		}
-    	}
-    	return search;
-    }
-    
-    
-    @Override
-    public List<Post> findAllByTextLike(String param) {
-    	List<Post> posts_all = postRepository.findAll();
-    	List<Post> search = new ArrayList<Post>();
-    	for(int i=0 ; i < posts_all.size() ; i++) {
-    		if(Pattern.compile(param).matcher(posts_all.get(i).getText()).find()) {//Category
-    			search.add(posts_all.get(i));
-    		}
-    		}
-    		return search;
-        }
     
 }
