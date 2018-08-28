@@ -370,7 +370,7 @@ embed {
 }
 
 .right {
-  float: right;
+/*   float: right; */
 }
 
 .clearfix {

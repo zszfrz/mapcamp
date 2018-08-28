@@ -60,7 +60,7 @@
 
 				</div>
 
-				<div id="route" >FIND ROUTE</div>
+				<div id="route" >ROUTE</div>
 				<script type="text/javascript" src="/js/map.js"
 					th:src="@{/js/map.js}"></script>
 				<script>
@@ -75,7 +75,17 @@
 			<div class="right_top" layout:fragment="right_top">
 				<div class="search_box">
 					<!-- <p>検索フォーム</p> -->
-					<form th:action="@{/search_category}" method="post">
+					<form th:action="@{/search_all}" method="post">
+						<tr>
+							<td>All Search</td>
+							<td><input type="text" name="Param" size="20" value="" /></td>
+						</tr>
+						
+						<tr>
+							<td><input type="submit" value="search" /></td>
+						</tr>
+					</form>
+					<!-- <form th:action="@{/search_category}" method="post">
 						<tr>
 							<td>Category Search</td>
 							<td><input type="text" name="Param" size="20" value="" /></td>
@@ -94,7 +104,7 @@
 						<tr>
 							<td><input type="submit" value="search" /></td>
 						</tr>
-					</form>
+					</form> -->
 				</div>
 			</div>
 			<div class="right" layout:fragment="right"></div>

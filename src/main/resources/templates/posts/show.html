@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="/css/posts/post_setting.css" />
-<!-- <link rel="stylesheet" href="/css/registration.css" /> -->
+<link rel="stylesheet" href="/css/registration.css" /> 
 <link rel="stylesheet" href="/css/posts/post_main_style.css" />
 </head>
 <body>
@@ -32,31 +32,29 @@
           </div>    
           ■Time of Post
        <p th:text="${#dates.format(nowdate, 'yyyy/MM/dd HH:mm:ss')}"></p>
- 
         <span>Yummy</span>
-        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.yummy * 10}" class="star-actived"></i></span></span>
+       <span class="rating-star"><i th:classappend="'rate-' + ${post.yummy * 10}" class="star-actived"></i></span>
         <span>Clean</span>
-        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.clean * 10}" class="star-actived"></i></span></span>
+        <span class="rating-star"><i th:classappend="'rate-' + ${post.clean * 10}" class="star-actived"></i></span>
         <span>Staff</span>
-        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.staff * 10}" class="star-actived"></i></span></span>
-        <span>Speed</span>
-        <span class="star"><span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span></span>
+        <span class="rating-star"><i th:classappend="'rate-' + ${post.staff * 10}" class="star-actived"></i></span>
+        <span>Speed</span> <span class="rating-star"><i th:classappend="'rate-' + ${post.speed * 10}" class="star-actived"></i></span>
       
       
       
-	       	<br>■User
+	       	<p>■User</p>
 	       	<a th:href="@{'/user/' + ${post.user.id}}" th:inline="text">
-	       	<span th:text="${post.user.name}">tech太郎</span></a></br>
+	       	<span th:text="${post.user.name}">tech太郎</span></a>
             
-           ■StoreName
-           <br><a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
-           <span class="store" th:text="${post.stores.name}"></span></a></br>
+           <p>■StoreName</p>
+           <a href="/posts/1" th:href="@{${post.stores.url}}" target="_blank">
+           <span class="store" th:text="${post.stores.name}"></span></a>
 
-           <br>■Category</br>
+           <p>■Category</p>
         <p th:text="*{category}"></p>   
 
           
-              ■User Comment
+              <p>■User Comment</p>
         <p th:text="*{text}"></p>   
           
          

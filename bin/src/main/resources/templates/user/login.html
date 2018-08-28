@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	<!-- xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layout" -->
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="content" >
 
 <head>
 <meta charset="UTF-8" th:remove="all" />
@@ -13,12 +13,12 @@
 <body class="yj950-2">
 
 	<div class="bgcolor-white pt1em pb1em" id="contents"
-		layout:fragment="content">
+		layout:fragment="main">
 		<div id="main_cnt_wrapper">
 			<div id="yjContentsBody">
 				<div class="yjContainer">
 					<div class="form_box">
-						<h2>Sign in</h2>
+						<h2>Login</h2>
 						<form class="new_user" id="new_user" th:action="@{'/login'}"
 							action="/login" accept-charset="UTF-8" method="post">
 
@@ -27,12 +27,12 @@
 							</div>
 
 							<div>
-								<input autofocus="autofocus" placeholder="メールアドレスを入力"
+								<input autofocus="autofocus" placeholder="Type your email"
 									type="email" value="" name="email" id="user_email" />
 							</div>
 
 							<div>
-								<input autocomplete="off" placeholder="パスワードを入力" type="password"
+								<input autocomplete="off" placeholder="Type your password" type="password"
 									name="password" id="user_password" />
 							</div>
 

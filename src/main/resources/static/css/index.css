@@ -7,15 +7,16 @@
 }
 
 .left{
-	width: 394px;
-	height:489px;
+	width: 24%;
+	height:24%;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
     vertical-align: top;
    text-align: center;
-    border: 4px solid #191919;
+    /* border: 4px solid #191919; */
     float: left; 
+    background-color: #EEFFFF; 
 }
 
 .right{
@@ -26,7 +27,7 @@
 	display: inline-block;
     vertical-align: top;
     float: left;
-    width: 1000px;
+    width: 76%;
     height: auto;
    
 }
@@ -63,7 +64,7 @@ display: table;
 
 .search_box form{
 	list-style: none;
-    padding: 0;
+    padding: 5px;
     margin: 0;
     display: inline-block;
 }
@@ -75,13 +76,15 @@ display: table;
 
 .wannago{
 	margin-left: 1em;
+	font-size: 20px;
 }
 
 .wannago_posts{
 	margin: 10px 10px 10px 10px;
 	width: 90%;
-	height: 400px;
+	height: 309px;
 	overflow-y: auto;
+	background-color: #EEFFFF; 
 	
 }
 
@@ -128,7 +131,7 @@ display: table;
 #route{
        padding: auto 0;
        display:inline-block;
-       height: 24px;
+       height: 30px;
        width: 6em;
        border: 1px solid #0e0e0e;
        text-align: center;
@@ -136,6 +139,7 @@ display: table;
        margin-right: 0.5em;
        bottom: 1px;
        left:2px;
+       font-size: 20px;
 }
 
 .transe p{

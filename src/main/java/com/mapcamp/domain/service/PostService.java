@@ -30,10 +30,5 @@ public interface PostService {
 	Post save(Post post);
 	byte[] downloadImage(Long postId) throws IOException;
 	
-
-	List<Post> findAllByCategoryLike(String param);
-	List<Post> findAllByTextLike(String param);
-	
-	
-
+	List<Post> findAllByAllLike(String param);
 }
